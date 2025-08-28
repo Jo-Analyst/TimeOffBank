@@ -73,6 +73,16 @@ namespace Interface.Properties {
         /// <summary>
         ///   Consulta um recurso localizado do tipo System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap checked_checkbox_32 {
+            get {
+                object obj = ResourceManager.GetObject("checked_checkbox_32", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Consulta um recurso localizado do tipo System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap delete {
             get {
                 object obj = ResourceManager.GetObject("delete", resourceCulture);
@@ -116,36 +126,6 @@ namespace Interface.Properties {
         internal static System.Drawing.Bitmap icons8_atendimento_64 {
             get {
                 object obj = ResourceManager.GetObject("icons8_atendimento_64", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Consulta um recurso localizado do tipo System.Drawing.Bitmap.
-        /// </summary>
-        internal static System.Drawing.Bitmap icons8_caixa_de_seleção_desmarcada_50 {
-            get {
-                object obj = ResourceManager.GetObject("icons8_caixa_de_seleção_desmarcada_50", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Consulta um recurso localizado do tipo System.Drawing.Bitmap.
-        /// </summary>
-        internal static System.Drawing.Bitmap icons8_caixa_de_seleção_marcada {
-            get {
-                object obj = ResourceManager.GetObject("icons8_caixa_de_seleção_marcada", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Consulta um recurso localizado do tipo System.Drawing.Bitmap.
-        /// </summary>
-        internal static System.Drawing.Bitmap icons8_caixa_de_selecção_seleccionada_2_50 {
-            get {
-                object obj = ResourceManager.GetObject("icons8_caixa_de_selecção_seleccionada_2_50", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -276,6 +256,16 @@ namespace Interface.Properties {
         internal static System.Drawing.Bitmap right_arrow_white {
             get {
                 object obj = ResourceManager.GetObject("right_arrow_white", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Consulta um recurso localizado do tipo System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap rounded_square_32 {
+            get {
+                object obj = ResourceManager.GetObject("rounded_square_32", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

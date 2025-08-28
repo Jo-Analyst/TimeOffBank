@@ -73,7 +73,7 @@
             this.ColDepartureTime = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ColNumberOfOvertimeHours = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ColDescription = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ColAbatementData = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ColAbatementDate = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ColNumberOfHoursTaken = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ColDayOffCompleted = new System.Windows.Forms.DataGridViewImageColumn();
             this.groupBox5.SuspendLayout();
@@ -303,7 +303,7 @@
             this.ColDepartureTime,
             this.ColNumberOfOvertimeHours,
             this.ColDescription,
-            this.ColAbatementData,
+            this.ColAbatementDate,
             this.ColNumberOfHoursTaken,
             this.ColDayOffCompleted});
             dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
@@ -608,14 +608,14 @@
             this.ColDescription.ReadOnly = true;
             this.ColDescription.Width = 105;
             // 
-            // ColAbatementData
+            // ColAbatementDate
             // 
-            this.ColAbatementData.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
-            this.ColAbatementData.HeaderText = "Data do abatimento";
-            this.ColAbatementData.Name = "ColAbatementData";
-            this.ColAbatementData.ReadOnly = true;
-            this.ColAbatementData.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
-            this.ColAbatementData.Width = 152;
+            this.ColAbatementDate.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.ColAbatementDate.HeaderText = "Data do abatimento";
+            this.ColAbatementDate.Name = "ColAbatementDate";
+            this.ColAbatementDate.ReadOnly = true;
+            this.ColAbatementDate.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            this.ColAbatementDate.Width = 152;
             // 
             // ColNumberOfHoursTaken
             // 
@@ -716,7 +716,7 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn ColDepartureTime;
         private System.Windows.Forms.DataGridViewTextBoxColumn ColNumberOfOvertimeHours;
         private System.Windows.Forms.DataGridViewTextBoxColumn ColDescription;
-        private System.Windows.Forms.DataGridViewTextBoxColumn ColAbatementData;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ColAbatementDate;
         private System.Windows.Forms.DataGridViewTextBoxColumn ColNumberOfHoursTaken;
         private System.Windows.Forms.DataGridViewImageColumn ColDayOffCompleted;
     }

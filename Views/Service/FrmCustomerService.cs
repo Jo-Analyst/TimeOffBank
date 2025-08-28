@@ -10,8 +10,8 @@ namespace Interface
     public partial class FrmCustomerService : Form
     {
 
-        int employeeId, page = 1, pageMaximum = 1, serviceId;        
-
+        int employeeId, page = 1, pageMaximum = 1, serviceId;
+        bool addTime = bool.Parse(Settings.Default["addTime"].ToString());
         public FrmCustomerService(int userId, string name)
         {
             InitializeComponent();
@@ -43,23 +43,23 @@ namespace Interface
                 MessageBox.Show("Descreva qual atendimento foi realizado.", "BANCO DE HORAS", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
                 return;
             }
-           
-            //else if (addTime && cbAddTimeExit.Checked)
-            //{
-            //    if (dtEntryTime.Value > dtDepartureTime.Value)
-            //    {
-            //        MessageBox.Show("A hora de saída não pode ser menor que a hora do atendimento", "BANCO DE HORAS", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
-            //        return;
-            //    }
-            //    else if (dtEntryTime.Value == dtDepartureTime.Value)
-            //    {
-            //        MessageBox.Show("A hora de saída não pode ser igual a hora do atendimento", "BANCO DE HORAS", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
-            //        return;
-            //    }
-            //}
-            
 
-                Service service = new Service();
+            else if (addTime && cbAddTimeExit.Checked)
+            {
+                if (dtEntryTime.Value > dtDepartureTime.Value)
+                {
+                    MessageBox.Show("A hora de saída não pode ser menor que a hora do atendimento", "BANCO DE HORAS", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                    return;
+                }
+                else if (dtEntryTime.Value == dtDepartureTime.Value)
+                {
+                    MessageBox.Show("A hora de saída não pode ser igual a hora do atendimento", "BANCO DE HORAS", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                    return;
+                }
+            }
+
+
+            Service service = new Service();
             try
             {
                 service.id = serviceId;
@@ -102,10 +102,13 @@ namespace Interface
                     dgvHistory.Rows[index].Cells["ColDelete"].Value = Properties.Resources.delete;
                     dgvHistory.Rows[index].Cells["ColId"].Value = dr["id"].ToString();
                     dgvHistory.Rows[index].Cells["ColDescription"].Value = dr["description"].ToString();
-                    dgvHistory.Rows[index].Cells["ColDate"].Value = dr["date_service"].ToString();
-                    dgvHistory.Rows[index].Cells["ColCheckInTime"].Value = dr["time_of_service"].ToString() == string.Empty ? "---" : dr["time_of_service"].ToString();
-                    dgvHistory.Rows[index].Cells["ColCheckOutTime"].Value = dr["departure_time"].ToString() == string.Empty ? "---" : dr["departure_time"].ToString();
-                    dgvHistory.Rows[index].Cells["ColSector"].Value = dr["sector"].ToString();
+                    dgvHistory.Rows[index].Cells["ColDate"].Value = dr["date"].ToString();
+                    dgvHistory.Rows[index].Cells["ColEntryTime"].Value = dr["entry_time"].ToString();
+                    dgvHistory.Rows[index].Cells["ColDepartureTime"].Value = dr["departure_time"].ToString();
+                    dgvHistory.Rows[index].Cells["ColNumberOfOvertimeHours"].Value = dr["number_of_overtime_hours"].ToString();
+                    dgvHistory.Rows[index].Cells["ColAbatementDate"].Value = dr["abatement_date"].ToString();
+                    dgvHistory.Rows[index].Cells["ColNumberOfHoursTaken"].Value = dr["number_of_hours_taken"].ToString();
+                    dgvHistory.Rows[index].Cells["ColDayOffCompleted"].Value = dr["day_off_completed"].ToString() == "1" ? Properties.Resources.checked_checkbox_32 : Resources.rounded_square_32;
                     dgvHistory.Rows[index].Selected = false;
                     dgvHistory.Rows[index].Height = 45;
                 }

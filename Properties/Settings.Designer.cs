@@ -22,5 +22,52 @@ namespace Interface.Properties {
                 return defaultInstance;
             }
         }
+        
+        [global::System.Configuration.ApplicationScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.SpecialSettingAttribute(global::System.Configuration.SpecialSetting.ConnectionString)]
+        [global::System.Configuration.DefaultSettingValueAttribute("Data Source=LOCALHOST\\SQLEXPRESS;Initial Catalog=dbCentralServices;Integrated Sec" +
+            "urity=True;Encrypt=False")]
+        public string dbCentralServicesConnectionString {
+            get {
+                return ((string)(this["dbCentralServicesConnectionString"]));
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("C:\\Central de Atendimento Backup")]
+        public string path_Backup {
+            get {
+                return ((string)(this["path_Backup"]));
+            }
+            set {
+                this["path_Backup"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("False")]
+        public string print_directory_direct {
+            get {
+                return ((string)(this["print_directory_direct"]));
+            }
+            set {
+                this["print_directory_direct"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("False")]
+        public bool addTime {
+            get {
+                return ((bool)(this["addTime"]));
+            }
+            set {
+                this["addTime"] = value;
+            }
+        }
     }
 }

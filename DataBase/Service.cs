@@ -57,7 +57,7 @@ namespace DataBase
             {
                 using (var connection = new SqlConnection(DbConnectionString.connectionString))
                 {
-                    string sql = $"SELECT id, description, CONVERT(VARCHAR, date, 103) AS date, entry_time, departure_time, employee_id, number_of_overtime_hours, abatement_date, day_off_completed, number_of_hours_taken FROM Services WHERE employee_id = {employee_id} ORDER BY CONVERT(DATE, date, 103) DESC, CONVERT(Time, entry_time, 103) DESC OFFSET {page} ROWS FETCH  NEXT {quantRows} ROWS ONLY";
+                    string sql = $"SELECT id, description, CONVERT(VARCHAR, date, 103) AS date, entry_time, departure_time, employee_id, number_of_overtime_hours, CONVERT(VARCHAR, abatement_date, 103) AS abatement_date, day_off_completed, number_of_hours_taken FROM Services WHERE employee_id = {employee_id} ORDER BY CONVERT(DATE, date, 103) DESC, CONVERT(Time, entry_time, 103) DESC OFFSET {page} ROWS FETCH  NEXT {quantRows} ROWS ONLY";
                     var adapter = new SqlDataAdapter(sql, connection);
                     adapter.SelectCommand.CommandText = sql;
                     DataTable dataTable = new DataTable();
@@ -77,7 +77,7 @@ namespace DataBase
             {
                 using (var connection = new SqlConnection(DbConnectionString.connectionString))
                 {
-                    string sql = $"SELECT Services.description, CONVERT(VARCHAR, Services.date, 103) AS date, Services.entry_time, Services.departure_time, Services.number_of_overtime_hours, Services.abatement_date, Services.day_off_completed, Services.number_of_hours_taken, Employees.name FROM Services INNER JOIN Employees ON Employees.id = Services.employee_id WHERE CONVERT(VARCHAR, date, 103) LIKE '%{month}/{year}%' ORDER BY CONVERT(DATE, Services.date, 103) DESC, CONVERT(Time, Services.entry_time, 103) DESC OFFSET {page} ROWS FETCH  NEXT {quantRows} ROWS ONLY";
+                    string sql = $"SELECT Services.description, CONVERT(VARCHAR, Services.date, 103) AS date, Services.entry_time, Services.departure_time, Services.number_of_overtime_hours, CONVERT(VARCHAR,Services.abatement_date, 103) AS abatement_date, Services.day_off_completed, Services.number_of_hours_taken, Employees.name FROM Services INNER JOIN Employees ON Employees.id = Services.employee_id WHERE CONVERT(VARCHAR, date, 103) LIKE '%{month}/{year}%' ORDER BY CONVERT(DATE, Services.date, 103) DESC, CONVERT(Time, Services.entry_time, 103) DESC OFFSET {page} ROWS FETCH  NEXT {quantRows} ROWS ONLY";
                     var adapter = new SqlDataAdapter(sql, connection);
                     adapter.SelectCommand.CommandText = sql;
                     DataTable dataTable = new DataTable();
@@ -97,7 +97,7 @@ namespace DataBase
             {
                 using (var connection = new SqlConnection(DbConnectionString.connectionString))
                 {
-                    string sql = $"SELECT Services.description, CONVERT(VARCHAR, Services.date, 103) AS date, Services.entry_time, Services.departure_time, Services.number_of_overtime_hours, Services.abatement_date, Services.day_off_completed, Services.number_of_hours_taken, Employees.name FROM Services INNER JOIN Employees ON Employees.id = Services.employee_id WHERE date LIKE '%{year}%' ORDER BY CONVERT(DATE, Services.date, 103) DESC, CONVERT(Time, Services.entry_time, 103) DESC OFFSET {page} ROWS FETCH  NEXT {quantRows} ROWS ONLY";
+                    string sql = $"SELECT Services.description, CONVERT(VARCHAR, Services.date, 103) AS date, Services.entry_time, Services.departure_time, Services.number_of_overtime_hours, CONVERT(VARCHAR,Services.abatement_date, 103) AS abatement_date, Services.day_off_completed, Services.number_of_hours_taken, Employees.name FROM Services INNER JOIN Employees ON Employees.id = Services.employee_id WHERE date LIKE '%{year}%' ORDER BY CONVERT(DATE, Services.date, 103) DESC, CONVERT(Time, Services.entry_time, 103) DESC OFFSET {page} ROWS FETCH  NEXT {quantRows} ROWS ONLY";
                     var adapter = new SqlDataAdapter(sql, connection);
                     adapter.SelectCommand.CommandText = sql;
                     DataTable dataTable = new DataTable();

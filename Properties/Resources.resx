@@ -121,6 +121,9 @@
   <data name="add_post" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\add-post.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="checked_checkbox_32" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\assets\checked-checkbox-32.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
   <data name="delete" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\delete.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
@@ -135,15 +138,6 @@
   </data>
   <data name="icons8_atendimento_64" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\icons8-atendimento-64.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="icons8_caixa_de_selecção_seleccionada_2_50" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\icons8-caixa-de-selecção-seleccionada-2-50.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="icons8_caixa_de_seleção_desmarcada_50" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\icons8-caixa-de-seleção-desmarcada-50.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="icons8_caixa_de_seleção_marcada" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\icons8-caixa-de-seleção-marcada.gif;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="icons8_relatório_50" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\icons8-relatório-50.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
@@ -183,6 +177,9 @@
   </data>
   <data name="right_arrow_white" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\right-arrow-white.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="rounded_square_32" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\assets\rounded-square-32.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="user_avatar" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\user-avatar.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
