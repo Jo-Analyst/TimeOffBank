@@ -1,0 +1,6 @@
+C:\Users\jojoc\OneDrive\Área de Trabalho\TimeOffBank\DataBase\bin\Debug\DataBase.dll
+C:\Users\jojoc\OneDrive\Área de Trabalho\TimeOffBank\DataBase\bin\Debug\DataBase.pdb
+C:\Users\jojoc\OneDrive\Área de Trabalho\TimeOffBank\DataBase\obj\Debug\DataBase.csproj.AssemblyReference.cache
+C:\Users\jojoc\OneDrive\Área de Trabalho\TimeOffBank\DataBase\obj\Debug\DataBase.csproj.CoreCompileInputs.cache
+C:\Users\jojoc\OneDrive\Área de Trabalho\TimeOffBank\DataBase\obj\Debug\DataBase.dll
+C:\Users\jojoc\OneDrive\Área de Trabalho\TimeOffBank\DataBase\obj\Debug\DataBase.pdb

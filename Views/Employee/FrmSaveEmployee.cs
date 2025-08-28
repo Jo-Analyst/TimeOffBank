@@ -36,7 +36,7 @@ namespace Interface
 
                 if (string.IsNullOrWhiteSpace(txtName.Text))
                 {
-                    MessageBox.Show("Insira o nome do Funcionário", "TIME-BANK OFF", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                    MessageBox.Show("Insira o nome do Funcionário", "BANCO DE HORAS", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
                     return;
                 }
 
@@ -44,13 +44,13 @@ namespace Interface
                 {
                     if (!CPF.Validate(mkCPF.Text))
                     {
-                        MessageBox.Show("CPF inválido", "TIME-BANK OFF", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                        MessageBox.Show("CPF inválido", "BANCO DE HORAS", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
                         return;
                     }
 
                     else if (Employee.FindByCpfForEmployee(Security.Cry(mkCPF.Text), userId).Rows.Count > 0)
                     {
-                        MessageBox.Show("Este CPF já está cadastrado", "TIME-BANK OFF", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                        MessageBox.Show("Este CPF já está cadastrado", "BANCO DE HORAS", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
                         return;
                     }
                 }

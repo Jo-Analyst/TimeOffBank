@@ -65,7 +65,7 @@ namespace Interface
                 if (openFileDialog.ShowDialog() == DialogResult.OK)
                 {
                     backup.RestoreDataBase(openFileDialog.FileName);
-                    MessageBox.Show("Restauração realizado com sucesso.", "Mensagem,", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    MessageBox.Show("Restauração realizado com sucesso.", "Mensage,", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 }
             }
             catch (Exception ex)

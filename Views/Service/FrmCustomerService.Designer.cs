@@ -48,30 +48,40 @@
             this.btnArrowRight = new System.Windows.Forms.Button();
             this.btnArrowLeft = new System.Windows.Forms.Button();
             this.dgvHistory = new System.Windows.Forms.DataGridView();
+            this.toolTip = new System.Windows.Forms.ToolTip(this.components);
+            this.lkCancel = new System.Windows.Forms.LinkLabel();
+            this.cbAddTimeExit = new System.Windows.Forms.CheckBox();
+            this.rtDescription = new System.Windows.Forms.RichTextBox();
+            this.label3 = new System.Windows.Forms.Label();
+            this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.dtEntryTime = new System.Windows.Forms.DateTimePicker();
+            this.label4 = new System.Windows.Forms.Label();
+            this.dtDepartureTime = new System.Windows.Forms.DateTimePicker();
+            this.dtDate = new System.Windows.Forms.DateTimePicker();
+            this.label5 = new System.Windows.Forms.Label();
+            this.label7 = new System.Windows.Forms.Label();
+            this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.label1 = new System.Windows.Forms.Label();
+            this.ndNumberOfHoursTaken = new System.Windows.Forms.NumericUpDown();
+            this.dtAbatementDate = new System.Windows.Forms.DateTimePicker();
+            this.label11 = new System.Windows.Forms.Label();
             this.ColEdit = new System.Windows.Forms.DataGridViewImageColumn();
             this.ColDelete = new System.Windows.Forms.DataGridViewImageColumn();
             this.ColId = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ColDescription = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ColSector = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ColDateService = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ColTimeOfService = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ColDate = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ColEntryTime = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ColDepartureTime = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.toolTip = new System.Windows.Forms.ToolTip(this.components);
-            this.dtDepartureTime = new System.Windows.Forms.DateTimePicker();
-            this.label2 = new System.Windows.Forms.Label();
-            this.dtTimeOfService = new System.Windows.Forms.DateTimePicker();
-            this.label1 = new System.Windows.Forms.Label();
-            this.dtDateService = new System.Windows.Forms.DateTimePicker();
-            this.label11 = new System.Windows.Forms.Label();
-            this.label3 = new System.Windows.Forms.Label();
-            this.rtDescription = new System.Windows.Forms.RichTextBox();
-            this.lkCancel = new System.Windows.Forms.LinkLabel();
-            this.label4 = new System.Windows.Forms.Label();
-            this.cbSectors = new System.Windows.Forms.ComboBox();
-            this.cbAddTimeExit = new System.Windows.Forms.CheckBox();
+            this.ColNumberOfOvertimeHours = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ColDescription = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ColAbatementData = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ColNumberOfHoursTaken = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ColDayOffCompleted = new System.Windows.Forms.DataGridViewImageColumn();
             this.groupBox5.SuspendLayout();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvHistory)).BeginInit();
+            this.groupBox1.SuspendLayout();
+            this.groupBox2.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.ndNumberOfHoursTaken)).BeginInit();
             this.SuspendLayout();
             // 
             // label6
@@ -81,7 +91,7 @@
             this.label6.Location = new System.Drawing.Point(26, 18);
             this.label6.Margin = new System.Windows.Forms.Padding(5, 0, 5, 0);
             this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(82, 23);
+            this.label6.Size = new System.Drawing.Size(94, 18);
             this.label6.TabIndex = 47;
             this.label6.Text = "Funcionário:";
             // 
@@ -93,7 +103,7 @@
             this.btnSave.ForeColor = System.Drawing.Color.White;
             this.btnSave.Image = ((System.Drawing.Image)(resources.GetObject("btnSave.Image")));
             this.btnSave.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnSave.Location = new System.Drawing.Point(536, 379);
+            this.btnSave.Location = new System.Drawing.Point(524, 446);
             this.btnSave.Margin = new System.Windows.Forms.Padding(4);
             this.btnSave.Name = "btnSave";
             this.btnSave.Size = new System.Drawing.Size(145, 47);
@@ -107,10 +117,10 @@
             // 
             this.lblName.AutoSize = true;
             this.lblName.ForeColor = System.Drawing.Color.White;
-            this.lblName.Location = new System.Drawing.Point(102, 18);
+            this.lblName.Location = new System.Drawing.Point(130, 18);
             this.lblName.Margin = new System.Windows.Forms.Padding(5, 0, 5, 0);
             this.lblName.Name = "lblName";
-            this.lblName.Size = new System.Drawing.Size(231, 23);
+            this.lblName.Size = new System.Drawing.Size(185, 18);
             this.lblName.TabIndex = 65;
             this.lblName.Text = "Joelmir Rogério Carvalho";
             // 
@@ -125,10 +135,10 @@
             this.groupBox5.ForeColor = System.Drawing.Color.White;
             this.groupBox5.Location = new System.Drawing.Point(688, 18);
             this.groupBox5.Name = "groupBox5";
-            this.groupBox5.Size = new System.Drawing.Size(488, 441);
+            this.groupBox5.Size = new System.Drawing.Size(488, 475);
             this.groupBox5.TabIndex = 45;
             this.groupBox5.TabStop = false;
-            this.groupBox5.Text = "Atendimentos realizados";
+            this.groupBox5.Text = "Histórico";
             // 
             // panel1
             // 
@@ -142,7 +152,7 @@
             this.panel1.Controls.Add(this.btnArrowRight);
             this.panel1.Controls.Add(this.btnArrowLeft);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.panel1.Location = new System.Drawing.Point(3, 389);
+            this.panel1.Location = new System.Drawing.Point(3, 423);
             this.panel1.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(482, 49);
@@ -173,7 +183,7 @@
             "25"});
             this.cbRows.Location = new System.Drawing.Point(67, 11);
             this.cbRows.Name = "cbRows";
-            this.cbRows.Size = new System.Drawing.Size(94, 31);
+            this.cbRows.Size = new System.Drawing.Size(94, 26);
             this.cbRows.TabIndex = 16;
             this.cbRows.TabStop = false;
             // 
@@ -187,11 +197,11 @@
             this.cbPage.ForeColor = System.Drawing.Color.White;
             this.cbPage.FormattingEnabled = true;
             this.cbPage.IntegralHeight = false;
-            this.cbPage.ItemHeight = 23;
+            this.cbPage.ItemHeight = 18;
             this.cbPage.Location = new System.Drawing.Point(259, 11);
             this.cbPage.Margin = new System.Windows.Forms.Padding(19, 17, 19, 17);
             this.cbPage.Name = "cbPage";
-            this.cbPage.Size = new System.Drawing.Size(97, 31);
+            this.cbPage.Size = new System.Drawing.Size(97, 26);
             this.cbPage.TabIndex = 15;
             this.cbPage.TabStop = false;
             // 
@@ -202,7 +212,7 @@
             this.label9.Location = new System.Drawing.Point(190, 14);
             this.label9.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(70, 23);
+            this.label9.Size = new System.Drawing.Size(58, 18);
             this.label9.TabIndex = 14;
             this.label9.Text = "Página";
             // 
@@ -213,7 +223,7 @@
             this.lblDescriptionRow.Location = new System.Drawing.Point(189, 17);
             this.lblDescriptionRow.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblDescriptionRow.Name = "lblDescriptionRow";
-            this.lblDescriptionRow.Size = new System.Drawing.Size(0, 23);
+            this.lblDescriptionRow.Size = new System.Drawing.Size(0, 18);
             this.lblDescriptionRow.TabIndex = 13;
             // 
             // label10
@@ -223,7 +233,7 @@
             this.label10.Location = new System.Drawing.Point(12, 14);
             this.label10.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(58, 23);
+            this.label10.Size = new System.Drawing.Size(48, 18);
             this.label10.TabIndex = 11;
             this.label10.Text = "Exibir";
             // 
@@ -288,11 +298,14 @@
             this.ColEdit,
             this.ColDelete,
             this.ColId,
+            this.ColDate,
+            this.ColEntryTime,
+            this.ColDepartureTime,
+            this.ColNumberOfOvertimeHours,
             this.ColDescription,
-            this.ColSector,
-            this.ColDateService,
-            this.ColTimeOfService,
-            this.ColDepartureTime});
+            this.ColAbatementData,
+            this.ColNumberOfHoursTaken,
+            this.ColDayOffCompleted});
             dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
             dataGridViewCellStyle3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(23)))), ((int)(((byte)(29)))), ((int)(((byte)(29)))));
             dataGridViewCellStyle3.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -317,11 +330,210 @@
             this.dgvHistory.RowHeadersDefaultCellStyle = dataGridViewCellStyle4;
             this.dgvHistory.RowHeadersVisible = false;
             this.dgvHistory.RowHeadersWidth = 51;
-            this.dgvHistory.Size = new System.Drawing.Size(477, 347);
+            this.dgvHistory.Size = new System.Drawing.Size(477, 381);
             this.dgvHistory.TabIndex = 0;
             this.dgvHistory.TabStop = false;
             this.dgvHistory.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvHistory_CellClick);
             this.dgvHistory.CellMouseEnter += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvHistory_CellMouseEnter);
+            // 
+            // lkCancel
+            // 
+            this.lkCancel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.lkCancel.AutoSize = true;
+            this.lkCancel.LinkColor = System.Drawing.Color.White;
+            this.lkCancel.Location = new System.Drawing.Point(375, 460);
+            this.lkCancel.Name = "lkCancel";
+            this.lkCancel.Size = new System.Drawing.Size(125, 18);
+            this.lkCancel.TabIndex = 0;
+            this.lkCancel.TabStop = true;
+            this.lkCancel.Text = "Cancelar Edição";
+            this.lkCancel.Visible = false;
+            this.lkCancel.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.lkCancel_LinkClicked);
+            // 
+            // cbAddTimeExit
+            // 
+            this.cbAddTimeExit.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.cbAddTimeExit.AutoSize = true;
+            this.cbAddTimeExit.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.cbAddTimeExit.Location = new System.Drawing.Point(15, 93);
+            this.cbAddTimeExit.Name = "cbAddTimeExit";
+            this.cbAddTimeExit.Size = new System.Drawing.Size(231, 22);
+            this.cbAddTimeExit.TabIndex = 3;
+            this.cbAddTimeExit.Text = "Sábado, domingo ou feriados";
+            this.cbAddTimeExit.UseVisualStyleBackColor = true;
+            this.cbAddTimeExit.CheckedChanged += new System.EventHandler(this.cbAddTimeExit_CheckedChanged);
+            // 
+            // rtDescription
+            // 
+            this.rtDescription.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left)));
+            this.rtDescription.Location = new System.Drawing.Point(27, 70);
+            this.rtDescription.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.rtDescription.Name = "rtDescription";
+            this.rtDescription.Size = new System.Drawing.Size(654, 89);
+            this.rtDescription.TabIndex = 0;
+            this.rtDescription.Text = "";
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.ForeColor = System.Drawing.Color.White;
+            this.label3.Location = new System.Drawing.Point(26, 45);
+            this.label3.Margin = new System.Windows.Forms.Padding(8, 0, 8, 0);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(54, 18);
+            this.label3.TabIndex = 75;
+            this.label3.Text = "Motivo";
+            // 
+            // groupBox1
+            // 
+            this.groupBox1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.groupBox1.Controls.Add(this.dtEntryTime);
+            this.groupBox1.Controls.Add(this.cbAddTimeExit);
+            this.groupBox1.Controls.Add(this.label4);
+            this.groupBox1.Controls.Add(this.dtDepartureTime);
+            this.groupBox1.Controls.Add(this.dtDate);
+            this.groupBox1.Controls.Add(this.label5);
+            this.groupBox1.Controls.Add(this.label7);
+            this.groupBox1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.groupBox1.ForeColor = System.Drawing.Color.White;
+            this.groupBox1.Location = new System.Drawing.Point(31, 167);
+            this.groupBox1.Name = "groupBox1";
+            this.groupBox1.Size = new System.Drawing.Size(652, 131);
+            this.groupBox1.TabIndex = 81;
+            this.groupBox1.TabStop = false;
+            this.groupBox1.Text = "Horas Extras";
+            // 
+            // dtEntryTime
+            // 
+            this.dtEntryTime.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.dtEntryTime.Format = System.Windows.Forms.DateTimePickerFormat.Time;
+            this.dtEntryTime.Location = new System.Drawing.Point(140, 59);
+            this.dtEntryTime.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.dtEntryTime.MinDate = new System.DateTime(1900, 1, 1, 0, 0, 0, 0);
+            this.dtEntryTime.Name = "dtEntryTime";
+            this.dtEntryTime.ShowUpDown = true;
+            this.dtEntryTime.Size = new System.Drawing.Size(118, 26);
+            this.dtEntryTime.TabIndex = 2;
+            // 
+            // label4
+            // 
+            this.label4.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.label4.AutoSize = true;
+            this.label4.ForeColor = System.Drawing.Color.White;
+            this.label4.Location = new System.Drawing.Point(135, 29);
+            this.label4.Margin = new System.Windows.Forms.Padding(8, 0, 8, 0);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(123, 18);
+            this.label4.TabIndex = 78;
+            this.label4.Text = "Hora da Entrada";
+            // 
+            // dtDepartureTime
+            // 
+            this.dtDepartureTime.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.dtDepartureTime.Format = System.Windows.Forms.DateTimePickerFormat.Time;
+            this.dtDepartureTime.Location = new System.Drawing.Point(264, 59);
+            this.dtDepartureTime.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.dtDepartureTime.MinDate = new System.DateTime(1900, 1, 1, 0, 0, 0, 0);
+            this.dtDepartureTime.Name = "dtDepartureTime";
+            this.dtDepartureTime.ShowUpDown = true;
+            this.dtDepartureTime.Size = new System.Drawing.Size(127, 26);
+            this.dtDepartureTime.TabIndex = 4;
+            // 
+            // dtDate
+            // 
+            this.dtDate.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.dtDate.Format = System.Windows.Forms.DateTimePickerFormat.Short;
+            this.dtDate.Location = new System.Drawing.Point(17, 59);
+            this.dtDate.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.dtDate.MinDate = new System.DateTime(1900, 1, 1, 0, 0, 0, 0);
+            this.dtDate.Name = "dtDate";
+            this.dtDate.Size = new System.Drawing.Size(115, 26);
+            this.dtDate.TabIndex = 5;
+            // 
+            // label5
+            // 
+            this.label5.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.label5.AutoSize = true;
+            this.label5.ForeColor = System.Drawing.Color.White;
+            this.label5.Location = new System.Drawing.Point(261, 29);
+            this.label5.Margin = new System.Windows.Forms.Padding(8, 0, 8, 0);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(110, 18);
+            this.label5.TabIndex = 80;
+            this.label5.Text = "Hora da saída ";
+            // 
+            // label7
+            // 
+            this.label7.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.label7.AutoSize = true;
+            this.label7.ForeColor = System.Drawing.Color.White;
+            this.label7.Location = new System.Drawing.Point(12, 29);
+            this.label7.Margin = new System.Windows.Forms.Padding(8, 0, 8, 0);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(42, 18);
+            this.label7.TabIndex = 76;
+            this.label7.Text = "Data";
+            // 
+            // groupBox2
+            // 
+            this.groupBox2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.groupBox2.Controls.Add(this.label1);
+            this.groupBox2.Controls.Add(this.ndNumberOfHoursTaken);
+            this.groupBox2.Controls.Add(this.dtAbatementDate);
+            this.groupBox2.Controls.Add(this.label11);
+            this.groupBox2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.groupBox2.ForeColor = System.Drawing.Color.White;
+            this.groupBox2.Location = new System.Drawing.Point(29, 304);
+            this.groupBox2.Name = "groupBox2";
+            this.groupBox2.Size = new System.Drawing.Size(652, 131);
+            this.groupBox2.TabIndex = 83;
+            this.groupBox2.TabStop = false;
+            this.groupBox2.Text = "Horas Tiradas";
+            // 
+            // label1
+            // 
+            this.label1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.label1.AutoSize = true;
+            this.label1.ForeColor = System.Drawing.Color.White;
+            this.label1.Location = new System.Drawing.Point(136, 29);
+            this.label1.Margin = new System.Windows.Forms.Padding(8, 0, 8, 0);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(89, 18);
+            this.label1.TabIndex = 78;
+            this.label1.Text = "Quantidade";
+            // 
+            // ndNumberOfHoursTaken
+            // 
+            this.ndNumberOfHoursTaken.Enabled = false;
+            this.ndNumberOfHoursTaken.Location = new System.Drawing.Point(139, 59);
+            this.ndNumberOfHoursTaken.Name = "ndNumberOfHoursTaken";
+            this.ndNumberOfHoursTaken.Size = new System.Drawing.Size(111, 26);
+            this.ndNumberOfHoursTaken.TabIndex = 77;
+            // 
+            // dtAbatementDate
+            // 
+            this.dtAbatementDate.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.dtAbatementDate.Enabled = false;
+            this.dtAbatementDate.Format = System.Windows.Forms.DateTimePickerFormat.Short;
+            this.dtAbatementDate.Location = new System.Drawing.Point(17, 59);
+            this.dtAbatementDate.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.dtAbatementDate.MinDate = new System.DateTime(1900, 1, 1, 0, 0, 0, 0);
+            this.dtAbatementDate.Name = "dtAbatementDate";
+            this.dtAbatementDate.Size = new System.Drawing.Size(115, 26);
+            this.dtAbatementDate.TabIndex = 5;
+            // 
+            // label11
+            // 
+            this.label11.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.label11.AutoSize = true;
+            this.label11.ForeColor = System.Drawing.Color.White;
+            this.label11.Location = new System.Drawing.Point(12, 29);
+            this.label11.Margin = new System.Windows.Forms.Padding(8, 0, 8, 0);
+            this.label11.Name = "label11";
+            this.label11.Size = new System.Drawing.Size(42, 18);
+            this.label11.TabIndex = 76;
+            this.label11.Text = "Data";
             // 
             // ColEdit
             // 
@@ -348,45 +560,26 @@
             this.ColId.Visible = false;
             this.ColId.Width = 125;
             // 
-            // ColDescription
+            // ColDate
             // 
-            this.ColDescription.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
-            this.ColDescription.HeaderText = "Descrição";
-            this.ColDescription.MinimumWidth = 6;
-            this.ColDescription.Name = "ColDescription";
-            this.ColDescription.ReadOnly = true;
-            this.ColDescription.Width = 127;
-            // 
-            // ColSector
-            // 
-            this.ColSector.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
-            this.ColSector.HeaderText = "Setor";
-            this.ColSector.MinimumWidth = 6;
-            this.ColSector.Name = "ColSector";
-            this.ColSector.ReadOnly = true;
-            this.ColSector.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
-            this.ColSector.Width = 64;
-            // 
-            // ColDateService
-            // 
-            this.ColDateService.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.ColDate.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
             dataGridViewCellStyle2.Format = "d";
             dataGridViewCellStyle2.NullValue = null;
-            this.ColDateService.DefaultCellStyle = dataGridViewCellStyle2;
-            this.ColDateService.HeaderText = "Data do Atendimento";
-            this.ColDateService.MinimumWidth = 6;
-            this.ColDateService.Name = "ColDateService";
-            this.ColDateService.ReadOnly = true;
-            this.ColDateService.Width = 223;
+            this.ColDate.DefaultCellStyle = dataGridViewCellStyle2;
+            this.ColDate.HeaderText = "Data do Serviço";
+            this.ColDate.MinimumWidth = 6;
+            this.ColDate.Name = "ColDate";
+            this.ColDate.ReadOnly = true;
+            this.ColDate.Width = 146;
             // 
-            // ColTimeOfService
+            // ColEntryTime
             // 
-            this.ColTimeOfService.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
-            this.ColTimeOfService.HeaderText = "Hora do Atendimento";
-            this.ColTimeOfService.MinimumWidth = 6;
-            this.ColTimeOfService.Name = "ColTimeOfService";
-            this.ColTimeOfService.ReadOnly = true;
-            this.ColTimeOfService.Width = 223;
+            this.ColEntryTime.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.ColEntryTime.HeaderText = "Hora da Entrada";
+            this.ColEntryTime.MinimumWidth = 6;
+            this.ColEntryTime.Name = "ColEntryTime";
+            this.ColEntryTime.ReadOnly = true;
+            this.ColEntryTime.Width = 148;
             // 
             // ColDepartureTime
             // 
@@ -395,168 +588,61 @@
             this.ColDepartureTime.MinimumWidth = 6;
             this.ColDepartureTime.Name = "ColDepartureTime";
             this.ColDepartureTime.ReadOnly = true;
-            this.ColDepartureTime.Width = 164;
+            this.ColDepartureTime.Width = 131;
             // 
-            // dtDepartureTime
+            // ColNumberOfOvertimeHours
             // 
-            this.dtDepartureTime.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.dtDepartureTime.Enabled = false;
-            this.dtDepartureTime.Format = System.Windows.Forms.DateTimePickerFormat.Time;
-            this.dtDepartureTime.Location = new System.Drawing.Point(228, 401);
-            this.dtDepartureTime.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
-            this.dtDepartureTime.MinDate = new System.DateTime(1900, 1, 1, 0, 0, 0, 0);
-            this.dtDepartureTime.Name = "dtDepartureTime";
-            this.dtDepartureTime.ShowUpDown = true;
-            this.dtDepartureTime.Size = new System.Drawing.Size(127, 30);
-            this.dtDepartureTime.TabIndex = 4;
+            this.ColNumberOfOvertimeHours.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.ColNumberOfOvertimeHours.HeaderText = "Quantidade de horas Extras";
+            this.ColNumberOfOvertimeHours.Name = "ColNumberOfOvertimeHours";
+            this.ColNumberOfOvertimeHours.ReadOnly = true;
+            this.ColNumberOfOvertimeHours.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            this.ColNumberOfOvertimeHours.Width = 208;
             // 
-            // label2
+            // ColDescription
             // 
-            this.label2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.label2.AutoSize = true;
-            this.label2.ForeColor = System.Drawing.Color.White;
-            this.label2.Location = new System.Drawing.Point(223, 371);
-            this.label2.Margin = new System.Windows.Forms.Padding(8, 0, 8, 0);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(141, 23);
-            this.label2.TabIndex = 80;
-            this.label2.Text = "Hora da saída ";
+            this.ColDescription.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.ColDescription.HeaderText = "Descrição";
+            this.ColDescription.MinimumWidth = 6;
+            this.ColDescription.Name = "ColDescription";
+            this.ColDescription.ReadOnly = true;
+            this.ColDescription.Width = 105;
             // 
-            // dtTimeOfService
+            // ColAbatementData
             // 
-            this.dtTimeOfService.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.dtTimeOfService.Format = System.Windows.Forms.DateTimePickerFormat.Time;
-            this.dtTimeOfService.Location = new System.Drawing.Point(29, 401);
-            this.dtTimeOfService.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
-            this.dtTimeOfService.MinDate = new System.DateTime(1900, 1, 1, 0, 0, 0, 0);
-            this.dtTimeOfService.Name = "dtTimeOfService";
-            this.dtTimeOfService.ShowUpDown = true;
-            this.dtTimeOfService.Size = new System.Drawing.Size(180, 30);
-            this.dtTimeOfService.TabIndex = 2;
+            this.ColAbatementData.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.ColAbatementData.HeaderText = "Data do abatimento";
+            this.ColAbatementData.Name = "ColAbatementData";
+            this.ColAbatementData.ReadOnly = true;
+            this.ColAbatementData.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            this.ColAbatementData.Width = 152;
             // 
-            // label1
+            // ColNumberOfHoursTaken
             // 
-            this.label1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.label1.AutoSize = true;
-            this.label1.ForeColor = System.Drawing.Color.White;
-            this.label1.Location = new System.Drawing.Point(24, 371);
-            this.label1.Margin = new System.Windows.Forms.Padding(8, 0, 8, 0);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(194, 23);
-            this.label1.TabIndex = 78;
-            this.label1.Text = "Hora do Atendimento";
+            this.ColNumberOfHoursTaken.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.ColNumberOfHoursTaken.HeaderText = "Quantidade de horas tiradas";
+            this.ColNumberOfHoursTaken.Name = "ColNumberOfHoursTaken";
+            this.ColNumberOfHoursTaken.ReadOnly = true;
+            this.ColNumberOfHoursTaken.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            this.ColNumberOfHoursTaken.Width = 212;
             // 
-            // dtDateService
+            // ColDayOffCompleted
             // 
-            this.dtDateService.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.dtDateService.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.dtDateService.Location = new System.Drawing.Point(374, 401);
-            this.dtDateService.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
-            this.dtDateService.MinDate = new System.DateTime(1900, 1, 1, 0, 0, 0, 0);
-            this.dtDateService.Name = "dtDateService";
-            this.dtDateService.Size = new System.Drawing.Size(152, 30);
-            this.dtDateService.TabIndex = 5;
-            // 
-            // label11
-            // 
-            this.label11.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.label11.AutoSize = true;
-            this.label11.ForeColor = System.Drawing.Color.White;
-            this.label11.Location = new System.Drawing.Point(369, 371);
-            this.label11.Margin = new System.Windows.Forms.Padding(8, 0, 8, 0);
-            this.label11.Name = "label11";
-            this.label11.Size = new System.Drawing.Size(194, 23);
-            this.label11.TabIndex = 76;
-            this.label11.Text = "Data do Atendimento";
-            // 
-            // label3
-            // 
-            this.label3.AutoSize = true;
-            this.label3.ForeColor = System.Drawing.Color.White;
-            this.label3.Location = new System.Drawing.Point(26, 45);
-            this.label3.Margin = new System.Windows.Forms.Padding(8, 0, 8, 0);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(98, 23);
-            this.label3.TabIndex = 75;
-            this.label3.Text = "Descrição";
-            // 
-            // rtDescription
-            // 
-            this.rtDescription.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left)));
-            this.rtDescription.Location = new System.Drawing.Point(27, 70);
-            this.rtDescription.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
-            this.rtDescription.Name = "rtDescription";
-            this.rtDescription.Size = new System.Drawing.Size(654, 290);
-            this.rtDescription.TabIndex = 0;
-            this.rtDescription.Text = "";
-            // 
-            // lkCancel
-            // 
-            this.lkCancel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.lkCancel.AutoSize = true;
-            this.lkCancel.LinkColor = System.Drawing.Color.White;
-            this.lkCancel.Location = new System.Drawing.Point(556, 441);
-            this.lkCancel.Name = "lkCancel";
-            this.lkCancel.Size = new System.Drawing.Size(154, 23);
-            this.lkCancel.TabIndex = 0;
-            this.lkCancel.TabStop = true;
-            this.lkCancel.Text = "Cancelar Edição";
-            this.lkCancel.Visible = false;
-            this.lkCancel.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.lkCancel_LinkClicked);
-            // 
-            // label4
-            // 
-            this.label4.AutoSize = true;
-            this.label4.ForeColor = System.Drawing.Color.White;
-            this.label4.Location = new System.Drawing.Point(313, 15);
-            this.label4.Margin = new System.Windows.Forms.Padding(5, 0, 5, 0);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(58, 23);
-            this.label4.TabIndex = 83;
-            this.label4.Text = "Setor";
-            // 
-            // cbSectors
-            // 
-            this.cbSectors.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(23)))), ((int)(((byte)(29)))), ((int)(((byte)(29)))));
-            this.cbSectors.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.cbSectors.ForeColor = System.Drawing.Color.White;
-            this.cbSectors.FormattingEnabled = true;
-            this.cbSectors.Location = new System.Drawing.Point(316, 36);
-            this.cbSectors.Name = "cbSectors";
-            this.cbSectors.Size = new System.Drawing.Size(365, 31);
-            this.cbSectors.TabIndex = 1;
-            // 
-            // cbAddTimeExit
-            // 
-            this.cbAddTimeExit.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.cbAddTimeExit.AutoSize = true;
-            this.cbAddTimeExit.Enabled = false;
-            this.cbAddTimeExit.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.cbAddTimeExit.Location = new System.Drawing.Point(29, 436);
-            this.cbAddTimeExit.Name = "cbAddTimeExit";
-            this.cbAddTimeExit.Size = new System.Drawing.Size(237, 27);
-            this.cbAddTimeExit.TabIndex = 3;
-            this.cbAddTimeExit.Text = "Adicionar hora de saída";
-            this.cbAddTimeExit.UseVisualStyleBackColor = true;
-            this.cbAddTimeExit.CheckedChanged += new System.EventHandler(this.cbAddTimeExit_CheckedChanged);
+            this.ColDayOffCompleted.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.ColDayOffCompleted.HeaderText = "Folga concluída";
+            this.ColDayOffCompleted.Name = "ColDayOffCompleted";
+            this.ColDayOffCompleted.ReadOnly = true;
+            this.ColDayOffCompleted.Width = 123;
             // 
             // FrmCustomerService
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(11F, 23F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 18F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(23)))), ((int)(((byte)(29)))), ((int)(((byte)(29)))));
-            this.ClientSize = new System.Drawing.Size(1188, 471);
-            this.Controls.Add(this.cbAddTimeExit);
-            this.Controls.Add(this.cbSectors);
-            this.Controls.Add(this.label4);
+            this.ClientSize = new System.Drawing.Size(1188, 503);
+            this.Controls.Add(this.groupBox2);
+            this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.lkCancel);
-            this.Controls.Add(this.dtDepartureTime);
-            this.Controls.Add(this.label2);
-            this.Controls.Add(this.dtTimeOfService);
-            this.Controls.Add(this.label1);
-            this.Controls.Add(this.dtDateService);
-            this.Controls.Add(this.label11);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.rtDescription);
             this.Controls.Add(this.groupBox5);
@@ -580,6 +666,11 @@
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvHistory)).EndInit();
+            this.groupBox1.ResumeLayout(false);
+            this.groupBox1.PerformLayout();
+            this.groupBox2.ResumeLayout(false);
+            this.groupBox2.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.ndNumberOfHoursTaken)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -601,25 +692,32 @@
         private System.Windows.Forms.Button btnArrowRight;
         private System.Windows.Forms.Button btnArrowLeft;
         private System.Windows.Forms.ToolTip toolTip;
-        private System.Windows.Forms.DateTimePicker dtDepartureTime;
-        private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.DateTimePicker dtTimeOfService;
-        private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.DateTimePicker dtDateService;
-        private System.Windows.Forms.Label label11;
-        private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.RichTextBox rtDescription;
         private System.Windows.Forms.LinkLabel lkCancel;
+        private System.Windows.Forms.CheckBox cbAddTimeExit;
+        private System.Windows.Forms.RichTextBox rtDescription;
+        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.GroupBox groupBox1;
+        private System.Windows.Forms.DateTimePicker dtEntryTime;
         private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.ComboBox cbSectors;
+        private System.Windows.Forms.DateTimePicker dtDepartureTime;
+        private System.Windows.Forms.DateTimePicker dtDate;
+        private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.Label label7;
+        private System.Windows.Forms.GroupBox groupBox2;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.NumericUpDown ndNumberOfHoursTaken;
+        private System.Windows.Forms.DateTimePicker dtAbatementDate;
+        private System.Windows.Forms.Label label11;
         private System.Windows.Forms.DataGridViewImageColumn ColEdit;
         private System.Windows.Forms.DataGridViewImageColumn ColDelete;
         private System.Windows.Forms.DataGridViewTextBoxColumn ColId;
-        private System.Windows.Forms.DataGridViewTextBoxColumn ColDescription;
-        private System.Windows.Forms.DataGridViewTextBoxColumn ColSector;
-        private System.Windows.Forms.DataGridViewTextBoxColumn ColDateService;
-        private System.Windows.Forms.DataGridViewTextBoxColumn ColTimeOfService;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ColDate;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ColEntryTime;
         private System.Windows.Forms.DataGridViewTextBoxColumn ColDepartureTime;
-        private System.Windows.Forms.CheckBox cbAddTimeExit;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ColNumberOfOvertimeHours;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ColDescription;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ColAbatementData;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ColNumberOfHoursTaken;
+        private System.Windows.Forms.DataGridViewImageColumn ColDayOffCompleted;
     }
 }

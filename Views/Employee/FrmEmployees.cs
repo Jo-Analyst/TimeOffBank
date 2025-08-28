@@ -134,7 +134,7 @@ namespace Interface
                 {
                     int index = dgvUsers.Rows.Add();
                     dgvUsers.Rows[index].Cells["ColADD"].Value = Resources.add_post;
-                    dgvUsers.Rows[index].Cells["ColEdit"].Value = Resources.Employee_avatar;
+                    dgvUsers.Rows[index].Cells["ColEdit"].Value = Resources.user_avatar;
                     dgvUsers.Rows[index].Cells["ColDelete"].Value = Resources.delete;
                     dgvUsers.Rows[index].Cells["ColId"].Value = user["id"].ToString();
                     dgvUsers.Rows[index].Cells["ColName"].Value = user["name"].ToString();

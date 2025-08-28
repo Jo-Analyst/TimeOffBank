@@ -18,7 +18,7 @@ namespace Interface
 
         static public int SetPageQuantityServices(int userId = 0)
         {
-            quantity = Service.CountQuantityServicesByUserId(userId);
+            quantity = Service.CountQuantityServicesByEmployeeId(userId);
             return CalculateNumberOfPage();
         }
 

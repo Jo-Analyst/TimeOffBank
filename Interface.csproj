@@ -1,11 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
-  <Import Project="packages\Microsoft.SqlServer.Types.160.1000.6\build\net462\Microsoft.SqlServer.Types.props" Condition="Exists('packages\Microsoft.SqlServer.Types.160.1000.6\build\net462\Microsoft.SqlServer.Types.props')" />
   <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{A8056436-0A0C-4227-9F9C-74FD2400CBBF}</ProjectGuid>
+    <ProjectGuid>{A81F9204-7EEC-498F-A26A-4D85E23375DB}</ProjectGuid>
     <OutputType>WinExe</OutputType>
     <RootNamespace>Interface</RootNamespace>
     <AssemblyName>Interface</AssemblyName>
@@ -13,8 +12,6 @@
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
     <Deterministic>true</Deterministic>
-    <NuGetPackageImportStamp>
-    </NuGetPackageImportStamp>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <PlatformTarget>AnyCPU</PlatformTarget>
@@ -35,32 +32,8 @@
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
-  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|x86'">
-    <DebugSymbols>true</DebugSymbols>
-    <OutputPath>bin\x86\Debug\</OutputPath>
-    <DefineConstants>DEBUG;TRACE</DefineConstants>
-    <DebugType>full</DebugType>
-    <PlatformTarget>x86</PlatformTarget>
-    <LangVersion>7.3</LangVersion>
-    <ErrorReport>prompt</ErrorReport>
-    <Prefer32Bit>true</Prefer32Bit>
-  </PropertyGroup>
-  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|x86'">
-    <OutputPath>bin\x86\Release\</OutputPath>
-    <DefineConstants>TRACE</DefineConstants>
-    <Optimize>true</Optimize>
-    <DebugType>pdbonly</DebugType>
-    <PlatformTarget>x86</PlatformTarget>
-    <LangVersion>7.3</LangVersion>
-    <ErrorReport>prompt</ErrorReport>
-    <Prefer32Bit>true</Prefer32Bit>
-  </PropertyGroup>
-  <PropertyGroup>
-    <ApplicationIcon>promoca-social-sem-fundo.ico</ApplicationIcon>
-  </PropertyGroup>
   <ItemGroup>
-    <Reference Include="DataBase, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
+    <Reference Include="DataBase">
       <HintPath>DataBase\bin\Debug\DataBase.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.ReportViewer.Common, Version=15.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL">
@@ -78,8 +51,8 @@
     <Reference Include="Microsoft.ReportViewer.WinForms, Version=15.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL">
       <HintPath>packages\Microsoft.ReportingServices.ReportViewerControl.Winforms.150.1652.0\lib\net40\Microsoft.ReportViewer.WinForms.dll</HintPath>
     </Reference>
-    <Reference Include="Microsoft.SqlServer.Types, Version=16.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL">
-      <HintPath>packages\Microsoft.SqlServer.Types.160.1000.6\lib\net462\Microsoft.SqlServer.Types.dll</HintPath>
+    <Reference Include="Microsoft.SqlServer.Types, Version=14.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL">
+      <HintPath>packages\Microsoft.SqlServer.Types.14.0.314.76\lib\net40\Microsoft.SqlServer.Types.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
@@ -94,31 +67,40 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="FrmTimeOffBank.cs">
+    <Compile Include="FrmBankOffTime.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="FrmTimeOffBank.Designer.cs">
-      <DependentUpon>FrmTimeOffBank.cs</DependentUpon>
+    <Compile Include="FrmBankOffTime.Designer.cs">
+      <DependentUpon>FrmBankOffTime.cs</DependentUpon>
     </Compile>
-    <Compile Include="Program.cs" />
-    <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Utils\CPF.cs" />
-    <Compile Include="Utils\PageData.cs" />
-    <Compile Include="Utils\PrintRDLC.cs" />
-    <Compile Include="Utils\Security.cs" />
     <Compile Include="FrmLoading.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="FrmLoading.Designer.cs">
       <DependentUpon>FrmLoading.cs</DependentUpon>
     </Compile>
-    <Compile Include="Views\Report\Data\DsService.cs">
-      <DependentUpon>DsService.xsd</DependentUpon>
+    <Compile Include="Program.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="SqlServerTypes\Loader.cs" />
+    <Compile Include="Utils\CPF.cs" />
+    <Compile Include="Utils\PageData.cs" />
+    <Compile Include="Utils\PrintRDLC.cs" />
+    <Compile Include="Utils\Security.cs" />
+    <Compile Include="Views\Employee\FrmEmployees.cs">
+      <SubType>Form</SubType>
     </Compile>
+    <Compile Include="Views\Employee\FrmEmployees.Designer.cs">
+      <DependentUpon>FrmEmployees.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Employee\FrmSaveEmployee.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Views\Employee\FrmSaveEmployee.Designer.cs">
+      <DependentUpon>FrmSaveEmployee.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Report\Data\DsService.cs" />
     <Compile Include="Views\Report\Data\DsService.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>DsService.xsd</DependentUpon>
+      <DependentUpon>DsService.cs</DependentUpon>
     </Compile>
     <Compile Include="Views\Report\FrmReportService.cs">
       <SubType>Form</SubType>
@@ -138,7 +120,6 @@
     <Compile Include="Views\Service\FrmCustomerService.Designer.cs">
       <DependentUpon>FrmCustomerService.cs</DependentUpon>
     </Compile>
-    <Compile Include="Views\Service\FrmService.cs" />
     <Compile Include="Views\Setting\FrmBackupAndRestore.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -151,21 +132,11 @@
     <Compile Include="Views\Setting\FrmSetting.Designer.cs">
       <DependentUpon>FrmSetting.cs</DependentUpon>
     </Compile>
-    <Compile Include="Views\Employee\FrmSaveEmployee.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Views\Employee\FrmSaveEmployee.Designer.cs">
-      <DependentUpon>FrmSaveEmployee.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Views\Employee\FrmEmployees.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Views\Employee\FrmEmployees.Designer.cs">
-      <DependentUpon>FrmEmployees.cs</DependentUpon>
-    </Compile>
-    <EmbeddedResource Include="FrmTimeOffBank.resx">
-      <DependentUpon>FrmTimeOffBank.cs</DependentUpon>
-      <SubType>Designer</SubType>
+    <EmbeddedResource Include="FrmBankOffTime.resx">
+      <DependentUpon>FrmBankOffTime.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmLoading.resx">
+      <DependentUpon>FrmLoading.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
@@ -177,16 +148,19 @@
       <DependentUpon>Resources.resx</DependentUpon>
       <DesignTime>True</DesignTime>
     </Compile>
-    <EmbeddedResource Include="FrmLoading.resx">
-      <DependentUpon>FrmLoading.cs</DependentUpon>
+    <EmbeddedResource Include="Views\Employee\FrmEmployees.resx">
+      <DependentUpon>FrmEmployees.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Views\Employee\FrmSaveEmployee.resx">
+      <DependentUpon>FrmSaveEmployee.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\Report\Data\Relatório do Atendimento Diário.rdlc" />
     <EmbeddedResource Include="Views\Report\FrmReportService.resx">
       <DependentUpon>FrmReportService.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Views\Report\FrmServicesPerformed.resx">
       <DependentUpon>FrmServicesPerformed.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Views\Report\Relatório do Atendimento Diário.rdlc" />
     <EmbeddedResource Include="Views\Service\FrmCustomerService.resx">
       <DependentUpon>FrmCustomerService.cs</DependentUpon>
     </EmbeddedResource>
@@ -195,12 +169,6 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Views\Setting\FrmSetting.resx">
       <DependentUpon>FrmSetting.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Views\Employee\FrmSaveEmployee.resx">
-      <DependentUpon>FrmSaveEmployee.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Views\Employee\FrmEmployees.resx">
-      <DependentUpon>FrmEmployees.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
@@ -212,61 +180,47 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
-    <None Include="Views\Report\Data\DsService.xsc">
-      <DependentUpon>DsService.xsd</DependentUpon>
-    </None>
-    <None Include="Views\Report\Data\DsService.xsd">
-      <SubType>Designer</SubType>
-      <Generator>MSDataSetGenerator</Generator>
-      <LastGenOutput>DsService.Designer.cs</LastGenOutput>
-    </None>
-    <None Include="Views\Report\Data\DsService.xss">
-      <DependentUpon>DsService.xsd</DependentUpon>
-    </None>
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="Resources\promoca-social-sem-fundo.png" />
+    <None Include="Resources\promoca-social-sem-fundo.ico" />
+    <None Include="Resources\promoca-social.png" />
+    <None Include="Resources\promoca-social %282%29.png" />
+    <None Include="Resources\promocao-social.ico" />
+    <None Include="Resources\icons8-relatório-50.png" />
+    <None Include="Resources\icons8-caixa-de-selecção-seleccionada-2-50.png" />
+    <None Include="Resources\icons8-caixa-de-seleção-marcada.gif" />
+    <None Include="Resources\icons8-caixa-de-seleção-desmarcada-50.png" />
+    <None Include="Resources\icons8-atendimento-64.png" />
+    <None Include="Resources\generate-an-image-fo.ico" />
+    <None Include="Resources\generate an image fo.png" />
+    <None Include="Resources\report.png" />
     <None Include="Resources\add-post.png" />
-  </ItemGroup>
-  <ItemGroup>
     <None Include="Resources\delete.png" />
-  </ItemGroup>
-  <ItemGroup>
     <None Include="Resources\edit.png" />
-  </ItemGroup>
-  <ItemGroup>
     <None Include="Resources\left-arrow-black.png" />
-  </ItemGroup>
-  <ItemGroup>
     <None Include="Resources\left-arrow-grey.png" />
-  </ItemGroup>
-  <ItemGroup>
     <None Include="Resources\left-arrow-white.png" />
-  </ItemGroup>
-  <ItemGroup>
     <None Include="Resources\right-arrow-black.png" />
-  </ItemGroup>
-  <ItemGroup>
     <None Include="Resources\right-arrow-grey.png" />
-  </ItemGroup>
-  <ItemGroup>
     <None Include="Resources\right-arrow-white.png" />
-  </ItemGroup>
-  <ItemGroup>
     <None Include="Resources\user-avatar.png" />
-  </ItemGroup>
-  <ItemGroup />
-  <ItemGroup>
-    <Content Include="promoca-social-sem-fundo.ico" />
-    <Content Include="promocao-social.ico" />
+    <Content Include="SqlServerTypes\readme.htm" />
+    <Content Include="SqlServerTypes\x64\msvcr120.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="SqlServerTypes\x64\SqlServerSpatial140.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="SqlServerTypes\x86\msvcr120.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="SqlServerTypes\x86\SqlServerSpatial140.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
-  <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
-    <PropertyGroup>
-      <ErrorText>Este projeto faz referência a pacotes do NuGet que não estão presentes neste computador. Use a Restauração de Pacotes do NuGet para baixá-los.  Para obter mais informações, consulte http://go.microsoft.com/fwlink/?LinkID=322105. O arquivo ausente é {0}.</ErrorText>
-    </PropertyGroup>
-    <Error Condition="!Exists('packages\Microsoft.SqlServer.Types.160.1000.6\build\net462\Microsoft.SqlServer.Types.props')" Text="$([System.String]::Format('$(ErrorText)', 'packages\Microsoft.SqlServer.Types.160.1000.6\build\net462\Microsoft.SqlServer.Types.props'))" />
-  </Target>
 </Project>

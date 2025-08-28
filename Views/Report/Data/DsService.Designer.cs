@@ -1758,7 +1758,6 @@ namespace Interface.Views.Report.Data.DsServiceTableAdapters {
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
         private void InitConnection() {
             this._connection = new global::System.Data.SqlClient.SqlConnection();
-            this._connection.ConnectionString = global::Interface.Properties.Settings.Default.dbCentralServicesConnectionString;
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -1767,9 +1766,9 @@ namespace Interface.Views.Report.Data.DsServiceTableAdapters {
             this._commandCollection = new global::System.Data.SqlClient.SqlCommand[1];
             this._commandCollection[0] = new global::System.Data.SqlClient.SqlCommand();
             this._commandCollection[0].Connection = this.Connection;
-            this._commandCollection[0].CommandText = @"SELECT Services.description, CONVERT(VARCHAR, Services.date_service, 103) AS date_service, Services.time_of_service, Services.departure_time, Services.sector, Employees.name, Employees.address
+            this._commandCollection[0].CommandText = @"SELECT Services.description, CONVERT(VARCHAR, Services.date_service, 103) AS date_service, Services.time_of_service, Services.departure_time, Services.sector, Users.name, Users.address
 FROM     Services INNER JOIN
-                  Employees ON Employees.id = Services.Employee_id
+                  Users ON Users.id = Services.user_id
 WHERE  (CONVERT(VARCHAR, Services.date_service, 103) LIKE @year)
 ORDER BY CONVERT(DATE, Services.date_service, 103) DESC, CONVERT(Time, Services.time_of_service, 103) DESC";
             this._commandCollection[0].CommandType = global::System.Data.CommandType.Text;
@@ -1943,7 +1942,6 @@ ORDER BY CONVERT(DATE, Services.date_service, 103) DESC, CONVERT(Time, Services.
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
         private void InitConnection() {
             this._connection = new global::System.Data.SqlClient.SqlConnection();
-            this._connection.ConnectionString = global::Interface.Properties.Settings.Default.dbCentralServicesConnectionString;
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -1954,7 +1952,7 @@ ORDER BY CONVERT(DATE, Services.date_service, 103) DESC, CONVERT(Time, Services.
             this._commandCollection[0].Connection = this.Connection;
             this._commandCollection[0].CommandText = @"SELECT        COUNT(Services.sector) AS quantity, Services.sector
 FROM            Services INNER JOIN
-                         Employees ON Employees.id = Services.Employee_id
+                         Users ON Users.id = Services.user_id
 WHERE        (CONVERT(VARCHAR, Services.date_service, 103) LIKE @year)
 GROUP BY Services.sector
 ORDER BY quantity DESC";
@@ -2128,7 +2126,6 @@ ORDER BY quantity DESC";
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
         private void InitConnection() {
             this._connection = new global::System.Data.SqlClient.SqlConnection();
-            this._connection.ConnectionString = global::Interface.Properties.Settings.Default.dbCentralServicesConnectionString;
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
