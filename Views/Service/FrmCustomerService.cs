@@ -1,7 +1,6 @@
 ﻿using DataBase;
 using Interface.Properties;
 using System;
-using System.Collections.Generic;
 using System.Data;
 using System.Windows.Forms;
 
@@ -9,9 +8,7 @@ namespace Interface
 {
     public partial class FrmCustomerService : Form
     {
-
-        int employeeId, page = 1, pageMaximum = 1, serviceId;
-        bool addTime = bool.Parse(Settings.Default["addTime"].ToString());
+        int employeeId; int page = 1, pageMaximum = 1, serviceId;
         public FrmCustomerService(int userId, string name)
         {
             InitializeComponent();
@@ -24,40 +21,37 @@ namespace Interface
             dgvHistory.Focus();
             cbPage.Text = "1";
             cbRows.Text = "10";
-           
+
             dtDate.MaxDate = DateTime.Now;
 
-            loadEvents();
-            this.cbRows.SelectedIndexChanged += cbRows_SelectedIndexChanged;
-            this.cbPage.SelectedIndexChanged += new System.EventHandler(this.cbPage_SelectedIndexChanged);
+            LoadEvents();
+            this.cbRows.SelectedIndexChanged += CbRows_SelectedIndexChanged;
+            this.cbPage.SelectedIndexChanged += new System.EventHandler(this.CbPage_SelectedIndexChanged);
             btnArrowLeft.Image = Resources.left_arrow_grey;
             btnArrowLeft.Visible = true;
         }
 
-        private void btnSave_Click(object sender, EventArgs e)
+        private void BtnSave_Click(object sender, EventArgs e)
         {
             bool isValid = !string.IsNullOrWhiteSpace(rtDescription.Text);
 
             if (!isValid)
             {
-                MessageBox.Show("Descreva qual atendimento foi realizado.", "BANCO DE HORAS", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                MessageBox.Show("Descreva o motivo.", "BANCO DE HORAS", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
                 return;
             }
 
-            else if (addTime && cbAddTimeExit.Checked)
-            {
-                if (dtEntryTime.Value > dtDepartureTime.Value)
-                {
-                    MessageBox.Show("A hora de saída não pode ser menor que a hora do atendimento", "BANCO DE HORAS", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
-                    return;
-                }
-                else if (dtEntryTime.Value == dtDepartureTime.Value)
-                {
-                    MessageBox.Show("A hora de saída não pode ser igual a hora do atendimento", "BANCO DE HORAS", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
-                    return;
-                }
-            }
 
+            if (dtEntryTime.Value > dtDepartureTime.Value)
+            {
+                MessageBox.Show("A hora de saída não pode ser menor que a hora da entrada", "BANCO DE HORAS", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                return;
+            }
+            else if (dtEntryTime.Value.ToShortTimeString() == dtDepartureTime.Value.ToShortTimeString())
+            {
+                MessageBox.Show("A hora de saída não pode ser igual a hora da entrada", "BANCO DE HORAS", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                return;
+            }
 
             Service service = new Service();
             try
@@ -68,13 +62,18 @@ namespace Interface
                 service.departureTime = dtDepartureTime.Value;
                 service.entryTime = dtEntryTime.Value;
                 service.numberOfOvertimeHours = 0;
-                service.abatementDate = dtAbatementDate.Value;
+             
+                if (cbAddHoursTaken.Checked)
+                {
+                    service.abatementDate = dtAbatementDate.Value.ToShortDateString();
+                    service.numberOfHoursTaken = int.Parse(ndNumberOfHoursTaken.Value.ToString());
+                }
+             
                 service.dayOffCompleted = false;
-                service.numberOfHoursTaken = int.Parse(ndNumberOfHoursTaken.Value.ToString());
                 service.employeesId = employeeId;
 
                 service.Save();
-                loadEvents();
+                LoadEvents();
 
                 ClearFields();
             }
@@ -84,7 +83,7 @@ namespace Interface
             }
         }
 
-        private void loadDgvHistory()
+        private void LoadDgvHistory()
         {
             try
             {
@@ -109,6 +108,7 @@ namespace Interface
                     dgvHistory.Rows[index].Cells["ColAbatementDate"].Value = dr["abatement_date"].ToString();
                     dgvHistory.Rows[index].Cells["ColNumberOfHoursTaken"].Value = dr["number_of_hours_taken"].ToString();
                     dgvHistory.Rows[index].Cells["ColDayOffCompleted"].Value = dr["day_off_completed"].ToString() == "1" ? Properties.Resources.checked_checkbox_32 : Resources.rounded_square_32;
+                    dgvHistory.Rows[index].Cells["ColDayOffCompletedValue"].Value = dr["day_off_completed"].ToString();
                     dgvHistory.Rows[index].Selected = false;
                     dgvHistory.Rows[index].Height = 45;
                 }
@@ -119,42 +119,49 @@ namespace Interface
             }
         }
 
-        private void dgvHistory_CellClick(object sender, DataGridViewCellEventArgs e)
+        private void DgvHistory_CellClick(object sender, DataGridViewCellEventArgs e)
         {
             if (e.RowIndex == -1) return;
 
             dgvHistory.CurrentRow.Selected = false;
 
-            int id = Convert.ToInt32(dgvHistory.CurrentRow.Cells[2].Value);
+            int id = Convert.ToInt32(dgvHistory.CurrentRow.Cells[3].Value);
             if (dgvHistory.CurrentCell.ColumnIndex == 0)
             {
                 ClearFields();
                 serviceId = int.Parse(dgvHistory.CurrentRow.Cells["ColId"].Value.ToString());
                 rtDescription.Text = dgvHistory.CurrentRow.Cells["ColDescription"].Value.ToString();
-                dtDate.Value = DateTime.Parse(dgvHistory.CurrentRow.Cells["ColDateService"].Value.ToString());
-                dtEntryTime.Value = dgvHistory.CurrentRow.Cells["ColTimeOfService"].Value.ToString() != "---" ? DateTime.Parse(dgvHistory.CurrentRow.Cells["ColTimeOfService"].Value.ToString()) : DateTime.Now;
-                dtDepartureTime.Value = dgvHistory.CurrentRow.Cells["ColDepartureTime"].Value.ToString() != "---" ? DateTime.Parse(dgvHistory.CurrentRow.Cells["ColDepartureTime"].Value.ToString()) : DateTime.Now;
+                dtDate.Value = DateTime.Parse(dgvHistory.CurrentRow.Cells["ColDate"].Value.ToString());
+                dtEntryTime.Value = DateTime.Parse(dgvHistory.CurrentRow.Cells["ColEntryTime"].Value.ToString());
+                dtDepartureTime.Value =DateTime.Parse(dgvHistory.CurrentRow.Cells["ColDepartureTime"].Value.ToString());
+                lbNumberOfOvertimeHours.Text = dgvHistory.CurrentRow.Cells["ColNumberOfOvertimeHours"].Value.ToString();
+
+                if (!string.IsNullOrEmpty(dgvHistory.CurrentRow.Cells["ColAbatementDate"].Value.ToString()))
+                {
+                    dtAbatementDate.Value = DateTime.Parse(dgvHistory.CurrentRow.Cells["ColAbatementDate"].Value.ToString());
+                    ndNumberOfHoursTaken.Value = int.Parse(dgvHistory.CurrentRow.Cells["ColNumberOfHoursTaken"].Value.ToString());
+                }
+
                 btnSave.Text = "Editar";
                 lkCancel.Visible = true;
-                cbAddTimeExit.Enabled = true;
-
-                //if (!addTime) return;
+                cbDefine.Enabled = true;
+                cbAddHoursTaken.Enabled = true;
 
                 if (dgvHistory.CurrentRow.Cells["ColDepartureTime"].Value.ToString() == "---")
                 {
-                    cbAddTimeExit_CheckedChanged(sender, e);
+                    CbDefine_CheckedChanged(sender, e);
                 }
                 else
                 {
                     dtDepartureTime.Enabled = true;
-                    cbAddTimeExit.Checked = true;
+                    cbDefine.Checked = true;
                 }
-                  
+
             }
-            
+
             if (dgvHistory.CurrentCell.ColumnIndex == 1)
             {
-                DialogResult dr = MessageBox.Show($"Deseja mesmo excluir este atendimento?", "BANCO DE HORAS", MessageBoxButtons.YesNo, MessageBoxIcon.Question, MessageBoxDefaultButton.Button2);
+                DialogResult dr = MessageBox.Show($"Deseja mesmo excluir?", "BANCO DE HORAS", MessageBoxButtons.YesNo, MessageBoxIcon.Question, MessageBoxDefaultButton.Button2);
 
                 if (dr == DialogResult.Yes)
                 {
@@ -162,7 +169,7 @@ namespace Interface
                     {
                         Service.Delete(id);
                         ClearFields();
-                        loadEvents();
+                        LoadEvents();
                     }
                     catch (Exception)
                     {
@@ -170,11 +177,26 @@ namespace Interface
                     }
                 }
             }
+
+
+            if (dgvHistory.CurrentCell.ColumnIndex == 2)
+            {
+                if (!string.IsNullOrEmpty(dgvHistory.CurrentRow.Cells["ColAbatementDate"].Value.ToString()))
+                    dgvHistory.CurrentRow.Cells[2].Value = dgvHistory.CurrentRow.Cells["ColDayOffCompletedValue"].Value.ToString() == "0" ? Resources.checked_checkbox_32 : Resources.rounded_square_32;
+                else
+                    MessageBox.Show("Não foi definido a data da folga.", "BANCO DE HORAS", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+            }
         }
 
-        private void cbRows_SelectedIndexChanged(object sender, EventArgs e)
+        private bool ToggleCheckbox()
         {
-            loadEvents();
+            bool isChecked = false;
+            return !isChecked;
+        }
+
+        private void CbRows_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            LoadEvents();
             if (page == pageMaximum)
             {
                 DisabledBtnArrowLeft();
@@ -182,12 +204,12 @@ namespace Interface
             }
         }
 
-        private void cbPage_SelectedIndexChanged(object sender, EventArgs e)
+        private void CbPage_SelectedIndexChanged(object sender, EventArgs e)
         {
             page = int.Parse(cbPage.Text);
             if (pageMaximum == 1) return;
 
-            loadDgvHistory();
+            LoadDgvHistory();
 
             if (page == 1)
             {
@@ -207,11 +229,11 @@ namespace Interface
             }
         }
 
-        private void loadEvents()
+        private void LoadEvents()
         {
             CheckNumberOfPages(int.Parse(cbRows.SelectedItem.ToString()));
             UpdateComboBoxItems();
-            loadDgvHistory();
+            LoadDgvHistory();
 
         }
 
@@ -235,7 +257,7 @@ namespace Interface
 
         }
 
-        private void btnArrowRight_Click(object sender, EventArgs e)
+        private void BtnArrowRight_Click(object sender, EventArgs e)
         {
             if (page < pageMaximum)
             {
@@ -260,7 +282,7 @@ namespace Interface
 
             EnabledBtnArrowLeft();
             dgvHistory.Focus();
-            loadDgvHistory();
+            LoadDgvHistory();
         }
 
         private void EnabledBtnArrowLeft()
@@ -275,7 +297,7 @@ namespace Interface
             btnArrowRight.Image = Properties.Resources.right_arrow_grey;
         }
 
-        private void btnArrowLeft_Click(object sender, EventArgs e)
+        private void BtnArrowLeft_Click(object sender, EventArgs e)
         {
             if (page > 1)
             {
@@ -295,7 +317,7 @@ namespace Interface
             }
 
             dgvHistory.Focus();
-            loadDgvHistory();
+            LoadDgvHistory();
         }
 
         private void ClearFields()
@@ -303,38 +325,34 @@ namespace Interface
             serviceId = 0;
             btnSave.Text = "Salvar";
             rtDescription.Clear();
-            dtDate.Value = DateTime.Now;
+            dtDate.MaxDate = DateTime.Now;
+            dtDate.Value = dtDate.MaxDate;
             dtEntryTime.Value = DateTime.Now;
             dtDepartureTime.Value = DateTime.Now;
             lkCancel.Visible = false;
-            cbAddTimeExit.Checked = false;
-            cbAddTimeExit.Enabled = false;
-            dtDepartureTime.Enabled = false;
+            cbDefine.Checked = false;
+            dtAbatementDate.Enabled = false;
+            dtAbatementDate.Value = DateTime.Now;
+            ndNumberOfHoursTaken.Enabled = false;
+            ndNumberOfHoursTaken.Value = 1;
         }
 
         private void FrmCustomerService_KeyDown(object sender, KeyEventArgs e)
         {
             if (e.KeyCode == Keys.Enter)
-                btnSave_Click(sender, e);
-            else if (e.Control && e.KeyCode == Keys.Right && btnArrowRight.Enabled) btnArrowRight_Click(sender, e);
-            else if (e.Control && e.KeyCode == Keys.Left && btnArrowLeft.Enabled) btnArrowLeft_Click(sender, e);
+                BtnSave_Click(sender, e);
+            else if (e.Control && e.KeyCode == Keys.Right && btnArrowRight.Enabled) BtnArrowRight_Click(sender, e);
+            else if (e.Control && e.KeyCode == Keys.Left && btnArrowLeft.Enabled) BtnArrowLeft_Click(sender, e);
         }
 
-        private void lkCancel_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        private void LkCancel_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
             ClearFields();
         }
 
-        private void cbAddTimeExit_CheckedChanged(object sender, EventArgs e)
+        private void CbDefine_CheckedChanged(object sender, EventArgs e)
         {
-            if (cbAddTimeExit.Checked)
-            {
-                dtDepartureTime.Enabled = true;
-            }
-            else
-            {
-                dtDepartureTime.Enabled = false;
-            }
+           
         }
 
         private void DisabledBtnArrowLeft()
@@ -343,9 +361,15 @@ namespace Interface
             btnArrowLeft.Image = Properties.Resources.left_arrow_grey;
         }
 
-        private void dgvHistory_CellMouseEnter(object sender, DataGridViewCellEventArgs e)
+        private void CbAddHoursTaken(object sender, EventArgs e)
         {
-            dgvHistory.Cursor = e.ColumnIndex == 0 || e.ColumnIndex == 1 ? Cursors.Hand : Cursors.Arrow;
+            dtAbatementDate.Enabled = cbAddHoursTaken.Checked;
+            ndNumberOfHoursTaken.Enabled = cbAddHoursTaken.Checked;
+        }
+
+        private void DgvHistory_CellMouseEnter(object sender, DataGridViewCellEventArgs e)
+        {
+            dgvHistory.Cursor = e.ColumnIndex == 0 || e.ColumnIndex == 1 || e.ColumnIndex == 2 ? Cursors.Hand : Cursors.Arrow;
         }
 
         private void EnabledBtnArrowRight()

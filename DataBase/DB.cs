@@ -38,18 +38,18 @@ namespace DataBase
                 string sql = "CREATE TABLE [dbo].[Employees] (" +
                 "    [id] INT NOT NULL PRIMARY KEY IDENTITY(1,1), " +
                 "    [name] VARCHAR(200) NULL, " +
-                "    [CPF] VARCHAR(MAX) NULL, " +              
+                "    [CPF] VARCHAR(MAX) NULL, " +
                 "    [address] VARCHAR(200) NULL," +
                 "    [phone] VARCHAR(20) NULL);" +
-                
+
                 "     CREATE TABLE [dbo].[Services] [id] INT IDENTITY (1, 1) NOT NULL," +
                 "     [description] VARCHAR (MAX) NULL, " +
                 "     [date] DATE NULL, " +
                 "     [entry_time] TIME NULL, " +
                 "     [departure_time] TIME NULL," +
-                "     [number_of_overtime_hours] INT NULL, " +
+                "     [number_of_overtime_hours] decimal(18,2) NULL, " +
                 "     [abatement_date] DATE NULL, " +
-                "     [number_of_hours_taken] INT NULL, " +
+                "     [number_of_hours_taken] decimal(18,2) NULL, " +
                 "     [day_off_completed] TINYINT NULL, " +
                 "     [employee_id] INT NOT NULL," +
                 "     PRIMARY KEY CLUSTERED ([id] ASC)," +

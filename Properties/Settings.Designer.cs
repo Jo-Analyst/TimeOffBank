@@ -57,17 +57,5 @@ namespace Interface.Properties {
                 this["print_directory_direct"] = value;
             }
         }
-        
-        [global::System.Configuration.UserScopedSettingAttribute()]
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("False")]
-        public bool addTime {
-            get {
-                return ((bool)(this["addTime"]));
-            }
-            set {
-                this["addTime"] = value;
-            }
-        }
     }
 }

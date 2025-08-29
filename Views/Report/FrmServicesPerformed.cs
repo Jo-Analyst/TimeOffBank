@@ -1,15 +1,11 @@
-﻿using Interface.Properties;
-using Interface.Views.Report;
+﻿using DataBase;
+using Interface.Properties;
 using Interface.Views.Report.Data;
 using Interface.Views.Report.Data.DsServiceTableAdapters;
-using DataBase;
 using Microsoft.Reporting.WinForms;
-using Microsoft.ReportingServices.Interfaces;
 using System;
-using System.Collections.Generic;
 using System.Data;
 using System.Windows.Forms;
-using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 
 namespace Interface
 {
@@ -170,7 +166,7 @@ namespace Interface
         {
             try
             {
-               isPrintDirect =  bool.Parse(Settings.Default["print_directory_direct"].ToString());
+                isPrintDirect = bool.Parse(Settings.Default["print_directory_direct"].ToString());
 
                 if (isPrintDirect)
                 {
@@ -178,9 +174,9 @@ namespace Interface
                 }
                 else
                 {
-                new FrmReportService(cbMonth.SelectedIndex == 0 ? $"%{cbYear.Text}%" : $"%{GetSelectedMonthDescription()}/{cbYear.Text}%").ShowDialog();
+                    new FrmReportService(cbMonth.SelectedIndex == 0 ? $"%{cbYear.Text}%" : $"%{GetSelectedMonthDescription()}/{cbYear.Text}%").ShowDialog();
                 }
-                
+
             }
             catch (Exception ex)
             {

@@ -11,9 +11,9 @@ namespace DataBase
         public DateTime date { get; set; }
         public DateTime entryTime { get; set; }
         public DateTime departureTime { get; set; }
-        public int numberOfOvertimeHours { get; set; }
-        public DateTime abatementDate { get; set; }
-        public int numberOfHoursTaken { get; set; }
+        public float numberOfOvertimeHours { get; set; }
+        public string abatementDate { get; set; }
+        public float numberOfHoursTaken { get; set; }
         public bool dayOffCompleted { get; set; }
         public int employeesId { get; set; }
 
@@ -23,7 +23,7 @@ namespace DataBase
             {
                 connection.Open();
                 string sql = id == 0
-                ? "INSERT INTO Services (description, date, employee_id,  entry_time, departure_time, number_of_overtime_hours, abatement_date, day_off_completed, number_of_hours_taken) VALUES (@description, @date, @employee_id, @entry_time, @departure_time, @number_of_overtime_hours, @abatement_date, @day_off_completed, @number_of_hours_taken); SELECT @@identity"
+                ? "INSERT INTO Services (description, date, employee_id,  entry_time, departure_time, number_of_overtime_hours, day_off_completed) VALUES (@description, @date, @employee_id, @entry_time, @departure_time, @number_of_overtime_hours, @day_off_completed); SELECT @@identity"
                 : "UPDATE Services SET description = @description, date = @date, employee_id = @employee_id, entry_time = @entry_time, departure_time = @departure_time, number_of_overtime_hours = @number_of_overtime_hours, abatement_date = @abatement_date, day_off_completed = @day_off_completed, number_of_hours_taken = @number_of_hours_taken WHERE id = @id";
                 SqlCommand command = new SqlCommand(sql, connection);
                 command.Parameters.AddWithValue("@id", id);
@@ -31,7 +31,7 @@ namespace DataBase
                 command.Parameters.AddWithValue("@entry_time", entryTime.ToString("HH:mm:ss"));
                 command.Parameters.AddWithValue("@departure_time", departureTime.ToString("HH:mm:ss"));
                 command.Parameters.AddWithValue("@number_of_overtime_hours", numberOfOvertimeHours);
-                command.Parameters.AddWithValue("@abatement_date", abatementDate.ToShortDateString());
+                command.Parameters.AddWithValue("@abatement_date", abatementDate);
                 command.Parameters.AddWithValue("@day_off_completed", dayOffCompleted);
                 command.Parameters.AddWithValue("@number_of_hours_taken", numberOfHoursTaken);
                 command.Parameters.AddWithValue("@date", date.ToShortDateString());
@@ -70,7 +70,7 @@ namespace DataBase
                 throw;
             }
         }
-       
+
         static public DataTable FindByYearAndMonth(int year, string month, int page = 1, double quantRows = 1)
         {
             try
@@ -90,8 +90,8 @@ namespace DataBase
                 throw;
             }
         }
-        
-        static public DataTable FindByYear(int year , int page = 1, double quantRows = 1)
+
+        static public DataTable FindByYear(int year, int page = 1, double quantRows = 1)
         {
             try
             {
@@ -110,7 +110,7 @@ namespace DataBase
                 throw;
             }
         }
-       
+
         static public int CountQuantityServicesByEmployeeId(int EmployeesId)
         {
             try

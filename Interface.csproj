@@ -208,11 +208,6 @@
     <None Include="Resources\right-arrow-grey.png" />
     <None Include="Resources\right-arrow-white.png" />
     <None Include="Resources\user-avatar.png" />
-    <None Include="assets\check_icon.png" />
-    <None Include="assets\unchecked.png" />
-    <None Include="assets\icons8-caixa-de-seleção-marcada.gif" />
-    <None Include="assets\crop.png" />
-    <None Include="assets\check.png" />
     <None Include="assets\checked-checkbox-32.png" />
     <None Include="assets\rounded-square-32.png" />
     <Content Include="SqlServerTypes\readme.htm" />
