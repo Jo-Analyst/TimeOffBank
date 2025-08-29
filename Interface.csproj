@@ -210,6 +210,8 @@
     <None Include="Resources\user-avatar.png" />
     <None Include="assets\checked-checkbox-32.png" />
     <None Include="assets\rounded-square-32.png" />
+  </ItemGroup>
+  <ItemGroup>
     <Content Include="SqlServerTypes\readme.htm" />
     <Content Include="SqlServerTypes\x64\msvcr120.dll">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>

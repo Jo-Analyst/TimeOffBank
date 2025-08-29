@@ -130,7 +130,6 @@ C:\Users\jojoc\OneDrive\Documentos\Projetos\Meus projetos\TimeOffBank\bin\Debug\
 C:\Users\jojoc\OneDrive\Documentos\Projetos\Meus projetos\TimeOffBank\bin\Debug\zh-CHS\Microsoft.ReportViewer.WinForms.resources.dll
 C:\Users\jojoc\OneDrive\Documentos\Projetos\Meus projetos\TimeOffBank\bin\Debug\zh-CHT\Microsoft.ReportViewer.WinForms.resources.dll
 C:\Users\jojoc\OneDrive\Documentos\Projetos\Meus projetos\TimeOffBank\obj\Debug\Interface.csproj.AssemblyReference.cache
-C:\Users\jojoc\OneDrive\Documentos\Projetos\Meus projetos\TimeOffBank\obj\Debug\Interface.exe.config
 C:\Users\jojoc\OneDrive\Documentos\Projetos\Meus projetos\TimeOffBank\obj\Debug\Interface.FrmBankOffTime.resources
 C:\Users\jojoc\OneDrive\Documentos\Projetos\Meus projetos\TimeOffBank\obj\Debug\Interface.FrmLoading.resources
 C:\Users\jojoc\OneDrive\Documentos\Projetos\Meus projetos\TimeOffBank\obj\Debug\Interface.Properties.Resources.resources
@@ -146,3 +145,4 @@ C:\Users\jojoc\OneDrive\Documentos\Projetos\Meus projetos\TimeOffBank\obj\Debug\
 C:\Users\jojoc\OneDrive\Documentos\Projetos\Meus projetos\TimeOffBank\obj\Debug\Interface.csproj.Up2Date
 C:\Users\jojoc\OneDrive\Documentos\Projetos\Meus projetos\TimeOffBank\obj\Debug\Interface.exe
 C:\Users\jojoc\OneDrive\Documentos\Projetos\Meus projetos\TimeOffBank\obj\Debug\Interface.pdb
+C:\Users\jojoc\OneDrive\Documentos\Projetos\Meus projetos\TimeOffBank\obj\Debug\Interface.exe.config

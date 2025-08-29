@@ -30,10 +30,10 @@
         {
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmCustomerService));
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle17 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle19 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle20 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle18 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             this.label6 = new System.Windows.Forms.Label();
             this.btnSave = new System.Windows.Forms.Button();
             this.lblName = new System.Windows.Forms.Label();
@@ -48,6 +48,18 @@
             this.btnArrowRight = new System.Windows.Forms.Button();
             this.btnArrowLeft = new System.Windows.Forms.Button();
             this.dgvHistory = new System.Windows.Forms.DataGridView();
+            this.ColEdit = new System.Windows.Forms.DataGridViewImageColumn();
+            this.ColDelete = new System.Windows.Forms.DataGridViewImageColumn();
+            this.ColDayOffCompleted = new System.Windows.Forms.DataGridViewImageColumn();
+            this.ColId = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ColDate = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ColEntryTime = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ColDepartureTime = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ColNumberOfOvertimeHours = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ColDescription = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ColAbatementDate = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ColNumberOfHoursTaken = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ColDayOffCompletedValue = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.toolTip = new System.Windows.Forms.ToolTip(this.components);
             this.lkCancel = new System.Windows.Forms.LinkLabel();
             this.cbDefine = new System.Windows.Forms.CheckBox();
@@ -62,23 +74,11 @@
             this.label5 = new System.Windows.Forms.Label();
             this.label7 = new System.Windows.Forms.Label();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.cbAddHoursTaken = new System.Windows.Forms.CheckBox();
             this.label1 = new System.Windows.Forms.Label();
             this.ndNumberOfHoursTaken = new System.Windows.Forms.NumericUpDown();
             this.dtAbatementDate = new System.Windows.Forms.DateTimePicker();
             this.label11 = new System.Windows.Forms.Label();
-            this.ColDayOffCompletedValue = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ColNumberOfHoursTaken = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ColAbatementDate = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ColDescription = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ColNumberOfOvertimeHours = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ColDepartureTime = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ColEntryTime = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ColDate = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ColId = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ColDayOffCompleted = new System.Windows.Forms.DataGridViewImageColumn();
-            this.ColDelete = new System.Windows.Forms.DataGridViewImageColumn();
-            this.ColEdit = new System.Windows.Forms.DataGridViewImageColumn();
-            this.cbAddHoursTaken = new System.Windows.Forms.CheckBox();
             this.groupBox5.SuspendLayout();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvHistory)).BeginInit();
@@ -287,14 +287,14 @@
             this.dgvHistory.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(23)))), ((int)(((byte)(29)))), ((int)(((byte)(29)))));
             this.dgvHistory.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.dgvHistory.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Sunken;
-            dataGridViewCellStyle17.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle17.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(23)))), ((int)(((byte)(29)))), ((int)(((byte)(29)))));
-            dataGridViewCellStyle17.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle17.ForeColor = System.Drawing.Color.White;
-            dataGridViewCellStyle17.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle17.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle17.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgvHistory.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle17;
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(23)))), ((int)(((byte)(29)))), ((int)(((byte)(29)))));
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle1.ForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvHistory.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
             this.dgvHistory.ColumnHeadersHeight = 40;
             this.dgvHistory.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.ColEdit,
@@ -309,28 +309,28 @@
             this.ColAbatementDate,
             this.ColNumberOfHoursTaken,
             this.ColDayOffCompletedValue});
-            dataGridViewCellStyle19.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle19.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(23)))), ((int)(((byte)(29)))), ((int)(((byte)(29)))));
-            dataGridViewCellStyle19.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle19.ForeColor = System.Drawing.Color.White;
-            dataGridViewCellStyle19.SelectionBackColor = System.Drawing.Color.Transparent;
-            dataGridViewCellStyle19.SelectionForeColor = System.Drawing.Color.Transparent;
-            dataGridViewCellStyle19.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dgvHistory.DefaultCellStyle = dataGridViewCellStyle19;
+            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(23)))), ((int)(((byte)(29)))), ((int)(((byte)(29)))));
+            dataGridViewCellStyle3.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle3.ForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.Color.Transparent;
+            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.Color.Transparent;
+            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dgvHistory.DefaultCellStyle = dataGridViewCellStyle3;
             this.dgvHistory.EnableHeadersVisualStyles = false;
             this.dgvHistory.Location = new System.Drawing.Point(3, 22);
             this.dgvHistory.Margin = new System.Windows.Forms.Padding(5, 4, 5, 4);
             this.dgvHistory.MultiSelect = false;
             this.dgvHistory.Name = "dgvHistory";
             this.dgvHistory.ReadOnly = true;
-            dataGridViewCellStyle20.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle20.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(16)))), ((int)(((byte)(59)))), ((int)(((byte)(82)))));
-            dataGridViewCellStyle20.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle20.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle20.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle20.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle20.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgvHistory.RowHeadersDefaultCellStyle = dataGridViewCellStyle20;
+            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(16)))), ((int)(((byte)(59)))), ((int)(((byte)(82)))));
+            dataGridViewCellStyle4.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle4.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle4.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvHistory.RowHeadersDefaultCellStyle = dataGridViewCellStyle4;
             this.dgvHistory.RowHeadersVisible = false;
             this.dgvHistory.RowHeadersWidth = 51;
             this.dgvHistory.Size = new System.Drawing.Size(626, 381);
@@ -338,6 +338,112 @@
             this.dgvHistory.TabStop = false;
             this.dgvHistory.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.DgvHistory_CellClick);
             this.dgvHistory.CellMouseEnter += new System.Windows.Forms.DataGridViewCellEventHandler(this.DgvHistory_CellMouseEnter);
+            // 
+            // ColEdit
+            // 
+            this.ColEdit.HeaderText = "Editar";
+            this.ColEdit.MinimumWidth = 6;
+            this.ColEdit.Name = "ColEdit";
+            this.ColEdit.ReadOnly = true;
+            this.ColEdit.Width = 125;
+            // 
+            // ColDelete
+            // 
+            this.ColDelete.HeaderText = "Excluir";
+            this.ColDelete.MinimumWidth = 6;
+            this.ColDelete.Name = "ColDelete";
+            this.ColDelete.ReadOnly = true;
+            this.ColDelete.Width = 125;
+            // 
+            // ColDayOffCompleted
+            // 
+            this.ColDayOffCompleted.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.ColDayOffCompleted.HeaderText = "Folga concluída";
+            this.ColDayOffCompleted.Name = "ColDayOffCompleted";
+            this.ColDayOffCompleted.ReadOnly = true;
+            this.ColDayOffCompleted.Width = 123;
+            // 
+            // ColId
+            // 
+            this.ColId.HeaderText = "ID";
+            this.ColId.MinimumWidth = 6;
+            this.ColId.Name = "ColId";
+            this.ColId.ReadOnly = true;
+            this.ColId.Visible = false;
+            this.ColId.Width = 125;
+            // 
+            // ColDate
+            // 
+            this.ColDate.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            dataGridViewCellStyle2.Format = "d";
+            dataGridViewCellStyle2.NullValue = null;
+            this.ColDate.DefaultCellStyle = dataGridViewCellStyle2;
+            this.ColDate.HeaderText = "Data do Serviço";
+            this.ColDate.MinimumWidth = 6;
+            this.ColDate.Name = "ColDate";
+            this.ColDate.ReadOnly = true;
+            this.ColDate.Width = 146;
+            // 
+            // ColEntryTime
+            // 
+            this.ColEntryTime.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.ColEntryTime.HeaderText = "Hora da Entrada";
+            this.ColEntryTime.MinimumWidth = 6;
+            this.ColEntryTime.Name = "ColEntryTime";
+            this.ColEntryTime.ReadOnly = true;
+            this.ColEntryTime.Width = 148;
+            // 
+            // ColDepartureTime
+            // 
+            this.ColDepartureTime.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.ColDepartureTime.HeaderText = "Hora da saída";
+            this.ColDepartureTime.MinimumWidth = 6;
+            this.ColDepartureTime.Name = "ColDepartureTime";
+            this.ColDepartureTime.ReadOnly = true;
+            this.ColDepartureTime.Width = 131;
+            // 
+            // ColNumberOfOvertimeHours
+            // 
+            this.ColNumberOfOvertimeHours.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.ColNumberOfOvertimeHours.HeaderText = "Quantidade de horas Extras";
+            this.ColNumberOfOvertimeHours.Name = "ColNumberOfOvertimeHours";
+            this.ColNumberOfOvertimeHours.ReadOnly = true;
+            this.ColNumberOfOvertimeHours.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            this.ColNumberOfOvertimeHours.Width = 208;
+            // 
+            // ColDescription
+            // 
+            this.ColDescription.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.ColDescription.HeaderText = "Descrição";
+            this.ColDescription.MinimumWidth = 6;
+            this.ColDescription.Name = "ColDescription";
+            this.ColDescription.ReadOnly = true;
+            this.ColDescription.Width = 105;
+            // 
+            // ColAbatementDate
+            // 
+            this.ColAbatementDate.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.ColAbatementDate.HeaderText = "Data do abatimento";
+            this.ColAbatementDate.Name = "ColAbatementDate";
+            this.ColAbatementDate.ReadOnly = true;
+            this.ColAbatementDate.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            this.ColAbatementDate.Width = 152;
+            // 
+            // ColNumberOfHoursTaken
+            // 
+            this.ColNumberOfHoursTaken.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.ColNumberOfHoursTaken.HeaderText = "Quantidade de horas tiradas";
+            this.ColNumberOfHoursTaken.Name = "ColNumberOfHoursTaken";
+            this.ColNumberOfHoursTaken.ReadOnly = true;
+            this.ColNumberOfHoursTaken.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            this.ColNumberOfHoursTaken.Width = 212;
+            // 
+            // ColDayOffCompletedValue
+            // 
+            this.ColDayOffCompletedValue.HeaderText = "Column1";
+            this.ColDayOffCompletedValue.Name = "ColDayOffCompletedValue";
+            this.ColDayOffCompletedValue.ReadOnly = true;
+            this.ColDayOffCompletedValue.Visible = false;
             // 
             // lkCancel
             // 
@@ -505,6 +611,19 @@
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Horas Tiradas";
             // 
+            // cbAddHoursTaken
+            // 
+            this.cbAddHoursTaken.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.cbAddHoursTaken.AutoSize = true;
+            this.cbAddHoursTaken.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.cbAddHoursTaken.Location = new System.Drawing.Point(19, 95);
+            this.cbAddHoursTaken.Name = "cbAddHoursTaken";
+            this.cbAddHoursTaken.Size = new System.Drawing.Size(150, 22);
+            this.cbAddHoursTaken.TabIndex = 82;
+            this.cbAddHoursTaken.Text = "Tirar hora de folga";
+            this.cbAddHoursTaken.UseVisualStyleBackColor = true;
+            this.cbAddHoursTaken.CheckedChanged += new System.EventHandler(this.CbAddHoursTaken);
+            // 
             // label1
             // 
             this.label1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
@@ -554,126 +673,6 @@
             this.label11.Size = new System.Drawing.Size(42, 18);
             this.label11.TabIndex = 76;
             this.label11.Text = "Data";
-            // 
-            // ColDayOffCompletedValue
-            // 
-            this.ColDayOffCompletedValue.HeaderText = "Column1";
-            this.ColDayOffCompletedValue.Name = "ColDayOffCompletedValue";
-            this.ColDayOffCompletedValue.ReadOnly = true;
-            this.ColDayOffCompletedValue.Visible = false;
-            // 
-            // ColNumberOfHoursTaken
-            // 
-            this.ColNumberOfHoursTaken.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
-            this.ColNumberOfHoursTaken.HeaderText = "Quantidade de horas tiradas";
-            this.ColNumberOfHoursTaken.Name = "ColNumberOfHoursTaken";
-            this.ColNumberOfHoursTaken.ReadOnly = true;
-            this.ColNumberOfHoursTaken.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
-            this.ColNumberOfHoursTaken.Width = 212;
-            // 
-            // ColAbatementDate
-            // 
-            this.ColAbatementDate.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
-            this.ColAbatementDate.HeaderText = "Data do abatimento";
-            this.ColAbatementDate.Name = "ColAbatementDate";
-            this.ColAbatementDate.ReadOnly = true;
-            this.ColAbatementDate.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
-            this.ColAbatementDate.Width = 152;
-            // 
-            // ColDescription
-            // 
-            this.ColDescription.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
-            this.ColDescription.HeaderText = "Descrição";
-            this.ColDescription.MinimumWidth = 6;
-            this.ColDescription.Name = "ColDescription";
-            this.ColDescription.ReadOnly = true;
-            this.ColDescription.Width = 105;
-            // 
-            // ColNumberOfOvertimeHours
-            // 
-            this.ColNumberOfOvertimeHours.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
-            this.ColNumberOfOvertimeHours.HeaderText = "Quantidade de horas Extras";
-            this.ColNumberOfOvertimeHours.Name = "ColNumberOfOvertimeHours";
-            this.ColNumberOfOvertimeHours.ReadOnly = true;
-            this.ColNumberOfOvertimeHours.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
-            this.ColNumberOfOvertimeHours.Width = 208;
-            // 
-            // ColDepartureTime
-            // 
-            this.ColDepartureTime.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
-            this.ColDepartureTime.HeaderText = "Hora da saída";
-            this.ColDepartureTime.MinimumWidth = 6;
-            this.ColDepartureTime.Name = "ColDepartureTime";
-            this.ColDepartureTime.ReadOnly = true;
-            this.ColDepartureTime.Width = 131;
-            // 
-            // ColEntryTime
-            // 
-            this.ColEntryTime.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
-            this.ColEntryTime.HeaderText = "Hora da Entrada";
-            this.ColEntryTime.MinimumWidth = 6;
-            this.ColEntryTime.Name = "ColEntryTime";
-            this.ColEntryTime.ReadOnly = true;
-            this.ColEntryTime.Width = 148;
-            // 
-            // ColDate
-            // 
-            this.ColDate.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
-            dataGridViewCellStyle18.Format = "d";
-            dataGridViewCellStyle18.NullValue = null;
-            this.ColDate.DefaultCellStyle = dataGridViewCellStyle18;
-            this.ColDate.HeaderText = "Data do Serviço";
-            this.ColDate.MinimumWidth = 6;
-            this.ColDate.Name = "ColDate";
-            this.ColDate.ReadOnly = true;
-            this.ColDate.Width = 146;
-            // 
-            // ColId
-            // 
-            this.ColId.HeaderText = "ID";
-            this.ColId.MinimumWidth = 6;
-            this.ColId.Name = "ColId";
-            this.ColId.ReadOnly = true;
-            this.ColId.Visible = false;
-            this.ColId.Width = 125;
-            // 
-            // ColDayOffCompleted
-            // 
-            this.ColDayOffCompleted.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
-            this.ColDayOffCompleted.HeaderText = "Folga concluída";
-            this.ColDayOffCompleted.Name = "ColDayOffCompleted";
-            this.ColDayOffCompleted.ReadOnly = true;
-            this.ColDayOffCompleted.Width = 123;
-            // 
-            // ColDelete
-            // 
-            this.ColDelete.HeaderText = "Excluir";
-            this.ColDelete.MinimumWidth = 6;
-            this.ColDelete.Name = "ColDelete";
-            this.ColDelete.ReadOnly = true;
-            this.ColDelete.Width = 125;
-            // 
-            // ColEdit
-            // 
-            this.ColEdit.HeaderText = "Editar";
-            this.ColEdit.MinimumWidth = 6;
-            this.ColEdit.Name = "ColEdit";
-            this.ColEdit.ReadOnly = true;
-            this.ColEdit.Width = 125;
-            // 
-            // cbAddHoursTaken
-            // 
-            this.cbAddHoursTaken.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.cbAddHoursTaken.AutoSize = true;
-            this.cbAddHoursTaken.Enabled = false;
-            this.cbAddHoursTaken.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.cbAddHoursTaken.Location = new System.Drawing.Point(19, 95);
-            this.cbAddHoursTaken.Name = "cbAddHoursTaken";
-            this.cbAddHoursTaken.Size = new System.Drawing.Size(150, 22);
-            this.cbAddHoursTaken.TabIndex = 82;
-            this.cbAddHoursTaken.Text = "Tirar hora de folga";
-            this.cbAddHoursTaken.UseVisualStyleBackColor = true;
-            this.cbAddHoursTaken.CheckedChanged += new System.EventHandler(this.CbAddHoursTaken);
             // 
             // FrmCustomerService
             // 

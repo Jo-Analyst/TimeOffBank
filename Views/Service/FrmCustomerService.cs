@@ -140,6 +140,9 @@ namespace Interface
                 {
                     dtAbatementDate.Value = DateTime.Parse(dgvHistory.CurrentRow.Cells["ColAbatementDate"].Value.ToString());
                     ndNumberOfHoursTaken.Value = int.Parse(dgvHistory.CurrentRow.Cells["ColNumberOfHoursTaken"].Value.ToString());
+                    dtAbatementDate.Enabled = true;
+                    ndNumberOfHoursTaken.Enabled = true;
+                    cbAddHoursTaken.Checked = true;
                 }
 
                 btnSave.Text = "Editar";
@@ -335,6 +338,7 @@ namespace Interface
             dtAbatementDate.Value = DateTime.Now;
             ndNumberOfHoursTaken.Enabled = false;
             ndNumberOfHoursTaken.Value = 1;
+            cbAddHoursTaken.Checked = false;
         }
 
         private void FrmCustomerService_KeyDown(object sender, KeyEventArgs e)

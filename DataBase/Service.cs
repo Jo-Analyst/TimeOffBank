@@ -23,17 +23,19 @@ namespace DataBase
             {
                 connection.Open();
                 string sql = id == 0
-                ? "INSERT INTO Services (description, date, employee_id,  entry_time, departure_time, number_of_overtime_hours, day_off_completed) VALUES (@description, @date, @employee_id, @entry_time, @departure_time, @number_of_overtime_hours, @day_off_completed); SELECT @@identity"
-                : "UPDATE Services SET description = @description, date = @date, employee_id = @employee_id, entry_time = @entry_time, departure_time = @departure_time, number_of_overtime_hours = @number_of_overtime_hours, abatement_date = @abatement_date, day_off_completed = @day_off_completed, number_of_hours_taken = @number_of_hours_taken WHERE id = @id";
+                ? $"INSERT INTO Services (description, date, employee_id,  entry_time, departure_time, number_of_overtime_hours, day_off_completed, abatement_date, number_of_hours_taken) VALUES (@description, @date, @employee_id, @entry_time, @departure_time, @number_of_overtime_hours, @day_off_completed, {(string.IsNullOrEmpty(abatementDate) ? "NULL" : "@abatement_date")}, {(string.IsNullOrEmpty(abatementDate) ? "NULL" : "@number_of_hours_taken")}); SELECT @@identity"
+                : $"UPDATE Services SET description = @description, date = @date, employee_id = @employee_id, entry_time = @entry_time, departure_time = @departure_time, number_of_overtime_hours = @number_of_overtime_hours, abatement_date = {(string.IsNullOrEmpty(abatementDate) ? "NULL" : "@abatement_date")}, day_off_completed = @day_off_completed, number_of_hours_taken = {(string.IsNullOrEmpty(abatementDate) ? "NULL" : "@number_of_hours_taken")} WHERE id = @id";
                 SqlCommand command = new SqlCommand(sql, connection);
                 command.Parameters.AddWithValue("@id", id);
                 command.Parameters.AddWithValue("@description", description);
                 command.Parameters.AddWithValue("@entry_time", entryTime.ToString("HH:mm:ss"));
                 command.Parameters.AddWithValue("@departure_time", departureTime.ToString("HH:mm:ss"));
                 command.Parameters.AddWithValue("@number_of_overtime_hours", numberOfOvertimeHours);
-                command.Parameters.AddWithValue("@abatement_date", abatementDate);
+                if(!string.IsNullOrEmpty(abatementDate))
+                    command.Parameters.AddWithValue("@abatement_date", abatementDate);
                 command.Parameters.AddWithValue("@day_off_completed", dayOffCompleted);
-                command.Parameters.AddWithValue("@number_of_hours_taken", numberOfHoursTaken);
+                if(!string.IsNullOrEmpty(abatementDate))
+                    command.Parameters.AddWithValue("@number_of_hours_taken", numberOfHoursTaken);
                 command.Parameters.AddWithValue("@date", date.ToShortDateString());
                 command.Parameters.AddWithValue("@employee_id", employeesId);
                 command.CommandText = sql;
