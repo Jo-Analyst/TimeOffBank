@@ -11,9 +11,9 @@ namespace DataBase
         public DateTime date { get; set; }
         public DateTime entryTime { get; set; }
         public DateTime departureTime { get; set; }
-        public float numberOfOvertimeHours { get; set; }
+        public double numberOfOvertimeHours { get; set; }
         public string abatementDate { get; set; }
-        public float numberOfHoursTaken { get; set; }
+        public double numberOfHoursTaken { get; set; }
         public bool dayOffCompleted { get; set; }
         public int employeesId { get; set; }
 

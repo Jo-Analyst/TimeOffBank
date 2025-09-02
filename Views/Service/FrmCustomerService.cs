@@ -9,6 +9,8 @@ namespace Interface
     public partial class FrmCustomerService : Form
     {
         int employeeId; int page = 1, pageMaximum = 1, serviceId;
+        double totalMinutes = 0f;
+
         public FrmCustomerService(int userId, string name)
         {
             InitializeComponent();
@@ -61,7 +63,7 @@ namespace Interface
                 service.date = dtDate.Value;
                 service.departureTime = dtDepartureTime.Value;
                 service.entryTime = dtEntryTime.Value;
-                service.numberOfOvertimeHours = 0;
+                service.numberOfOvertimeHours = totalMinutes;
              
                 if (cbAddHoursTaken.Checked)
                 {
@@ -97,17 +99,18 @@ namespace Interface
                 foreach (DataRow dr in services.Rows)
                 {
                     int index = dgvHistory.Rows.Add();
-                    dgvHistory.Rows[index].Cells["ColEdit"].Value = Properties.Resources.edit;
-                    dgvHistory.Rows[index].Cells["ColDelete"].Value = Properties.Resources.delete;
+                    dgvHistory.Rows[index].Cells["ColEdit"].Value = Resources.edit;
+                    dgvHistory.Rows[index].Cells["ColDelete"].Value = Resources.delete;
                     dgvHistory.Rows[index].Cells["ColId"].Value = dr["id"].ToString();
                     dgvHistory.Rows[index].Cells["ColDescription"].Value = dr["description"].ToString();
                     dgvHistory.Rows[index].Cells["ColDate"].Value = dr["date"].ToString();
                     dgvHistory.Rows[index].Cells["ColEntryTime"].Value = dr["entry_time"].ToString();
                     dgvHistory.Rows[index].Cells["ColDepartureTime"].Value = dr["departure_time"].ToString();
                     dgvHistory.Rows[index].Cells["ColNumberOfOvertimeHours"].Value = dr["number_of_overtime_hours"].ToString();
+                    dgvHistory.Rows[index].Cells["ColOvertime"].Value = ConvertMinutesToHours(double.Parse(dr["number_of_overtime_hours"].ToString()));
                     dgvHistory.Rows[index].Cells["ColAbatementDate"].Value = dr["abatement_date"].ToString();
                     dgvHistory.Rows[index].Cells["ColNumberOfHoursTaken"].Value = dr["number_of_hours_taken"].ToString();
-                    dgvHistory.Rows[index].Cells["ColDayOffCompleted"].Value = dr["day_off_completed"].ToString() == "1" ? Properties.Resources.checked_checkbox_32 : Resources.rounded_square_32;
+                    dgvHistory.Rows[index].Cells["ColDayOffCompleted"].Value = dr["day_off_completed"].ToString() == "1" ? Resources.checked_checkbox_32 : Resources.rounded_square_32;
                     dgvHistory.Rows[index].Cells["ColDayOffCompletedValue"].Value = dr["day_off_completed"].ToString();
                     dgvHistory.Rows[index].Selected = false;
                     dgvHistory.Rows[index].Height = 45;
@@ -117,6 +120,12 @@ namespace Interface
             {
                 MessageBox.Show("Houve um erro no sistema. Tente novamente mais tarde", "BANCO DE HORAS", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
+        }
+
+        private string ConvertMinutesToHours(double totalMinutes)
+        {
+            TimeSpan time = TimeSpan.FromMinutes(totalMinutes);
+            return $"{time.Hours}h {time.Minutes}min";
         }
 
         private void DgvHistory_CellClick(object sender, DataGridViewCellEventArgs e)
@@ -133,8 +142,8 @@ namespace Interface
                 rtDescription.Text = dgvHistory.CurrentRow.Cells["ColDescription"].Value.ToString();
                 dtDate.Value = DateTime.Parse(dgvHistory.CurrentRow.Cells["ColDate"].Value.ToString());
                 dtEntryTime.Value = DateTime.Parse(dgvHistory.CurrentRow.Cells["ColEntryTime"].Value.ToString());
-                dtDepartureTime.Value =DateTime.Parse(dgvHistory.CurrentRow.Cells["ColDepartureTime"].Value.ToString());
-                lbNumberOfOvertimeHours.Text = dgvHistory.CurrentRow.Cells["ColNumberOfOvertimeHours"].Value.ToString();
+                dtDepartureTime.Value = DateTime.Parse(dgvHistory.CurrentRow.Cells["ColDepartureTime"].Value.ToString());
+                lbNumberOfOvertimeHours.Text = ConvertMinutesToHours(double.Parse(dgvHistory.CurrentRow.Cells["ColNumberOfOvertimeHours"].Value.ToString()));
 
                 if (!string.IsNullOrEmpty(dgvHistory.CurrentRow.Cells["ColAbatementDate"].Value.ToString()))
                 {
@@ -149,17 +158,6 @@ namespace Interface
                 lkCancel.Visible = true;
                 cbDefine.Enabled = true;
                 cbAddHoursTaken.Enabled = true;
-
-                if (dgvHistory.CurrentRow.Cells["ColDepartureTime"].Value.ToString() == "---")
-                {
-                    CbDefine_CheckedChanged(sender, e);
-                }
-                else
-                {
-                    dtDepartureTime.Enabled = true;
-                    cbDefine.Checked = true;
-                }
-
             }
 
             if (dgvHistory.CurrentCell.ColumnIndex == 1)
@@ -354,11 +352,6 @@ namespace Interface
             ClearFields();
         }
 
-        private void CbDefine_CheckedChanged(object sender, EventArgs e)
-        {
-           
-        }
-
         private void DisabledBtnArrowLeft()
         {
             btnArrowLeft.Enabled = false;
@@ -369,6 +362,39 @@ namespace Interface
         {
             dtAbatementDate.Enabled = cbAddHoursTaken.Checked;
             ndNumberOfHoursTaken.Enabled = cbAddHoursTaken.Checked;
+        }
+
+        private void dtEntryTime_ValueChanged(object sender, EventArgs e)
+        {            
+            CalculateJourney();
+        }
+
+        private void dtDepartureTime_ValueChanged(object sender, EventArgs e)
+        {
+            CalculateJourney();
+        }
+
+        private void CalculateJourney()
+        {
+            if (dtEntryTime.Value > dtDepartureTime.Value)
+            {
+                lbNumberOfOvertimeHours.Text = string.Empty;
+                return;
+            }
+
+            // Horário de entrada e saída
+            DateTime checkInTime = dtEntryTime.Value;
+            DateTime CheckOutTime = dtDepartureTime.Value;
+
+            // Calcula a duração da jornada
+            TimeSpan journey = CheckOutTime - checkInTime;
+            
+            int hours = (int)journey.TotalHours;
+            int minutes = journey.Minutes;
+
+            totalMinutes = journey.TotalMinutes;
+            lbNumberOfOvertimeHours.Text = $"{hours}h {minutes}min";
+
         }
 
         private void DgvHistory_CellMouseEnter(object sender, DataGridViewCellEventArgs e)
