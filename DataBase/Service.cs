@@ -174,5 +174,26 @@ namespace DataBase
                 }
             }
         }
+
+        static public void ChangeDayOffCompleted(int id, string dayOffCompleted)
+        {
+            using (SqlConnection connection = new SqlConnection(DbConnectionString.connectionString))
+            {
+                string sql = "UPDATE Services SET day_off_completed = @day_off_completed WHERE id = @id";
+                SqlCommand command = new SqlCommand(sql, connection);
+                command.Parameters.AddWithValue("@id", id);
+                command.Parameters.AddWithValue("@day_off_completed", dayOffCompleted);
+                command.CommandText = sql;
+                try
+                {
+                    connection.Open();
+                    command.ExecuteNonQuery();
+                }
+                catch
+                {
+                    throw;
+                }
+            }
+        }
     }
 }

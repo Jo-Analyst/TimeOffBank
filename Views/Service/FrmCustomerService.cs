@@ -10,6 +10,7 @@ namespace Interface
     {
         int employeeId; int page = 1, pageMaximum = 1, serviceId;
         double totalMinutes = 0f;
+        Service service = new Service();
 
         public FrmCustomerService(int userId, string name)
         {
@@ -55,7 +56,7 @@ namespace Interface
                 return;
             }
 
-            Service service = new Service();
+           
             try
             {
                 service.id = serviceId;
@@ -186,17 +187,33 @@ namespace Interface
             if (dgvHistory.CurrentCell.ColumnIndex == 2)
             {
                 if (!string.IsNullOrEmpty(dgvHistory.CurrentRow.Cells["ColAbatementDate"].Value.ToString()))
-                    dgvHistory.CurrentRow.Cells[2].Value = dgvHistory.CurrentRow.Cells["ColDayOffCompletedValue"].Value.ToString() == "0" ? Resources.checked_checkbox_32 : Resources.rounded_square_32;
+                {
+                    try
+                    {
+                        Service.ChangeDayOffCompleted(id, ToggleDayOffCompleted());
+                        dgvHistory.CurrentRow.Cells["ColDayOffCompletedValue"].Value = ToggleDayOffCompleted();
+                        dgvHistory.CurrentRow.Cells[2].Value = (string)dgvHistory.CurrentRow.Cells["ColDayOffCompletedValue"].Value == "1" ? Resources.checked_checkbox_32 : Resources.rounded_square_32;
+
+                    }
+                    catch (Exception)
+                    {
+                        MessageBox.Show("Houve um erro no sistema. Tente novamente", "Notificação de aviso", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        return;
+                    }
+                }
                 else
                     MessageBox.Show("Não foi definido a data da folga.", "BANCO DE HORAS", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
             }
         }
 
-        private bool ToggleCheckbox()
+        private string ToggleDayOffCompleted()
         {
-            bool isChecked = false;
-            return !isChecked;
+            if (dgvHistory.CurrentRow.Cells["ColDayOffCompletedValue"].Value.ToString() == "1") 
+                return "0"; 
+            else 
+                return "1";
         }
+
 
         private void CbRows_SelectedIndexChanged(object sender, EventArgs e)
         {
