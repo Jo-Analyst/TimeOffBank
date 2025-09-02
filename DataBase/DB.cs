@@ -51,6 +51,7 @@ namespace DataBase
                 "     [abatement_date] DATE NULL, " +
                 "     [number_of_hours_taken] decimal(18,2) NULL, " +
                 "     [day_off_completed] TINYINT NULL, " +
+                "     [increment_time] TINYINT NULL," +
                 "     [employee_id] INT NOT NULL," +
                 "     PRIMARY KEY CLUSTERED ([id] ASC)," +
                 "     FOREIGN KEY ([employee_id]) REFERENCES [dbo].[Employees] ([id]) ON DELETE  CASCADE);";

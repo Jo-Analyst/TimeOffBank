@@ -15,6 +15,7 @@ namespace DataBase
         public string abatementDate { get; set; }
         public double numberOfHoursTaken { get; set; }
         public bool dayOffCompleted { get; set; }
+        public bool incrementTime { get; set; }
         public int employeesId { get; set; }
 
         public void Save()
@@ -23,8 +24,8 @@ namespace DataBase
             {
                 connection.Open();
                 string sql = id == 0
-                ? $"INSERT INTO Services (description, date, employee_id,  entry_time, departure_time, number_of_overtime_hours, day_off_completed, abatement_date, number_of_hours_taken) VALUES (@description, @date, @employee_id, @entry_time, @departure_time, @number_of_overtime_hours, @day_off_completed, {(string.IsNullOrEmpty(abatementDate) ? "NULL" : "@abatement_date")}, {(string.IsNullOrEmpty(abatementDate) ? "NULL" : "@number_of_hours_taken")}); SELECT @@identity"
-                : $"UPDATE Services SET description = @description, date = @date, employee_id = @employee_id, entry_time = @entry_time, departure_time = @departure_time, number_of_overtime_hours = @number_of_overtime_hours, abatement_date = {(string.IsNullOrEmpty(abatementDate) ? "NULL" : "@abatement_date")}, day_off_completed = @day_off_completed, number_of_hours_taken = {(string.IsNullOrEmpty(abatementDate) ? "NULL" : "@number_of_hours_taken")} WHERE id = @id";
+                ? $"INSERT INTO Services (description, date, employee_id,  entry_time, departure_time, number_of_overtime_hours, day_off_completed, abatement_date, number_of_hours_taken, increment_time) VALUES (@description, @date, @employee_id, @entry_time, @departure_time, @number_of_overtime_hours, @day_off_completed, {(string.IsNullOrEmpty(abatementDate) ? "NULL" : "@abatement_date")}, {(string.IsNullOrEmpty(abatementDate) ? "NULL" : "@number_of_hours_taken, @increment_time")}); SELECT @@identity"
+                : $"UPDATE Services SET description = @description, date = @date, employee_id = @employee_id, entry_time = @entry_time, departure_time = @departure_time, number_of_overtime_hours = @number_of_overtime_hours, abatement_date = {(string.IsNullOrEmpty(abatementDate) ? "NULL" : "@abatement_date")}, day_off_completed = @day_off_completed, number_of_hours_taken = {(string.IsNullOrEmpty(abatementDate) ? "NULL" : "@number_of_hours_taken")}, increment_time = @increment_time WHERE id = @id";
                 SqlCommand command = new SqlCommand(sql, connection);
                 command.Parameters.AddWithValue("@id", id);
                 command.Parameters.AddWithValue("@description", description);
@@ -38,6 +39,7 @@ namespace DataBase
                     command.Parameters.AddWithValue("@number_of_hours_taken", numberOfHoursTaken);
                 command.Parameters.AddWithValue("@date", date.ToShortDateString());
                 command.Parameters.AddWithValue("@employee_id", employeesId);
+                command.Parameters.AddWithValue("@increment_time", incrementTime);
                 command.CommandText = sql;
                 try
                 {
@@ -59,7 +61,7 @@ namespace DataBase
             {
                 using (var connection = new SqlConnection(DbConnectionString.connectionString))
                 {
-                    string sql = $"SELECT id, description, CONVERT(VARCHAR, date, 103) AS date, entry_time, departure_time, employee_id, number_of_overtime_hours, CONVERT(VARCHAR, abatement_date, 103) AS abatement_date, day_off_completed, number_of_hours_taken FROM Services WHERE employee_id = {employee_id} ORDER BY CONVERT(DATE, date, 103) DESC, CONVERT(Time, entry_time, 103) DESC OFFSET {page} ROWS FETCH  NEXT {quantRows} ROWS ONLY";
+                    string sql = $"SELECT id, description, CONVERT(VARCHAR, date, 103) AS date, entry_time, departure_time, employee_id, number_of_overtime_hours, CONVERT(VARCHAR, abatement_date, 103) AS abatement_date, day_off_completed, number_of_hours_taken, increment_time FROM Services WHERE employee_id = {employee_id} ORDER BY CONVERT(DATE, date, 103) DESC, CONVERT(Time, entry_time, 103) DESC OFFSET {page} ROWS FETCH  NEXT {quantRows} ROWS ONLY";
                     var adapter = new SqlDataAdapter(sql, connection);
                     adapter.SelectCommand.CommandText = sql;
                     DataTable dataTable = new DataTable();
@@ -79,7 +81,7 @@ namespace DataBase
             {
                 using (var connection = new SqlConnection(DbConnectionString.connectionString))
                 {
-                    string sql = $"SELECT Services.description, CONVERT(VARCHAR, Services.date, 103) AS date, Services.entry_time, Services.departure_time, Services.number_of_overtime_hours, CONVERT(VARCHAR,Services.abatement_date, 103) AS abatement_date, Services.day_off_completed, Services.number_of_hours_taken, Employees.name FROM Services INNER JOIN Employees ON Employees.id = Services.employee_id WHERE CONVERT(VARCHAR, date, 103) LIKE '%{month}/{year}%' ORDER BY CONVERT(DATE, Services.date, 103) DESC, CONVERT(Time, Services.entry_time, 103) DESC OFFSET {page} ROWS FETCH  NEXT {quantRows} ROWS ONLY";
+                    string sql = $"SELECT Services.description, CONVERT(VARCHAR, Services.date, 103) AS date, Services.entry_time, Services.departure_time, Services.number_of_overtime_hours, CONVERT(VARCHAR,Services.abatement_date, 103) AS abatement_date, Services.day_off_completed, Services.number_of_hours_taken, Services.increment_time, Employees.name FROM Services INNER JOIN Employees ON Employees.id = Services.employee_id WHERE CONVERT(VARCHAR, date, 103) LIKE '%{month}/{year}%' ORDER BY CONVERT(DATE, Services.date, 103) DESC, CONVERT(Time, Services.entry_time, 103) DESC OFFSET {page} ROWS FETCH  NEXT {quantRows} ROWS ONLY";
                     var adapter = new SqlDataAdapter(sql, connection);
                     adapter.SelectCommand.CommandText = sql;
                     DataTable dataTable = new DataTable();
@@ -99,7 +101,7 @@ namespace DataBase
             {
                 using (var connection = new SqlConnection(DbConnectionString.connectionString))
                 {
-                    string sql = $"SELECT Services.description, CONVERT(VARCHAR, Services.date, 103) AS date, Services.entry_time, Services.departure_time, Services.number_of_overtime_hours, CONVERT(VARCHAR,Services.abatement_date, 103) AS abatement_date, Services.day_off_completed, Services.number_of_hours_taken, Employees.name FROM Services INNER JOIN Employees ON Employees.id = Services.employee_id WHERE date LIKE '%{year}%' ORDER BY CONVERT(DATE, Services.date, 103) DESC, CONVERT(Time, Services.entry_time, 103) DESC OFFSET {page} ROWS FETCH  NEXT {quantRows} ROWS ONLY";
+                    string sql = $"SELECT Services.description, CONVERT(VARCHAR, Services.date, 103) AS date, Services.entry_time, Services.departure_time, Services.number_of_overtime_hours, CONVERT(VARCHAR,Services.abatement_date, 103) AS abatement_date, Services.day_off_completed, Services.number_of_hours_taken, Services.increment_time, Employees.name FROM Services INNER JOIN Employees ON Employees.id = Services.employee_id WHERE date LIKE '%{year}%' ORDER BY CONVERT(DATE, Services.date, 103) DESC, CONVERT(Time, Services.entry_time, 103) DESC OFFSET {page} ROWS FETCH  NEXT {quantRows} ROWS ONLY";
                     var adapter = new SqlDataAdapter(sql, connection);
                     adapter.SelectCommand.CommandText = sql;
                     DataTable dataTable = new DataTable();
