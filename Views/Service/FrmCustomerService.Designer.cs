@@ -30,10 +30,10 @@
         {
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmCustomerService));
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle13 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle15 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle16 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle14 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             this.label6 = new System.Windows.Forms.Label();
             this.btnSave = new System.Windows.Forms.Button();
             this.lblName = new System.Windows.Forms.Label();
@@ -64,9 +64,9 @@
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.cbAddHoursTaken = new System.Windows.Forms.CheckBox();
             this.label1 = new System.Windows.Forms.Label();
-            this.ndNumberOfHoursTaken = new System.Windows.Forms.NumericUpDown();
             this.dtAbatementDate = new System.Windows.Forms.DateTimePicker();
             this.label11 = new System.Windows.Forms.Label();
+            this.dtHoursTaken = new System.Windows.Forms.DateTimePicker();
             this.ColEdit = new System.Windows.Forms.DataGridViewImageColumn();
             this.ColDelete = new System.Windows.Forms.DataGridViewImageColumn();
             this.ColDayOffCompleted = new System.Windows.Forms.DataGridViewImageColumn();
@@ -81,12 +81,12 @@
             this.ColNumberOfHoursTaken = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ColDayOffCompletedValue = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ColIncrementTime = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ColMinutesTaken = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.groupBox5.SuspendLayout();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvHistory)).BeginInit();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.ndNumberOfHoursTaken)).BeginInit();
             this.SuspendLayout();
             // 
             // label6
@@ -289,14 +289,14 @@
             this.dgvHistory.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(23)))), ((int)(((byte)(29)))), ((int)(((byte)(29)))));
             this.dgvHistory.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.dgvHistory.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Sunken;
-            dataGridViewCellStyle13.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle13.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(23)))), ((int)(((byte)(29)))), ((int)(((byte)(29)))));
-            dataGridViewCellStyle13.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle13.ForeColor = System.Drawing.Color.White;
-            dataGridViewCellStyle13.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle13.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle13.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgvHistory.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle13;
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(23)))), ((int)(((byte)(29)))), ((int)(((byte)(29)))));
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle1.ForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvHistory.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
             this.dgvHistory.ColumnHeadersHeight = 40;
             this.dgvHistory.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.ColEdit,
@@ -312,29 +312,30 @@
             this.ColAbatementDate,
             this.ColNumberOfHoursTaken,
             this.ColDayOffCompletedValue,
-            this.ColIncrementTime});
-            dataGridViewCellStyle15.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle15.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(23)))), ((int)(((byte)(29)))), ((int)(((byte)(29)))));
-            dataGridViewCellStyle15.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle15.ForeColor = System.Drawing.Color.White;
-            dataGridViewCellStyle15.SelectionBackColor = System.Drawing.Color.Transparent;
-            dataGridViewCellStyle15.SelectionForeColor = System.Drawing.Color.Transparent;
-            dataGridViewCellStyle15.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dgvHistory.DefaultCellStyle = dataGridViewCellStyle15;
+            this.ColIncrementTime,
+            this.ColMinutesTaken});
+            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(23)))), ((int)(((byte)(29)))), ((int)(((byte)(29)))));
+            dataGridViewCellStyle3.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle3.ForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.Color.Transparent;
+            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.Color.Transparent;
+            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dgvHistory.DefaultCellStyle = dataGridViewCellStyle3;
             this.dgvHistory.EnableHeadersVisualStyles = false;
             this.dgvHistory.Location = new System.Drawing.Point(3, 22);
             this.dgvHistory.Margin = new System.Windows.Forms.Padding(5, 4, 5, 4);
             this.dgvHistory.MultiSelect = false;
             this.dgvHistory.Name = "dgvHistory";
             this.dgvHistory.ReadOnly = true;
-            dataGridViewCellStyle16.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle16.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(16)))), ((int)(((byte)(59)))), ((int)(((byte)(82)))));
-            dataGridViewCellStyle16.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle16.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle16.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle16.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle16.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgvHistory.RowHeadersDefaultCellStyle = dataGridViewCellStyle16;
+            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(16)))), ((int)(((byte)(59)))), ((int)(((byte)(82)))));
+            dataGridViewCellStyle4.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle4.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle4.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvHistory.RowHeadersDefaultCellStyle = dataGridViewCellStyle4;
             this.dgvHistory.RowHeadersVisible = false;
             this.dgvHistory.RowHeadersWidth = 51;
             this.dgvHistory.Size = new System.Drawing.Size(626, 381);
@@ -497,9 +498,9 @@
             // groupBox2
             // 
             this.groupBox2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.groupBox2.Controls.Add(this.dtHoursTaken);
             this.groupBox2.Controls.Add(this.cbAddHoursTaken);
             this.groupBox2.Controls.Add(this.label1);
-            this.groupBox2.Controls.Add(this.ndNumberOfHoursTaken);
             this.groupBox2.Controls.Add(this.dtAbatementDate);
             this.groupBox2.Controls.Add(this.label11);
             this.groupBox2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
@@ -536,20 +537,6 @@
             this.label1.TabIndex = 78;
             this.label1.Text = "Quantidade";
             // 
-            // ndNumberOfHoursTaken
-            // 
-            this.ndNumberOfHoursTaken.Enabled = false;
-            this.ndNumberOfHoursTaken.Location = new System.Drawing.Point(139, 59);
-            this.ndNumberOfHoursTaken.Name = "ndNumberOfHoursTaken";
-            this.ndNumberOfHoursTaken.Size = new System.Drawing.Size(86, 26);
-            this.ndNumberOfHoursTaken.TabIndex = 77;
-            this.ndNumberOfHoursTaken.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
-            this.ndNumberOfHoursTaken.Value = new decimal(new int[] {
-            1,
-            0,
-            0,
-            0});
-            // 
             // dtAbatementDate
             // 
             this.dtAbatementDate.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
@@ -573,6 +560,18 @@
             this.label11.Size = new System.Drawing.Size(42, 18);
             this.label11.TabIndex = 76;
             this.label11.Text = "Data";
+            // 
+            // dtHoursTaken
+            // 
+            this.dtHoursTaken.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.dtHoursTaken.Format = System.Windows.Forms.DateTimePickerFormat.Time;
+            this.dtHoursTaken.Location = new System.Drawing.Point(142, 59);
+            this.dtHoursTaken.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.dtHoursTaken.MinDate = new System.DateTime(1900, 1, 1, 0, 0, 0, 0);
+            this.dtHoursTaken.Name = "dtHoursTaken";
+            this.dtHoursTaken.ShowUpDown = true;
+            this.dtHoursTaken.Size = new System.Drawing.Size(63, 26);
+            this.dtHoursTaken.TabIndex = 82;
             // 
             // ColEdit
             // 
@@ -610,9 +609,9 @@
             // ColDate
             // 
             this.ColDate.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
-            dataGridViewCellStyle14.Format = "d";
-            dataGridViewCellStyle14.NullValue = null;
-            this.ColDate.DefaultCellStyle = dataGridViewCellStyle14;
+            dataGridViewCellStyle2.Format = "d";
+            dataGridViewCellStyle2.NullValue = null;
+            this.ColDate.DefaultCellStyle = dataGridViewCellStyle2;
             this.ColDate.HeaderText = "Data do Serviço";
             this.ColDate.MinimumWidth = 6;
             this.ColDate.Name = "ColDate";
@@ -697,6 +696,13 @@
             this.ColIncrementTime.ReadOnly = true;
             this.ColIncrementTime.Visible = false;
             // 
+            // ColMinutesTaken
+            // 
+            this.ColMinutesTaken.HeaderText = "MinutesTaken";
+            this.ColMinutesTaken.Name = "ColMinutesTaken";
+            this.ColMinutesTaken.ReadOnly = true;
+            this.ColMinutesTaken.Visible = false;
+            // 
             // FrmCustomerService
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 18F);
@@ -733,7 +739,6 @@
             this.groupBox1.PerformLayout();
             this.groupBox2.ResumeLayout(false);
             this.groupBox2.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.ndNumberOfHoursTaken)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -768,11 +773,11 @@
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.GroupBox groupBox2;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.NumericUpDown ndNumberOfHoursTaken;
         private System.Windows.Forms.DateTimePicker dtAbatementDate;
         private System.Windows.Forms.Label label11;
         private System.Windows.Forms.Label lbNumberOfOvertimeHours;
         private System.Windows.Forms.CheckBox cbAddHoursTaken;
+        private System.Windows.Forms.DateTimePicker dtHoursTaken;
         private System.Windows.Forms.DataGridViewImageColumn ColEdit;
         private System.Windows.Forms.DataGridViewImageColumn ColDelete;
         private System.Windows.Forms.DataGridViewImageColumn ColDayOffCompleted;
@@ -787,5 +792,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn ColNumberOfHoursTaken;
         private System.Windows.Forms.DataGridViewTextBoxColumn ColDayOffCompletedValue;
         private System.Windows.Forms.DataGridViewTextBoxColumn ColIncrementTime;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ColMinutesTaken;
     }
 }

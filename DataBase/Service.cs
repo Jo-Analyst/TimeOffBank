@@ -11,9 +11,9 @@ namespace DataBase
         public DateTime date { get; set; }
         public DateTime entryTime { get; set; }
         public DateTime departureTime { get; set; }
-        public double numberOfOvertimeHours { get; set; }
+        public double numberOfOvertimeMinutes { get; set; }
         public string abatementDate { get; set; }
-        public double numberOfHoursTaken { get; set; }
+        public double numberOfMinutesTaken { get; set; }
         public bool dayOffCompleted { get; set; }
         public bool incrementTime { get; set; }
         public int employeesId { get; set; }
@@ -31,12 +31,12 @@ namespace DataBase
                 command.Parameters.AddWithValue("@description", description);
                 command.Parameters.AddWithValue("@entry_time", entryTime.ToString("HH:mm:ss"));
                 command.Parameters.AddWithValue("@departure_time", departureTime.ToString("HH:mm:ss"));
-                command.Parameters.AddWithValue("@number_of_overtime_hours", numberOfOvertimeHours);
+                command.Parameters.AddWithValue("@number_of_overtime_hours", numberOfOvertimeMinutes);
                 if(!string.IsNullOrEmpty(abatementDate))
                     command.Parameters.AddWithValue("@abatement_date", abatementDate);
                 command.Parameters.AddWithValue("@day_off_completed", dayOffCompleted);
                 if(!string.IsNullOrEmpty(abatementDate))
-                    command.Parameters.AddWithValue("@number_of_hours_taken", numberOfHoursTaken);
+                    command.Parameters.AddWithValue("@number_of_hours_taken", numberOfMinutesTaken);
                 command.Parameters.AddWithValue("@date", date.ToShortDateString());
                 command.Parameters.AddWithValue("@employee_id", employeesId);
                 command.Parameters.AddWithValue("@increment_time", incrementTime);
