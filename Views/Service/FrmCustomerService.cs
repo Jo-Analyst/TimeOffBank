@@ -61,9 +61,14 @@ namespace Interface
                 MessageBox.Show("Defina a quantidade de horas que serão abatidas.", "BANCO DE HORAS", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
                 return;
             }
+            else if (dtAbatementDate.Value <= dtDate.Value && cbAddHoursTaken.Checked)
+            {
+                MessageBox.Show("A data do abatimento das horas não pode ser menor ou igual a data do serviço prestado.", "BANCO DE HORAS", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                return;
+            }
 
 
-                try
+            try
                 {
                     service.id = serviceId;
                     service.description = rtDescription.Text.Trim();
@@ -166,9 +171,16 @@ namespace Interface
             dgvHistory.CurrentRow.Selected = false;
 
             int id = Convert.ToInt32(dgvHistory.CurrentRow.Cells[3].Value);
+            ClearFields();
+
             if (dgvHistory.CurrentCell.ColumnIndex == 0)
             {
-                ClearFields();
+                if(dgvHistory.CurrentRow.Cells["ColDayOffCompletedValue"].Value.ToString() == "1")
+                {
+                    MessageBox.Show("Não é possível editar um registro que o processo da folga esteja concluída.", "BANCO DE HORAS", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                    return;
+                }
+
                 serviceId = int.Parse(dgvHistory.CurrentRow.Cells["ColId"].Value.ToString());
                 rtDescription.Text = dgvHistory.CurrentRow.Cells["ColDescription"].Value.ToString();
                 dtDate.Value = DateTime.Parse(dgvHistory.CurrentRow.Cells["ColDate"].Value.ToString());
@@ -286,6 +298,7 @@ namespace Interface
             CheckNumberOfPages(int.Parse(cbRows.SelectedItem.ToString()));
             UpdateComboBoxItems();
             LoadDgvHistory();
+            lblTotalHoursTaken.Text = GetMinutesConvertedToHours(Service.GetTotalHorasInOpen());
 
         }
 

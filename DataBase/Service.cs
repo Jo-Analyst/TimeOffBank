@@ -195,5 +195,24 @@ namespace DataBase
                 }
             }
         }
+
+        static public double GetTotalHorasInOpen()
+        {
+            try
+            {
+                using (var connection = new SqlConnection(DbConnectionString.connectionString))
+                {
+                    connection.Open();
+                    string sql = $"SELECT SUM(Services.number_of_overtime_hours) - SUM(number_of_hours_taken) AS Total_Hours_Taken FROM Services;";
+                    var command = new SqlCommand(sql, connection);
+                    command.CommandText = sql;
+                    return (double)command.ExecuteScalar();
+                }
+            }
+            catch
+            {
+                throw;
+            }
+        }
     }
 }
