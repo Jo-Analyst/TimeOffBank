@@ -72,10 +72,6 @@ C:\Users\jojoc\OneDrive\Área de Trabalho\TimeOffBank\obj\Debug\Interface.exe
 C:\Users\jojoc\OneDrive\Área de Trabalho\TimeOffBank\obj\Debug\Interface.pdb
 C:\Users\jojoc\OneDrive\Área de Trabalho\TimeOffBank\obj\Debug\Interface.exe.config
 C:\Users\jojoc\OneDrive\Área de Trabalho\TimeOffBank\obj\Debug\Interface.FrmBankOffTime.resources
-C:\Users\jojoc\OneDrive\Documentos\Projetos\Meus projetos\TimeOffBank\bin\Debug\SqlServerTypes\x64\msvcr120.dll
-C:\Users\jojoc\OneDrive\Documentos\Projetos\Meus projetos\TimeOffBank\bin\Debug\SqlServerTypes\x64\SqlServerSpatial140.dll
-C:\Users\jojoc\OneDrive\Documentos\Projetos\Meus projetos\TimeOffBank\bin\Debug\SqlServerTypes\x86\msvcr120.dll
-C:\Users\jojoc\OneDrive\Documentos\Projetos\Meus projetos\TimeOffBank\bin\Debug\SqlServerTypes\x86\SqlServerSpatial140.dll
 C:\Users\jojoc\OneDrive\Documentos\Projetos\Meus projetos\TimeOffBank\bin\Debug\Interface.exe.config
 C:\Users\jojoc\OneDrive\Documentos\Projetos\Meus projetos\TimeOffBank\bin\Debug\Interface.exe
 C:\Users\jojoc\OneDrive\Documentos\Projetos\Meus projetos\TimeOffBank\bin\Debug\Interface.pdb
@@ -136,7 +132,6 @@ C:\Users\jojoc\OneDrive\Documentos\Projetos\Meus projetos\TimeOffBank\obj\Debug\
 C:\Users\jojoc\OneDrive\Documentos\Projetos\Meus projetos\TimeOffBank\obj\Debug\Interface.FrmEmployees.resources
 C:\Users\jojoc\OneDrive\Documentos\Projetos\Meus projetos\TimeOffBank\obj\Debug\Interface.FrmSaveEmployee.resources
 C:\Users\jojoc\OneDrive\Documentos\Projetos\Meus projetos\TimeOffBank\obj\Debug\Interface.FrmReportService.resources
-C:\Users\jojoc\OneDrive\Documentos\Projetos\Meus projetos\TimeOffBank\obj\Debug\Interface.FrmServicesPerformed.resources
 C:\Users\jojoc\OneDrive\Documentos\Projetos\Meus projetos\TimeOffBank\obj\Debug\Interface.FrmCustomerService.resources
 C:\Users\jojoc\OneDrive\Documentos\Projetos\Meus projetos\TimeOffBank\obj\Debug\Interface.FrmBackupAndRestore.resources
 C:\Users\jojoc\OneDrive\Documentos\Projetos\Meus projetos\TimeOffBank\obj\Debug\Interface.FrmSetting.resources
@@ -146,3 +141,17 @@ C:\Users\jojoc\OneDrive\Documentos\Projetos\Meus projetos\TimeOffBank\obj\Debug\
 C:\Users\jojoc\OneDrive\Documentos\Projetos\Meus projetos\TimeOffBank\obj\Debug\Interface.exe
 C:\Users\jojoc\OneDrive\Documentos\Projetos\Meus projetos\TimeOffBank\obj\Debug\Interface.pdb
 C:\Users\jojoc\OneDrive\Documentos\Projetos\Meus projetos\TimeOffBank\obj\Debug\Interface.exe.config
+C:\Users\jojoc\OneDrive\Documentos\Projetos\Meus projetos\TimeOffBank\bin\Debug\x86\SqlServerSpatial160.dll
+C:\Users\jojoc\OneDrive\Documentos\Projetos\Meus projetos\TimeOffBank\bin\Debug\x64\SqlServerSpatial160.dll
+C:\Users\jojoc\OneDrive\Documentos\Projetos\Meus projetos\TimeOffBank\bin\Debug\de\Microsoft.SqlServer.Types.resources.dll
+C:\Users\jojoc\OneDrive\Documentos\Projetos\Meus projetos\TimeOffBank\bin\Debug\es\Microsoft.SqlServer.Types.resources.dll
+C:\Users\jojoc\OneDrive\Documentos\Projetos\Meus projetos\TimeOffBank\bin\Debug\fr\Microsoft.SqlServer.Types.resources.dll
+C:\Users\jojoc\OneDrive\Documentos\Projetos\Meus projetos\TimeOffBank\bin\Debug\it\Microsoft.SqlServer.Types.resources.dll
+C:\Users\jojoc\OneDrive\Documentos\Projetos\Meus projetos\TimeOffBank\bin\Debug\ja\Microsoft.SqlServer.Types.resources.dll
+C:\Users\jojoc\OneDrive\Documentos\Projetos\Meus projetos\TimeOffBank\bin\Debug\ko\Microsoft.SqlServer.Types.resources.dll
+C:\Users\jojoc\OneDrive\Documentos\Projetos\Meus projetos\TimeOffBank\bin\Debug\pt\Microsoft.SqlServer.Types.resources.dll
+C:\Users\jojoc\OneDrive\Documentos\Projetos\Meus projetos\TimeOffBank\bin\Debug\ru\Microsoft.SqlServer.Types.resources.dll
+C:\Users\jojoc\OneDrive\Documentos\Projetos\Meus projetos\TimeOffBank\bin\Debug\zh-Hans\Microsoft.SqlServer.Types.resources.dll
+C:\Users\jojoc\OneDrive\Documentos\Projetos\Meus projetos\TimeOffBank\bin\Debug\zh-Hant\Microsoft.SqlServer.Types.resources.dll
+C:\Users\jojoc\OneDrive\Documentos\Projetos\Meus projetos\TimeOffBank\bin\Debug\assets\subtrack.png
+C:\Users\jojoc\OneDrive\Documentos\Projetos\Meus projetos\TimeOffBank\bin\Debug\assets\check.png

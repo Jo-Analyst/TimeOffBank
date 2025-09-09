@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="packages\Microsoft.SqlServer.Types.160.1000.6\build\net462\Microsoft.SqlServer.Types.props" Condition="Exists('packages\Microsoft.SqlServer.Types.160.1000.6\build\net462\Microsoft.SqlServer.Types.props')" />
   <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
@@ -12,6 +13,8 @@
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
     <Deterministic>true</Deterministic>
+    <NuGetPackageImportStamp>
+    </NuGetPackageImportStamp>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <PlatformTarget>AnyCPU</PlatformTarget>
@@ -51,8 +54,8 @@
     <Reference Include="Microsoft.ReportViewer.WinForms, Version=15.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL">
       <HintPath>packages\Microsoft.ReportingServices.ReportViewerControl.Winforms.150.1652.0\lib\net40\Microsoft.ReportViewer.WinForms.dll</HintPath>
     </Reference>
-    <Reference Include="Microsoft.SqlServer.Types, Version=14.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL">
-      <HintPath>packages\Microsoft.SqlServer.Types.14.0.314.76\lib\net40\Microsoft.SqlServer.Types.dll</HintPath>
+    <Reference Include="Microsoft.SqlServer.Types, Version=16.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL">
+      <HintPath>packages\Microsoft.SqlServer.Types.160.1000.6\lib\net462\Microsoft.SqlServer.Types.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
@@ -81,7 +84,6 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="SqlServerTypes\Loader.cs" />
     <Compile Include="Utils\CPF.cs" />
     <Compile Include="Utils\PageData.cs" />
     <Compile Include="Utils\PrintRDLC.cs" />
@@ -98,21 +100,11 @@
     <Compile Include="Views\Employee\FrmSaveEmployee.Designer.cs">
       <DependentUpon>FrmSaveEmployee.cs</DependentUpon>
     </Compile>
-    <Compile Include="Views\Report\Data\DsService.cs" />
-    <Compile Include="Views\Report\Data\DsService.Designer.cs">
-      <DependentUpon>DsService.cs</DependentUpon>
-    </Compile>
     <Compile Include="Views\Report\FrmReportService.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Views\Report\FrmReportService.Designer.cs">
       <DependentUpon>FrmReportService.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Views\Report\FrmServicesPerformed.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Views\Report\FrmServicesPerformed.Designer.cs">
-      <DependentUpon>FrmServicesPerformed.cs</DependentUpon>
     </Compile>
     <Compile Include="Views\Service\FrmCustomerService.cs">
       <SubType>Form</SubType>
@@ -120,6 +112,7 @@
     <Compile Include="Views\Service\FrmCustomerService.Designer.cs">
       <DependentUpon>FrmCustomerService.cs</DependentUpon>
     </Compile>
+    <Compile Include="Views\Service\PrintDirect.cs" />
     <Compile Include="Views\Setting\FrmBackupAndRestore.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -154,12 +147,9 @@
     <EmbeddedResource Include="Views\Employee\FrmSaveEmployee.resx">
       <DependentUpon>FrmSaveEmployee.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Views\Report\Data\Relatório do Atendimento Diário.rdlc" />
+    <EmbeddedResource Include="Views\Report\Data\Banca de horas.rdlc" />
     <EmbeddedResource Include="Views\Report\FrmReportService.resx">
       <DependentUpon>FrmReportService.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Views\Report\FrmServicesPerformed.resx">
-      <DependentUpon>FrmServicesPerformed.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Views\Service\FrmCustomerService.resx">
       <DependentUpon>FrmCustomerService.cs</DependentUpon>
@@ -171,6 +161,7 @@
       <DependentUpon>FrmSetting.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="packages.config" />
+    <None Include="Properties\DataSources\DataBase.DsServices.datasource" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -208,23 +199,25 @@
     <None Include="Resources\right-arrow-grey.png" />
     <None Include="Resources\right-arrow-white.png" />
     <None Include="Resources\user-avatar.png" />
-    <None Include="assets\checked-checkbox-32.png" />
+    <None Include="assets\checkbox-32.png" />
     <None Include="assets\rounded-square-32.png" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="SqlServerTypes\readme.htm" />
-    <Content Include="SqlServerTypes\x64\msvcr120.dll">
+    <WCFMetadata Include="Connected Services\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="assets\check.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="SqlServerTypes\x64\SqlServerSpatial140.dll">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="SqlServerTypes\x86\msvcr120.dll">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="SqlServerTypes\x86\SqlServerSpatial140.dll">
+    <Content Include="assets\subtrack.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
+    <PropertyGroup>
+      <ErrorText>Este projeto faz referência a pacotes do NuGet que não estão presentes neste computador. Use a Restauração de Pacotes do NuGet para baixá-los.  Para obter mais informações, consulte http://go.microsoft.com/fwlink/?LinkID=322105. O arquivo ausente é {0}.</ErrorText>
+    </PropertyGroup>
+    <Error Condition="!Exists('packages\Microsoft.SqlServer.Types.160.1000.6\build\net462\Microsoft.SqlServer.Types.props')" Text="$([System.String]::Format('$(ErrorText)', 'packages\Microsoft.SqlServer.Types.160.1000.6\build\net462\Microsoft.SqlServer.Types.props'))" />
+  </Target>
 </Project>

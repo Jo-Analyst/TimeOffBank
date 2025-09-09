@@ -10,6 +10,7 @@ namespace Interface
     {
         int employeeId; int page = 1, pageMaximum = 1, serviceId;
         double totalMinutes = 0f;
+        bool isPrintDirect = bool.Parse(Settings.Default["print_directory_direct"].ToString());
         Service service = new Service();
 
         public FrmCustomerService(int userId, string name)
@@ -21,6 +22,7 @@ namespace Interface
 
         private void FrmCustomerService_Load(object sender, EventArgs e)
         {
+            btnPrint.Text = isPrintDirect ? "Imprimir" : "Visualizar";
             dgvHistory.Focus();
             cbPage.Text = "1";
             cbRows.Text = "10";
@@ -69,37 +71,37 @@ namespace Interface
 
 
             try
+            {
+                service.id = serviceId;
+                service.description = rtDescription.Text.Trim();
+                service.date = dtDate.Value;
+                service.departureTime = dtDepartureTime.Value;
+                service.entryTime = dtEntryTime.Value;
+                service.numberOfOvertimeMinutes = totalMinutes;
+                service.incrementTime = cbDefine.Checked;
+
+                if (cbAddHoursTaken.Checked)
                 {
-                    service.id = serviceId;
-                    service.description = rtDescription.Text.Trim();
-                    service.date = dtDate.Value;
-                    service.departureTime = dtDepartureTime.Value;
-                    service.entryTime = dtEntryTime.Value;
-                    service.numberOfOvertimeMinutes = totalMinutes;
-                    service.incrementTime = cbDefine.Checked;
-
-                    if (cbAddHoursTaken.Checked)
-                    {
-                        service.abatementDate = dtAbatementDate.Value.ToShortDateString();
-                        service.numberOfMinutesTaken = ConvertHoursToMinutes(dtHoursTaken.Value);
-                    }
-                    else
-                    {
-                        service.abatementDate = null;
-                    }
-
-                    service.dayOffCompleted = false;
-                    service.employeesId = employeeId;
-
-                    service.Save();
-                    LoadEvents();
-
-                    ClearFields();
+                    service.abatementDate = dtAbatementDate.Value.ToShortDateString();
+                    service.numberOfMinutesTaken = ConvertHoursToMinutes(dtHoursTaken.Value);
                 }
-                catch (Exception ex)
+                else
                 {
-                    MessageBox.Show(ex.ToString());
+                    service.abatementDate = null;
                 }
+
+                service.dayOffCompleted = false;
+                service.employeesId = employeeId;
+
+                service.Save();
+                LoadEvents();
+
+                ClearFields();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.ToString());
+            }
         }
 
         private void LoadDgvHistory()
@@ -175,7 +177,7 @@ namespace Interface
 
             if (dgvHistory.CurrentCell.ColumnIndex == 0)
             {
-                if(dgvHistory.CurrentRow.Cells["ColDayOffCompletedValue"].Value.ToString() == "1")
+                if (dgvHistory.CurrentRow.Cells["ColDayOffCompletedValue"].Value.ToString() == "1")
                 {
                     MessageBox.Show("Não é possível editar um registro que o processo da folga esteja concluída.", "BANCO DE HORAS", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
                     return;
@@ -299,7 +301,7 @@ namespace Interface
             UpdateComboBoxItems();
             LoadDgvHistory();
             lblTotalHoursTaken.Text = GetMinutesConvertedToHours(Service.GetTotalHorasInOpen());
-
+            btnPrint.Enabled = dgvHistory.Rows.Count > 0; btnPrint.Enabled = dgvHistory.Rows.Count > 0;
         }
 
         private void UpdateComboBoxItems()
@@ -405,10 +407,11 @@ namespace Interface
 
         private void FrmCustomerService_KeyDown(object sender, KeyEventArgs e)
         {
-            if (e.KeyCode == Keys.Enter)
-                BtnSave_Click(sender, e);
+            if (e.KeyCode == Keys.Enter) BtnSave_Click(sender, e);
             else if (e.Control && e.KeyCode == Keys.Right && btnArrowRight.Enabled) BtnArrowRight_Click(sender, e);
             else if (e.Control && e.KeyCode == Keys.Left && btnArrowLeft.Enabled) BtnArrowLeft_Click(sender, e);
+            else if (e.Control && e.KeyCode == Keys.P && btnPrint.Enabled)
+                btnPrint_Click(sender, e);
         }
 
         private void LkCancel_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
@@ -467,6 +470,36 @@ namespace Interface
         private void cbDefine_CheckedChanged(object sender, EventArgs e)
         {
             CalculateJourney();
+        }
+
+        private void btnPrint_Click(object sender, EventArgs e)
+        {
+            DataTable dtService = Service.FindByEmployeeId(employeeId);
+            dtService.Columns.Add("overtime_hours", typeof(string));
+            dtService.Columns.Add("hours_taken", typeof(string));
+            dtService.Columns.Add("day_off", typeof(string));
+            dtService = FormatWorkHoursData(dtService);
+
+            if (isPrintDirect)
+            {
+                new PrintDirect().Execute(dtService, lblTotalHoursTaken.Text);
+                return;
+            }
+
+            new FrmReportService(dtService, lblTotalHoursTaken.Text).ShowDialog();
+        }
+
+        private DataTable FormatWorkHoursData(DataTable dataTable)
+        {
+
+            foreach (DataRow row in dataTable.Rows)
+            {
+                row["overtime_hours"] = GetMinutesConvertedToHours(double.Parse(row["number_of_overtime_hours"].ToString()));
+                row["hours_taken"] = !string.IsNullOrEmpty(row["number_of_hours_taken"].ToString()) ? GetMinutesConvertedToHours(double.Parse(row["number_of_hours_taken"].ToString())) : string.Empty;
+                row["day_off"] = row["day_off_completed"].ToString() == "1" ? "file:///" + Application.StartupPath.Replace("\\", "/") + "/assets/check.png" : null;
+            }
+
+            return dataTable;
         }
 
         private void DgvHistory_CellMouseEnter(object sender, DataGridViewCellEventArgs e)

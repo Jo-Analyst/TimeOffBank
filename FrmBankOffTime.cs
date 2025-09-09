@@ -20,11 +20,6 @@ namespace Interface
             Application.Exit();
         }
 
-        private void atendimentoToolStripMenuItem1_Click(object sender, System.EventArgs e)
-        {
-            new FrmServicesPerformed().ShowDialog();
-        }
-
         private void backupToolStripMenuItem_Click(object sender, System.EventArgs e)
         {
             new FrmBackupAndRestore().ShowDialog();

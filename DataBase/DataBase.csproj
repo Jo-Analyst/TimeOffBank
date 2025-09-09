@@ -75,6 +75,11 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Backup.cs" />
+    <Compile Include="DsServices.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>DsServices.xsd</DependentUpon>
+    </Compile>
     <Compile Include="Service.cs" />
     <Compile Include="DB.cs" />
     <Compile Include="DbConnectionString.cs" />
@@ -92,6 +97,19 @@
       <ProductName>.NET Framework 3.5 SP1</ProductName>
       <Install>false</Install>
     </BootstrapperPackage>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="DsServices.xsc">
+      <DependentUpon>DsServices.xsd</DependentUpon>
+    </None>
+    <None Include="DsServices.xsd">
+      <SubType>Designer</SubType>
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>DsServices.Designer.cs</LastGenOutput>
+    </None>
+    <None Include="DsServices.xss">
+      <DependentUpon>DsServices.xsd</DependentUpon>
+    </None>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

@@ -49,9 +49,9 @@ namespace Interface.Properties {
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("False")]
-        public string print_directory_direct {
+        public bool print_directory_direct {
             get {
-                return ((string)(this["print_directory_direct"]));
+                return ((bool)(this["print_directory_direct"]));
             }
             set {
                 this["print_directory_direct"] = value;

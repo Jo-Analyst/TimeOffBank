@@ -13,7 +13,7 @@
     <Setting Name="path_Backup" Type="System.String" Scope="User">
       <Value Profile="(Default)">C:\Central de Atendimento Backup</Value>
     </Setting>
-    <Setting Name="print_directory_direct" Type="System.String" Scope="User">
+    <Setting Name="print_directory_direct" Type="System.Boolean" Scope="User">
       <Value Profile="(Default)">False</Value>
     </Setting>
   </Settings>

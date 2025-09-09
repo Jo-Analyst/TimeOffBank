@@ -32,10 +32,10 @@ namespace DataBase
                 command.Parameters.AddWithValue("@entry_time", entryTime.ToString("HH:mm:ss"));
                 command.Parameters.AddWithValue("@departure_time", departureTime.ToString("HH:mm:ss"));
                 command.Parameters.AddWithValue("@number_of_overtime_hours", numberOfOvertimeMinutes);
-                if(!string.IsNullOrEmpty(abatementDate))
+                if (!string.IsNullOrEmpty(abatementDate))
                     command.Parameters.AddWithValue("@abatement_date", abatementDate);
                 command.Parameters.AddWithValue("@day_off_completed", dayOffCompleted);
-                if(!string.IsNullOrEmpty(abatementDate))
+                if (!string.IsNullOrEmpty(abatementDate))
                     command.Parameters.AddWithValue("@number_of_hours_taken", numberOfMinutesTaken);
                 command.Parameters.AddWithValue("@date", date.ToShortDateString());
                 command.Parameters.AddWithValue("@employee_id", employeesId);
@@ -52,6 +52,26 @@ namespace DataBase
                 {
                     throw;
                 }
+            }
+        }
+
+        static public DataTable FindByEmployeeId(int employee_id)
+        {
+            try
+            {
+                using (var connection = new SqlConnection(DbConnectionString.connectionString))
+                {
+                    string sql = $"SELECT id, description, CONVERT(VARCHAR, date, 103) AS date, entry_time, departure_time, employee_id, number_of_overtime_hours, CONVERT(VARCHAR, abatement_date, 103) AS abatement_date, day_off_completed, number_of_hours_taken, increment_time FROM Services WHERE employee_id = {employee_id} ORDER BY CONVERT(DATE, date, 103) DESC, CONVERT(Time, entry_time, 103) DESC";
+                    var adapter = new SqlDataAdapter(sql, connection);
+                    adapter.SelectCommand.CommandText = sql;
+                    DataTable dataTable = new DataTable();
+                    adapter.Fill(dataTable);
+                    return dataTable;
+                }
+            }
+            catch
+            {
+                throw;
             }
         }
 

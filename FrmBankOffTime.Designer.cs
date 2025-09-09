@@ -32,8 +32,6 @@
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.cadastroToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.FuncionárioToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.relatórioToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.atendimentoToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.configuraçãoToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.backupToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.ajustarToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -51,7 +49,6 @@
             this.menuStrip1.ImageScalingSize = new System.Drawing.Size(20, 20);
             this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.cadastroToolStripMenuItem,
-            this.relatórioToolStripMenuItem,
             this.configuraçãoToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
@@ -81,27 +78,6 @@
             this.FuncionárioToolStripMenuItem.Text = "Funcionário";
             this.FuncionárioToolStripMenuItem.Click += new System.EventHandler(this.FuncionárioToolStripMenuItem_Click);
             // 
-            // relatórioToolStripMenuItem
-            // 
-            this.relatórioToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.atendimentoToolStripMenuItem1});
-            this.relatórioToolStripMenuItem.ForeColor = System.Drawing.Color.White;
-            this.relatórioToolStripMenuItem.Name = "relatórioToolStripMenuItem";
-            this.relatórioToolStripMenuItem.Size = new System.Drawing.Size(66, 20);
-            this.relatórioToolStripMenuItem.Text = "Relatório";
-            // 
-            // atendimentoToolStripMenuItem1
-            // 
-            this.atendimentoToolStripMenuItem1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(23)))), ((int)(((byte)(29)))), ((int)(((byte)(29)))));
-            this.atendimentoToolStripMenuItem1.ForeColor = System.Drawing.Color.White;
-            this.atendimentoToolStripMenuItem1.Image = ((System.Drawing.Image)(resources.GetObject("atendimentoToolStripMenuItem1.Image")));
-            this.atendimentoToolStripMenuItem1.Name = "atendimentoToolStripMenuItem1";
-            this.atendimentoToolStripMenuItem1.ShortcutKeys = ((System.Windows.Forms.Keys)(((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.Shift) 
-            | System.Windows.Forms.Keys.R)));
-            this.atendimentoToolStripMenuItem1.Size = new System.Drawing.Size(217, 22);
-            this.atendimentoToolStripMenuItem1.Text = "Atendimento";
-            this.atendimentoToolStripMenuItem1.Click += new System.EventHandler(this.atendimentoToolStripMenuItem1_Click);
-            // 
             // configuraçãoToolStripMenuItem
             // 
             this.configuraçãoToolStripMenuItem.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(23)))), ((int)(((byte)(29)))), ((int)(((byte)(29)))));
@@ -121,7 +97,7 @@
             this.backupToolStripMenuItem.Name = "backupToolStripMenuItem";
             this.backupToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)(((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.Shift) 
             | System.Windows.Forms.Keys.B)));
-            this.backupToolStripMenuItem.Size = new System.Drawing.Size(186, 22);
+            this.backupToolStripMenuItem.Size = new System.Drawing.Size(190, 26);
             this.backupToolStripMenuItem.Text = "Backup";
             this.backupToolStripMenuItem.Click += new System.EventHandler(this.backupToolStripMenuItem_Click);
             // 
@@ -133,7 +109,7 @@
             this.ajustarToolStripMenuItem.Name = "ajustarToolStripMenuItem";
             this.ajustarToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)(((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.Shift) 
             | System.Windows.Forms.Keys.S)));
-            this.ajustarToolStripMenuItem.Size = new System.Drawing.Size(186, 22);
+            this.ajustarToolStripMenuItem.Size = new System.Drawing.Size(190, 26);
             this.ajustarToolStripMenuItem.Text = "Ajustar";
             this.ajustarToolStripMenuItem.Click += new System.EventHandler(this.ajustarToolStripMenuItem_Click);
             // 
@@ -203,8 +179,6 @@
         private System.Windows.Forms.MenuStrip menuStrip1;
         private System.Windows.Forms.ToolStripMenuItem cadastroToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem FuncionárioToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem relatórioToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem atendimentoToolStripMenuItem1;
         private System.Windows.Forms.ToolStripMenuItem configuraçãoToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem backupToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem ajustarToolStripMenuItem;

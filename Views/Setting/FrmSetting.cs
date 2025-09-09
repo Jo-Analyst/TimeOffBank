@@ -12,14 +12,12 @@ namespace Interface
 
             cbPrint.Checked = bool.Parse(Settings.Default["print_directory_direct"].ToString());
             txtDirectoryBackup.Text = Settings.Default["path_Backup"].ToString();
-            cbTimeEntryAndExit.Checked = bool.Parse(Settings.Default["addTime"].ToString());
         }
 
         private void btnConfirm_Click(object sender, EventArgs e)
         {
             Settings.Default["print_directory_direct"] = cbPrint.Checked;
             Settings.Default["path_Backup"] = txtDirectoryBackup.Text;
-            Settings.Default["addTime"] = cbTimeEntryAndExit.Checked;
             Settings.Default.Save();
             this.Close();
         }
