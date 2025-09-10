@@ -36,18 +36,6 @@ namespace Interface.Properties {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("C:\\Central de Atendimento Backup")]
-        public string path_Backup {
-            get {
-                return ((string)(this["path_Backup"]));
-            }
-            set {
-                this["path_Backup"] = value;
-            }
-        }
-        
-        [global::System.Configuration.UserScopedSettingAttribute()]
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("False")]
         public bool print_directory_direct {
             get {
@@ -55,6 +43,18 @@ namespace Interface.Properties {
             }
             set {
                 this["print_directory_direct"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("C:\\Banco de Horas\\Backup")]
+        public string path_Backup {
+            get {
+                return ((string)(this["path_Backup"]));
+            }
+            set {
+                this["path_Backup"] = value;
             }
         }
     }

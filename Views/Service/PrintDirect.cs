@@ -12,7 +12,7 @@ namespace Interface
             localReport.DataSources.Clear();
             localReport.DataSources.Add(reportDataSource);
             localReport.EnableExternalImages = true;
-            localReport.ReportEmbeddedResource = "Interface.Views.Report.Data.Banca de horas.rdlc";
+            localReport.ReportEmbeddedResource = "Interface.Views.Report.Data.Banco de horas.rdlc";
             localReport.SetParameters(new ReportParameter("TotalHours", totalHours));
             localReport.PrintToPrinter();
         }

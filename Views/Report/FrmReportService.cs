@@ -23,7 +23,7 @@ namespace Interface
             reportViewer1.LocalReport.DataSources.Add(rds);
             reportViewer1.LocalReport.EnableExternalImages = true;
             reportViewer1.LocalReport.SetParameters(new ReportParameter("TotalHours", totalHours));
-            reportViewer1.LocalReport.ReportEmbeddedResource = "Interface.Views.Report.Data.Banca de horas.rdlc";
+            reportViewer1.LocalReport.ReportEmbeddedResource = "Interface.Views.Report.Data.Banco de horas.rdlc";
             reportViewer1.RefreshReport();
         }
     }

@@ -69,7 +69,7 @@
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(581, 53);
             this.label2.TabIndex = 2;
-            this.label2.Text = "Banco de folgas";
+            this.label2.Text = "Banco de Horas";
             this.label2.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // lkClose

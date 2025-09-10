@@ -9,6 +9,8 @@ namespace Interface
 {
     public partial class FrmBackupAndRestore : Form
     {
+        public bool generateBackup = false;
+
         public FrmBackupAndRestore()
         {
             InitializeComponent();
@@ -45,9 +47,10 @@ namespace Interface
             try
             {
                 CreateDirectory();
-                string file = $"{path}\\{getDate()}.bak";
+                string file = $@"{path}\Banco_de_horas_{getDate()}.bak";
                 backup.GenerateBackup(file);
                 MessageBox.Show($"Backup realizado com sucesso. O caminho do arquivo é este: {file}.", "Mensagem", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                generateBackup = true;
             }
             catch (Exception ex)
             {

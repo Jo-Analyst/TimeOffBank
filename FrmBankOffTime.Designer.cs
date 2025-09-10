@@ -160,7 +160,7 @@
             this.MinimumSize = new System.Drawing.Size(816, 486);
             this.Name = "FrmBankOffTime";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "BANCO DE FOLGAS";
+            this.Text = "BANCO DE HORAS";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.FrmBankOffTime_FormClosed);
             this.menuStrip1.ResumeLayout(false);

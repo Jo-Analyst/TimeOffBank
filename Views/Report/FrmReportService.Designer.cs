@@ -35,7 +35,7 @@
             // reportViewer1
             // 
             this.reportViewer1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.reportViewer1.LocalReport.ReportEmbeddedResource = "Interface.Views.Report.Data.Banca de horas.rdlc";
+            this.reportViewer1.LocalReport.ReportEmbeddedResource = "Interface.Views.Report.Data.Banco de horas.rdlc";
             this.reportViewer1.Location = new System.Drawing.Point(0, 0);
             this.reportViewer1.Name = "reportViewer1";
             this.reportViewer1.ServerReport.BearerToken = null;

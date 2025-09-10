@@ -23,12 +23,15 @@ namespace Interface
         private void FrmCustomerService_Load(object sender, EventArgs e)
         {
             btnPrint.Text = isPrintDirect ? "Imprimir" : "Visualizar";
+            dtEntryTime.Value = new DateTime(DateTime.Now.Year, DateTime.Now.Month, DateTime.Now.Day, 0, 0, 0);
+            dtDepartureTime.Value = new DateTime(DateTime.Now.Year, DateTime.Now.Month, DateTime.Now.Day, 0, 0, 0);
             dgvHistory.Focus();
             cbPage.Text = "1";
             cbRows.Text = "10";
             dtHoursTaken.Value = new DateTime(DateTime.Now.Year, DateTime.Now.Month, DateTime.Now.Day, 0, 0, 0);
 
             dtDate.MaxDate = DateTime.Now;
+            dtHoursTaken.MaxDate = DateTime.Now;
 
             LoadEvents();
             this.cbRows.SelectedIndexChanged += CbRows_SelectedIndexChanged;
@@ -46,28 +49,42 @@ namespace Interface
                 MessageBox.Show("Descreva o motivo.", "BANCO DE HORAS", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
                 return;
             }
-
-
+            
             if (dtEntryTime.Value > dtDepartureTime.Value)
             {
                 MessageBox.Show("A hora de saída não pode ser menor que a hora da entrada", "BANCO DE HORAS", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
                 return;
             }
-            else if (dtEntryTime.Value.ToShortTimeString() == dtDepartureTime.Value.ToShortTimeString())
+            
+            if (dtEntryTime.Value.ToShortTimeString() == dtDepartureTime.Value.ToShortTimeString())
             {
                 MessageBox.Show("A hora de saída não pode ser igual a hora da entrada", "BANCO DE HORAS", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
                 return;
             }
-            else if (dtHoursTaken.Value.ToShortTimeString() == "00:00" && cbAddHoursTaken.Checked)
+            
+            if (dtHoursTaken.Value.ToShortTimeString() == "00:00" && cbAddHoursTaken.Checked)
             {
                 MessageBox.Show("Defina a quantidade de horas que serão abatidas.", "BANCO DE HORAS", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
                 return;
             }
-            else if (dtAbatementDate.Value <= dtDate.Value && cbAddHoursTaken.Checked)
+            
+            if (dtAbatementDate.Value <= dtDate.Value && cbAddHoursTaken.Checked)
             {
                 MessageBox.Show("A data do abatimento das horas não pode ser menor ou igual a data do serviço prestado.", "BANCO DE HORAS", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
                 return;
             }
+
+            //if(ConvertHoursToMinutes(dtHoursTaken.Value) > totalMinutes && cbAddHoursTaken.Checked)
+            //{
+            //    MessageBox.Show("A quantidade de horas que serão abatidas não pode ser maior que a quantidade de horas extras.", "BANCO DE HORAS", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+            //    return;
+            //}
+
+            //if (lbNumberOfOvertimeHours.Text == "0h 0min")
+            //{
+            //    MessageBox.Show("A quantidade de horas extras não pode ser igual a 0.", "BANCO DE HORAS", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+            //    return;
+            //}
 
 
             try
@@ -402,6 +419,8 @@ namespace Interface
             dtAbatementDate.Value = DateTime.Now;
             dtHoursTaken.Enabled = false;
             dtHoursTaken.Value = new DateTime(DateTime.Now.Year, DateTime.Now.Month, DateTime.Now.Day, 0, 0, 0);
+            dtEntryTime.Value = new DateTime(DateTime.Now.Year, DateTime.Now.Month, DateTime.Now.Day, 0, 0, 0);
+            dtDepartureTime.Value = new DateTime(DateTime.Now.Year, DateTime.Now.Month, DateTime.Now.Day, 0, 0, 0);
             cbAddHoursTaken.Checked = false;
         }
 
@@ -496,7 +515,7 @@ namespace Interface
             {
                 row["overtime_hours"] = GetMinutesConvertedToHours(double.Parse(row["number_of_overtime_hours"].ToString()));
                 row["hours_taken"] = !string.IsNullOrEmpty(row["number_of_hours_taken"].ToString()) ? GetMinutesConvertedToHours(double.Parse(row["number_of_hours_taken"].ToString())) : string.Empty;
-                row["day_off"] = row["day_off_completed"].ToString() == "1" ? "file:///" + Application.StartupPath.Replace("\\", "/") + "/assets/check.png" : null;
+                row["day_off"] = row["day_off_completed"].ToString() == "1" ? "file:///" + Application.StartupPath.Replace("\\", "/") + "/check.png" : null;
             }
 
             return dataTable;

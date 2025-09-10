@@ -24,7 +24,7 @@ namespace DataBase
             {
                 connection.Open();
                 string sql = id == 0
-                ? $"INSERT INTO Services (description, date, employee_id,  entry_time, departure_time, number_of_overtime_hours, day_off_completed, abatement_date, number_of_hours_taken, increment_time) VALUES (@description, @date, @employee_id, @entry_time, @departure_time, @number_of_overtime_hours, @day_off_completed, {(string.IsNullOrEmpty(abatementDate) ? "NULL" : "@abatement_date")}, {(string.IsNullOrEmpty(abatementDate) ? "NULL" : "@number_of_hours_taken, @increment_time")}); SELECT @@identity"
+                ? $"INSERT INTO Services (description, date, employee_id,  entry_time, departure_time, number_of_overtime_hours, day_off_completed, abatement_date, number_of_hours_taken, increment_time) VALUES (@description, @date, @employee_id, @entry_time, @departure_time, @number_of_overtime_hours, @day_off_completed, {(string.IsNullOrEmpty(abatementDate) ? "NULL" : "@abatement_date")}, {(string.IsNullOrEmpty(abatementDate) ? "NULL" : "@number_of_hours_taken")}, @increment_time); SELECT @@identity"
                 : $"UPDATE Services SET description = @description, date = @date, employee_id = @employee_id, entry_time = @entry_time, departure_time = @departure_time, number_of_overtime_hours = @number_of_overtime_hours, abatement_date = {(string.IsNullOrEmpty(abatementDate) ? "NULL" : "@abatement_date")}, day_off_completed = @day_off_completed, number_of_hours_taken = {(string.IsNullOrEmpty(abatementDate) ? "NULL" : "@number_of_hours_taken")}, increment_time = @increment_time WHERE id = @id";
                 SqlCommand command = new SqlCommand(sql, connection);
                 command.Parameters.AddWithValue("@id", id);
