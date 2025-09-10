@@ -75,6 +75,12 @@
         }
         "Entry"
         {
+        "MsmKey" = "8:_8EF6A5955FDA486F84E1968A84AB3D22"
+        "OwnerKey" = "8:_UNDEFINED"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
         "MsmKey" = "8:_9AA321AE372A4AB48FE095672F1F562F"
         "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
@@ -83,6 +89,12 @@
         {
         "MsmKey" = "8:_A293ECE702C71FDC80E09F07763FED70"
         "OwnerKey" = "8:_DF711F9752CE454596C5FD9BF4F4A37A"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_A3FD8B0AF2EC37FECBF719A47415D0A5"
+        "OwnerKey" = "8:_6A2CA4B1CAE8F9C2DCDB2B25D20C02CD"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
@@ -99,20 +111,8 @@
         }
         "Entry"
         {
-        "MsmKey" = "8:_A3FD8B0AF2EC37FECBF719A47415D0A5"
-        "OwnerKey" = "8:_6A2CA4B1CAE8F9C2DCDB2B25D20C02CD"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
         "MsmKey" = "8:_B56B4E360138BCE0C0D3EB1DB81CBAC2"
         "OwnerKey" = "8:_DF711F9752CE454596C5FD9BF4F4A37A"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
-        "MsmKey" = "8:_BC49E0702CAF4541B7D66280A969E102"
-        "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
@@ -149,12 +149,6 @@
         {
         "MsmKey" = "8:_F623E264F8FD9B9C8B0EA2E0A577C2E6"
         "OwnerKey" = "8:_DF711F9752CE454596C5FD9BF4F4A37A"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
-        "MsmKey" = "8:_UNDEFINED"
-        "OwnerKey" = "8:_EEBDAEB8D0AF014B3C07DA331506CB0D"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
@@ -217,6 +211,12 @@
         "OwnerKey" = "8:_08D5474E0798A35AE4DF546773E4C18D"
         "MsmSig" = "8:_UNDEFINED"
         }
+        "Entry"
+        {
+        "MsmKey" = "8:_UNDEFINED"
+        "OwnerKey" = "8:_EEBDAEB8D0AF014B3C07DA331506CB0D"
+        "MsmSig" = "8:_UNDEFINED"
+        }
     }
     "Configurations"
     {
@@ -235,6 +235,14 @@
         "PrivateKeyFile" = "8:"
         "TimeStampServer" = "8:"
         "InstallerBootstrapper" = "3:2"
+            "BootstrapperCfg:{63ACBE69-63AA-4F98-B2B6-99F9E24495F2}"
+            {
+            "Enabled" = "11:TRUE"
+            "PromptEnabled" = "11:TRUE"
+            "PrerequisitesLocation" = "2:1"
+            "Url" = "8:"
+            "ComponentsUrl" = "8:"
+            }
         }
         "Release"
         {
@@ -465,6 +473,26 @@
             "IsDependency" = "11:TRUE"
             "IsolateTo" = "8:"
             }
+            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_8EF6A5955FDA486F84E1968A84AB3D22"
+            {
+            "SourcePath" = "8:C:\\Program Files (x86)\\jojocarvalho_rogerio@hotmail.com\\Banco de Horas\\check.png"
+            "TargetName" = "8:check.png"
+            "Tag" = "8:"
+            "Folder" = "8:_ECC7FBC21C224D29B7B15D59EFA1298A"
+            "Condition" = "8:"
+            "Transitive" = "11:FALSE"
+            "Vital" = "11:TRUE"
+            "ReadOnly" = "11:FALSE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "PackageAs" = "3:1"
+            "Register" = "3:1"
+            "Exclude" = "11:FALSE"
+            "IsDependency" = "11:FALSE"
+            "IsolateTo" = "8:"
+            }
             "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_9AA321AE372A4AB48FE095672F1F562F"
             {
             "SourcePath" = "8:..\\promoca-social-sem-fundo.ico"
@@ -576,26 +604,6 @@
             "Register" = "3:1"
             "Exclude" = "11:FALSE"
             "IsDependency" = "11:TRUE"
-            "IsolateTo" = "8:"
-            }
-            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_BC49E0702CAF4541B7D66280A969E102"
-            {
-            "SourcePath" = "8:..\\assets\\check.png"
-            "TargetName" = "8:check.png"
-            "Tag" = "8:"
-            "Folder" = "8:_ECC7FBC21C224D29B7B15D59EFA1298A"
-            "Condition" = "8:"
-            "Transitive" = "11:FALSE"
-            "Vital" = "11:TRUE"
-            "ReadOnly" = "11:FALSE"
-            "Hidden" = "11:FALSE"
-            "System" = "11:FALSE"
-            "Permanent" = "11:FALSE"
-            "SharedLegacy" = "11:FALSE"
-            "PackageAs" = "3:1"
-            "Register" = "3:1"
-            "Exclude" = "11:FALSE"
-            "IsDependency" = "11:FALSE"
             "IsolateTo" = "8:"
             }
             "{9F6F8455-1EF1-4B85-886A-4223BCC8E7F7}:_BF9AE6EC73CD0D5B377F9319F7AE6711"
@@ -758,15 +766,15 @@
         {
         "Name" = "8:Microsoft Visual Studio"
         "ProductName" = "8:Banco de Horas"
-        "ProductCode" = "8:{8FCE3DAB-65EF-4761-A076-E6EC9CE0211F}"
-        "PackageCode" = "8:{A9B20828-AE4A-4518-8934-E0E26EA5D405}"
+        "ProductCode" = "8:{A7FA8917-B2EE-4C43-A6F9-9B5B01623BFD}"
+        "PackageCode" = "8:{C4DE14DC-697F-4776-BDC2-9F9BAE70439E}"
         "UpgradeCode" = "8:{12C1124A-DFDC-49BB-934A-666595AF86A2}"
         "AspNetVersion" = "8:2.0.50727.0"
         "RestartWWWService" = "11:FALSE"
         "RemovePreviousVersions" = "11:FALSE"
         "DetectNewerInstalledVersion" = "11:TRUE"
         "InstallAllUsers" = "11:TRUE"
-        "ProductVersion" = "8:1.0.0"
+        "ProductVersion" = "8:1.0.1"
         "Manufacturer" = "8:jojocarvalho_rogerio@hotmail.com"
         "ARPHELPTELEPHONE" = "8:"
         "ARPHELPLINK" = "8:"

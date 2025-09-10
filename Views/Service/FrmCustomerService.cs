@@ -31,8 +31,7 @@ namespace Interface
             dtHoursTaken.Value = new DateTime(DateTime.Now.Year, DateTime.Now.Month, DateTime.Now.Day, 0, 0, 0);
 
             dtDate.MaxDate = DateTime.Now;
-            dtHoursTaken.MaxDate = DateTime.Now;
-
+           
             LoadEvents();
             this.cbRows.SelectedIndexChanged += CbRows_SelectedIndexChanged;
             this.cbPage.SelectedIndexChanged += new System.EventHandler(this.CbPage_SelectedIndexChanged);
@@ -73,19 +72,6 @@ namespace Interface
                 MessageBox.Show("A data do abatimento das horas não pode ser menor ou igual a data do serviço prestado.", "BANCO DE HORAS", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
                 return;
             }
-
-            //if(ConvertHoursToMinutes(dtHoursTaken.Value) > totalMinutes && cbAddHoursTaken.Checked)
-            //{
-            //    MessageBox.Show("A quantidade de horas que serão abatidas não pode ser maior que a quantidade de horas extras.", "BANCO DE HORAS", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
-            //    return;
-            //}
-
-            //if (lbNumberOfOvertimeHours.Text == "0h 0min")
-            //{
-            //    MessageBox.Show("A quantidade de horas extras não pode ser igual a 0.", "BANCO DE HORAS", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
-            //    return;
-            //}
-
 
             try
             {
@@ -317,7 +303,7 @@ namespace Interface
             CheckNumberOfPages(int.Parse(cbRows.SelectedItem.ToString()));
             UpdateComboBoxItems();
             LoadDgvHistory();
-            lblTotalHoursTaken.Text = GetMinutesConvertedToHours(Service.GetTotalHorasInOpen());
+            lblTotalHoursTaken.Text = GetMinutesConvertedToHours(Service.GetTotalHorasInOpen(employeeId));
             btnPrint.Enabled = dgvHistory.Rows.Count > 0; btnPrint.Enabled = dgvHistory.Rows.Count > 0;
         }
 
@@ -519,6 +505,11 @@ namespace Interface
             }
 
             return dataTable;
+        }
+
+        private void dtHoursTaken_ValueChanged(object sender, EventArgs e)
+        {
+
         }
 
         private void DgvHistory_CellMouseEnter(object sender, DataGridViewCellEventArgs e)

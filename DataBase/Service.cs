@@ -216,14 +216,14 @@ namespace DataBase
             }
         }
 
-        static public double GetTotalHorasInOpen()
+        static public double GetTotalHorasInOpen(int employeeId)
         {
             try
             {
                 using (var connection = new SqlConnection(DbConnectionString.connectionString))
                 {
                     connection.Open();
-                    string sql = $"SELECT SUM(Services.number_of_overtime_hours) - SUM(number_of_hours_taken) AS Total_Hours_Taken FROM Services;";
+                    string sql = $"SELECT ISNULL(SUM(Services.number_of_overtime_hours), 0) - ISNULL(SUM(number_of_hours_taken), 0) AS Total_Hours_Taken FROM Services WHERE Services.employee_id = {employeeId};";
                     var command = new SqlCommand(sql, connection);
                     command.CommandText = sql;
                     return (double)command.ExecuteScalar();
