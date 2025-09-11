@@ -42,7 +42,7 @@ namespace DataBase
                 "    [address] VARCHAR(200) NULL," +
                 "    [phone] VARCHAR(20) NULL);" +
 
-                "     CREATE TABLE [dbo].[Services] [id] INT IDENTITY (1, 1) NOT NULL," +
+                "     CREATE TABLE [dbo].[Services] ( [id] INT IDENTITY (1, 1) NOT NULL," +
                 "     [description] VARCHAR (MAX) NULL, " +
                 "     [date] DATE NULL, " +
                 "     [entry_time] TIME NULL, " +
