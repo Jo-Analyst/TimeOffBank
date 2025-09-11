@@ -78,3 +78,4 @@ C:\Users\jojoc\OneDrive\Documentos\Projetos\Meus projetos\TimeOffBank\obj\x86\Re
 C:\Users\jojoc\OneDrive\Documentos\Projetos\Meus projetos\TimeOffBank\obj\x86\Release\Interface.exe
 C:\Users\jojoc\OneDrive\Documentos\Projetos\Meus projetos\TimeOffBank\obj\x86\Release\Interface.pdb
 C:\Users\jojoc\OneDrive\Documentos\Projetos\Meus projetos\TimeOffBank\bin\x86\Release\check.png
+C:\Users\jojoc\OneDrive\Documentos\Projetos\Meus projetos\TimeOffBank\obj\x86\Release\Interface.exe.config
