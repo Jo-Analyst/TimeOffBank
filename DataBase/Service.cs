@@ -224,9 +224,16 @@ namespace DataBase
                 {
                     connection.Open();
                     string sql = $"SELECT ISNULL(SUM(Services.number_of_overtime_hours), 0) - ISNULL(SUM(number_of_hours_taken), 0) AS Total_Hours_Taken FROM Services WHERE Services.employee_id = {employeeId};";
-                    var command = new SqlCommand(sql, connection);
-                    command.CommandText = sql;
-                    return (double)command.ExecuteScalar();
+
+                    using (var command = new SqlCommand(sql, connection))
+                    {
+                        var result = command.ExecuteScalar();
+
+                        if (result == DBNull.Value || result == null)
+                            return 0.0;
+
+                        return (double)result;
+                    }
                 }
             }
             catch

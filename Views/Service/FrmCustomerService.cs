@@ -129,10 +129,10 @@ namespace Interface
                     dgvHistory.Rows[index].Cells["ColEntryTime"].Value = dr["entry_time"].ToString();
                     dgvHistory.Rows[index].Cells["ColDepartureTime"].Value = dr["departure_time"].ToString();
                     dgvHistory.Rows[index].Cells["ColNumberOfOvertimeHours"].Value = dr["number_of_overtime_hours"].ToString();
-                    dgvHistory.Rows[index].Cells["ColOvertime"].Value = GetMinutesConvertedToHours(double.Parse(dr["number_of_overtime_hours"].ToString()));
+                    dgvHistory.Rows[index].Cells["ColOvertime"].Value = FormatMinutesAsHoursString(double.Parse(dr["number_of_overtime_hours"].ToString()));
                     dgvHistory.Rows[index].Cells["ColAbatementDate"].Value = dr["abatement_date"].ToString();
                     dgvHistory.Rows[index].Cells["ColMinutesTaken"].Value = dr["number_of_hours_taken"].ToString();
-                    dgvHistory.Rows[index].Cells["ColNumberOfHoursTaken"].Value = !string.IsNullOrEmpty(dr["number_of_hours_taken"].ToString()) ? GetMinutesConvertedToHours((double)dr["number_of_hours_taken"]) : string.Empty;
+                    dgvHistory.Rows[index].Cells["ColNumberOfHoursTaken"].Value = !string.IsNullOrEmpty(dr["number_of_hours_taken"].ToString()) ? FormatMinutesAsHoursString(Convert.ToDouble(dr["number_of_hours_taken"].ToString())) : string.Empty;
                     dgvHistory.Rows[index].Cells["ColDayOffCompleted"].Value = dr["day_off_completed"].ToString() == "1" ? Resources.checked_checkbox_32 : Resources.rounded_square_32;
                     dgvHistory.Rows[index].Cells["ColDayOffCompletedValue"].Value = dr["day_off_completed"].ToString();
                     dgvHistory.Rows[index].Cells["ColIncrementTime"].Value = dr["increment_time"].ToString();
@@ -151,10 +151,18 @@ namespace Interface
             return TimeSpan.FromMinutes(totalMinutes);
         }
 
-        private string GetMinutesConvertedToHours(double totalMinutes)
+        private string FormatMinutesAsHoursString(double totalMinutes)
         {
             TimeSpan time = ConvertMinutesToTimeSpan(totalMinutes);
             return $"{time.Hours}h {time.Minutes}min";
+        }
+
+        private string MinutesToTimeDisplay(double totalMinutes)
+        {
+            int totalHours = (int)(totalMinutes / 60);
+            int remainingMinutes = (int)(totalMinutes % 60);
+            return $"{totalHours}h {remainingMinutes}min";
+
         }
 
         (int hours, int minutes) GetHoursAndMinutesFromTimeSpan(TimeSpan timeSpan)
@@ -191,7 +199,7 @@ namespace Interface
                 dtDate.Value = DateTime.Parse(dgvHistory.CurrentRow.Cells["ColDate"].Value.ToString());
                 dtEntryTime.Value = DateTime.Parse(dgvHistory.CurrentRow.Cells["ColEntryTime"].Value.ToString());
                 dtDepartureTime.Value = DateTime.Parse(dgvHistory.CurrentRow.Cells["ColDepartureTime"].Value.ToString());
-                lbNumberOfOvertimeHours.Text = GetMinutesConvertedToHours(double.Parse(dgvHistory.CurrentRow.Cells["ColNumberOfOvertimeHours"].Value.ToString()));
+                lbNumberOfOvertimeHours.Text = MinutesToTimeDisplay(double.Parse(dgvHistory.CurrentRow.Cells["ColNumberOfOvertimeHours"].Value.ToString()));
                 cbDefine.Checked = dgvHistory.CurrentRow.Cells["ColIncrementTime"].Value.ToString() == "1" ? true : false;
 
                 if (!string.IsNullOrEmpty(dgvHistory.CurrentRow.Cells["ColAbatementDate"].Value.ToString()))
@@ -303,7 +311,7 @@ namespace Interface
             CheckNumberOfPages(int.Parse(cbRows.SelectedItem.ToString()));
             UpdateComboBoxItems();
             LoadDgvHistory();
-            lblTotalHoursTaken.Text = GetMinutesConvertedToHours(Service.GetTotalHorasInOpen(employeeId));
+            lblTotalHoursTaken.Text = MinutesToTimeDisplay(Service.GetTotalHorasInOpen(employeeId));
             btnPrint.Enabled = dgvHistory.Rows.Count > 0; btnPrint.Enabled = dgvHistory.Rows.Count > 0;
         }
 
@@ -499,8 +507,8 @@ namespace Interface
 
             foreach (DataRow row in dataTable.Rows)
             {
-                row["overtime_hours"] = GetMinutesConvertedToHours(double.Parse(row["number_of_overtime_hours"].ToString()));
-                row["hours_taken"] = !string.IsNullOrEmpty(row["number_of_hours_taken"].ToString()) ? GetMinutesConvertedToHours(double.Parse(row["number_of_hours_taken"].ToString())) : string.Empty;
+                row["overtime_hours"] = MinutesToTimeDisplay(double.Parse(row["number_of_overtime_hours"].ToString()));
+                row["hours_taken"] = !string.IsNullOrEmpty(row["number_of_hours_taken"].ToString()) ? MinutesToTimeDisplay(double.Parse(row["number_of_hours_taken"].ToString())) : string.Empty;
                 row["day_off"] = row["day_off_completed"].ToString() == "1" ? "file:///" + Application.StartupPath.Replace("\\", "/") + "/check.png" : null;
             }
 
