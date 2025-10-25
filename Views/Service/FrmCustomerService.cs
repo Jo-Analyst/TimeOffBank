@@ -161,8 +161,13 @@ namespace Interface
         {
             int totalHours = (int)(totalMinutes / 60);
             int remainingMinutes = (int)(totalMinutes % 60);
-            return $"{totalHours}h {remainingMinutes}min";
+            int totalDays = totalHours / 8;
+            int remainingHours = totalHours % 8;
 
+            if (totalDays > 0)
+                return $"{totalHours}h {remainingMinutes}min - corresponde a {totalDays}d {remainingHours}h {remainingMinutes}min";
+            else
+                return $"{totalHours}h {remainingMinutes}min";
         }
 
         (int hours, int minutes) GetHoursAndMinutesFromTimeSpan(TimeSpan timeSpan)
