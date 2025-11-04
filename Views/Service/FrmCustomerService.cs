@@ -72,6 +72,11 @@ namespace Interface
                 MessageBox.Show("A data do abatimento das horas não pode ser menor ou igual a data do serviço prestado.", "BANCO DE HORAS", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
                 return;
             }
+            if(hoursBalance < 0 && cbAddHoursTaken.Checked)
+            {
+                MessageBox.Show("Não é possível abater mais horas do que o saldo disponível.", "BANCO DE HORAS", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                return;
+            }
 
             try
             {
@@ -130,12 +135,14 @@ namespace Interface
                     dgvHistory.Rows[index].Cells["ColDepartureTime"].Value = dr["departure_time"].ToString();
                     dgvHistory.Rows[index].Cells["ColNumberOfOvertimeHours"].Value = dr["number_of_overtime_hours"].ToString();
                     dgvHistory.Rows[index].Cells["ColOvertime"].Value = FormatMinutesAsHoursString(double.Parse(dr["number_of_overtime_hours"].ToString()));
-                    dgvHistory.Rows[index].Cells["ColAbatementDate"].Value = dr["abatement_date"].ToString();
+                    dgvHistory.Rows[index].Cells["ColAbatementDate"].Value = string.IsNullOrEmpty(dr["abatement_date"].ToString()) ? "---" : dr["abatement_date"].ToString();
                     dgvHistory.Rows[index].Cells["ColMinutesTaken"].Value = dr["number_of_hours_taken"].ToString();
-                    dgvHistory.Rows[index].Cells["ColNumberOfHoursTaken"].Value = !string.IsNullOrEmpty(dr["number_of_hours_taken"].ToString()) ? FormatMinutesAsHoursString(Convert.ToDouble(dr["number_of_hours_taken"].ToString())) : string.Empty;
+                    dgvHistory.Rows[index].Cells["ColNumberOfHoursTaken"].Value = !string.IsNullOrEmpty(dr["number_of_hours_taken"].ToString()) ? FormatMinutesAsHoursString(Convert.ToDouble(dr["number_of_hours_taken"].ToString())) : "0h 0min";
                     dgvHistory.Rows[index].Cells["ColDayOffCompleted"].Value = dr["day_off_completed"].ToString() == "1" ? Resources.checked_checkbox_32 : Resources.rounded_square_32;
                     dgvHistory.Rows[index].Cells["ColDayOffCompletedValue"].Value = dr["day_off_completed"].ToString();
                     dgvHistory.Rows[index].Cells["ColIncrementTime"].Value = dr["increment_time"].ToString();
+                    double hoursBalance  = CalculateHoursBalance(double.Parse(dgvHistory.Rows[index].Cells["ColNumberOfOvertimeHours"].Value.ToString()), string.IsNullOrWhiteSpace(dgvHistory.Rows[index].Cells["ColMinutesTaken"].Value.ToString()) ? 0 : double.Parse(dgvHistory.Rows[index].Cells["ColMinutesTaken"].Value.ToString()));
+                    dgvHistory.Rows[index].Cells["ColHoursBalance"].Value = FormatMinutesAsHoursString(hoursBalance);
                     dgvHistory.Rows[index].Selected = false;
                     dgvHistory.Rows[index].Height = 45;
                 }
@@ -144,6 +151,11 @@ namespace Interface
             {
                 MessageBox.Show("Houve um erro no sistema. Tente novamente mais tarde", "BANCO DE HORAS", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
+        }
+
+        private double CalculateHoursBalance(double overtimeHours, double minutesTaken)
+        {
+            return overtimeHours - minutesTaken;
         }
 
         private TimeSpan ConvertMinutesToTimeSpan(double totalMinutes)
@@ -206,19 +218,21 @@ namespace Interface
                 dtDepartureTime.Value = DateTime.Parse(dgvHistory.CurrentRow.Cells["ColDepartureTime"].Value.ToString());
                 lbNumberOfOvertimeHours.Text = MinutesToTimeDisplay(double.Parse(dgvHistory.CurrentRow.Cells["ColNumberOfOvertimeHours"].Value.ToString()));
                 cbDefine.Checked = dgvHistory.CurrentRow.Cells["ColIncrementTime"].Value.ToString() == "1" ? true : false;
+                lblHoursBalance.Text = dgvHistory.CurrentRow.Cells["ColHoursBalance"].Value.ToString();
 
-                if (!string.IsNullOrEmpty(dgvHistory.CurrentRow.Cells["ColAbatementDate"].Value.ToString()))
+                if (dgvHistory.CurrentRow.Cells["ColAbatementDate"].Value.ToString() != "---")
                 {
                     dtAbatementDate.Value = DateTime.Parse(dgvHistory.CurrentRow.Cells["ColAbatementDate"].Value.ToString());
 
                     (int hours, int minutes) = GetHoursAndMinutesFromTimeSpan(ConvertMinutesToTimeSpan(double.Parse(dgvHistory.CurrentRow.Cells["ColMinutesTaken"].Value.ToString())));
 
                     dtHoursTaken.Value = !string.IsNullOrEmpty(dgvHistory.CurrentRow.Cells["ColMinutesTaken"].Value.ToString()) ? new DateTime(DateTime.Now.Year, DateTime.Now.Month, DateTime.Now.Day, hours, minutes, 0) : new DateTime(DateTime.Now.Year, DateTime.Now.Month, DateTime.Now.Day, 0, 0, 0);
+                  
                     dtAbatementDate.Enabled = true;
                     dtHoursTaken.Enabled = true;
                     cbAddHoursTaken.Checked = true;
                 }
-
+                
                 btnSave.Text = "Editar";
                 lkCancel.Visible = true;
                 cbDefine.Enabled = true;
@@ -247,7 +261,7 @@ namespace Interface
 
             if (dgvHistory.CurrentCell.ColumnIndex == 2)
             {
-                if (!string.IsNullOrEmpty(dgvHistory.CurrentRow.Cells["ColAbatementDate"].Value.ToString()))
+                if (dgvHistory.CurrentRow.Cells["ColAbatementDate"].Value.ToString() != "---")
                 {
                     try
                     {
@@ -421,6 +435,7 @@ namespace Interface
             dtEntryTime.Value = new DateTime(DateTime.Now.Year, DateTime.Now.Month, DateTime.Now.Day, 0, 0, 0);
             dtDepartureTime.Value = new DateTime(DateTime.Now.Year, DateTime.Now.Month, DateTime.Now.Day, 0, 0, 0);
             cbAddHoursTaken.Checked = false;
+            lblHoursBalance.Text = "0h 0min";
         }
 
         private void FrmCustomerService_KeyDown(object sender, KeyEventArgs e)
@@ -500,29 +515,31 @@ namespace Interface
 
             if (isPrintDirect)
             {
-                new PrintDirect().Execute(dtService, lblTotalHoursTaken.Text);
+                new PrintDirect().Execute(dtService, lblTotalHoursTaken.Text.Split('-')[0].ToString());
                 return;
             }
 
-            new FrmReportService(dtService, lblTotalHoursTaken.Text).ShowDialog();
+            new FrmReportService(dtService, lblTotalHoursTaken.Text.Split('-')[0].ToString()).ShowDialog();
         }
 
         private DataTable FormatWorkHoursData(DataTable dataTable)
         {
-
             foreach (DataRow row in dataTable.Rows)
             {
-                row["overtime_hours"] = MinutesToTimeDisplay(double.Parse(row["number_of_overtime_hours"].ToString()));
-                row["hours_taken"] = !string.IsNullOrEmpty(row["number_of_hours_taken"].ToString()) ? MinutesToTimeDisplay(double.Parse(row["number_of_hours_taken"].ToString())) : string.Empty;
+                row["overtime_hours"] = MinutesToTimeDisplay(double.Parse(row["number_of_overtime_hours"].ToString())).Split('-')[0].ToString();
+                row["hours_taken"] = !string.IsNullOrEmpty(row["number_of_hours_taken"].ToString()) ? MinutesToTimeDisplay(double.Parse(row["number_of_hours_taken"].ToString())).Split('-')[0].ToString() : string.Empty;
                 row["day_off"] = row["day_off_completed"].ToString() == "1" ? "file:///" + Application.StartupPath.Replace("\\", "/") + "/check.png" : null;
             }
 
             return dataTable;
         }
 
+        double hoursBalance = 0f;
+
         private void dtHoursTaken_ValueChanged(object sender, EventArgs e)
         {
-
+            hoursBalance = CalculateHoursBalance(totalMinutes, ConvertHoursToMinutes(dtHoursTaken.Value));
+            lblHoursBalance.Text = FormatMinutesAsHoursString(hoursBalance);
         }
 
         private void DgvHistory_CellMouseEnter(object sender, DataGridViewCellEventArgs e)
