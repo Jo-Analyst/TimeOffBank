@@ -232,7 +232,7 @@ namespace DataBase
                         if (result == DBNull.Value || result == null)
                             return 0.0;
 
-                        return (double)result;
+                        return Convert.ToDouble(result);
                     }
                 }
             }

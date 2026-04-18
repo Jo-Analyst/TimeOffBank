@@ -10,3 +10,9 @@ C:\Users\jojoc\OneDrive\Documentos\Projetos\Meus projetos\TimeOffBank\DataBase\o
 C:\Users\jojoc\OneDrive\Documentos\Projetos\Meus projetos\TimeOffBank\DataBase\obj\Debug\DataBase.csproj.CoreCompileInputs.cache
 C:\Users\jojoc\OneDrive\Documentos\Projetos\Meus projetos\TimeOffBank\DataBase\obj\Debug\DataBase.dll
 C:\Users\jojoc\OneDrive\Documentos\Projetos\Meus projetos\TimeOffBank\DataBase\obj\Debug\DataBase.pdb
+C:\Users\jojoc\OneDrive\Documentos\Projetos\Meus projetos\Banco de Horas\DataBase\bin\Debug\DataBase.dll
+C:\Users\jojoc\OneDrive\Documentos\Projetos\Meus projetos\Banco de Horas\DataBase\bin\Debug\DataBase.pdb
+C:\Users\jojoc\OneDrive\Documentos\Projetos\Meus projetos\Banco de Horas\DataBase\obj\Debug\DataBase.csproj.AssemblyReference.cache
+C:\Users\jojoc\OneDrive\Documentos\Projetos\Meus projetos\Banco de Horas\DataBase\obj\Debug\DataBase.csproj.CoreCompileInputs.cache
+C:\Users\jojoc\OneDrive\Documentos\Projetos\Meus projetos\Banco de Horas\DataBase\obj\Debug\DataBase.dll
+C:\Users\jojoc\OneDrive\Documentos\Projetos\Meus projetos\Banco de Horas\DataBase\obj\Debug\DataBase.pdb

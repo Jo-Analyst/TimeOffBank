@@ -147,9 +147,9 @@ namespace Interface
                     dgvHistory.Rows[index].Height = 45;
                 }
             }
-            catch (Exception)
+            catch (Exception ex)
             {
-                MessageBox.Show("Houve um erro no sistema. Tente novamente mais tarde", "BANCO DE HORAS", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Houve um erro no sistema. Tente novamente mais tarde\n" + ex.Message, "BANCO DE HORAS", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
@@ -327,11 +327,18 @@ namespace Interface
 
         private void LoadEvents()
         {
-            CheckNumberOfPages(int.Parse(cbRows.SelectedItem.ToString()));
-            UpdateComboBoxItems();
-            LoadDgvHistory();
-            lblTotalHoursTaken.Text = MinutesToTimeDisplay(Service.GetTotalHorasInOpen(employeeId));
-            btnPrint.Enabled = dgvHistory.Rows.Count > 0; btnPrint.Enabled = dgvHistory.Rows.Count > 0;
+            try
+            {
+                CheckNumberOfPages(int.Parse(cbRows.SelectedItem.ToString()));
+                UpdateComboBoxItems();
+                LoadDgvHistory();
+                lblTotalHoursTaken.Text = MinutesToTimeDisplay(Service.GetTotalHorasInOpen(employeeId));
+                btnPrint.Enabled = dgvHistory.Rows.Count > 0; btnPrint.Enabled = dgvHistory.Rows.Count > 0;
+            }
+            catch (Exception)
+            {
+                MessageBox.Show("Houve um erro no sistema. Tente novamente", "Notificação de aviso", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
 
         private void UpdateComboBoxItems()
